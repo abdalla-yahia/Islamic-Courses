@@ -13,9 +13,8 @@ export const SetCookies =(userPayload:TokenInterFace)=>{
   const cookieOptions = {
     maxAge:  30 * 24 * 60 * 60,
     httpOnly: false,
-    // secure:process.env.NODE_ENV === 'production' && true,
-    secure:false,
-    path:'/'
+    secure:process.env.NODE_ENV === 'production' && true,
+    path:'/',
 }
 const cookie = serialize('JwtToken',token,cookieOptions)
 return cookie
