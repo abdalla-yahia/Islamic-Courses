@@ -1,0 +1,16 @@
+.newsbar{
+    animation: move 15s infinite linear;
+    animation-play-state: running;
+    &:hover {
+        animation-play-state:paused;
+    }
+}
+
+@keyframes move {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+            transform: translateX(200%);
+    }
+}
