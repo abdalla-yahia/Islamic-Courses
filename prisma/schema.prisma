@@ -450,6 +450,7 @@ model Posts {
   updatedAt DateTime @updatedAt
   author    Json?
 }
+
 model Hadith {
   id        Int      @id @default(autoincrement())
   title     String?
@@ -460,7 +461,6 @@ model Hadith {
   author    Json?
 }
 
-
 model News {
   id        Int      @id @default(autoincrement())
   content   String
@@ -470,14 +470,14 @@ model News {
 }
 
 model Codes {
-  id            Int      @id   @default(autoincrement())
-  code          String
-  role          Role
-  email         String
-  CodeExpire    DateTime?      @default(now())
-  VirifyCode    Boolean?       @default(false)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id         Int       @id @default(autoincrement())
+  code       String
+  role       Role
+  email      String
+  CodeExpire DateTime? @default(now())
+  VirifyCode Boolean?  @default(false)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 }
 
 enum Gender {
