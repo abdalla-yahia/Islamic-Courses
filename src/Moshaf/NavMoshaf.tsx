@@ -44,13 +44,13 @@ export default function NafMoshaf({NameSoras,SoraNumber,setSoraNumber,setShaikhS
             setMute(true)
         } 
     }  
-    document.onkeydown =(e)=>{
-        if(e.keyCode === 32  && search == ''  ){
-            e.preventDefault();
-            PlayAudioHandeller()
-            }
+    // document.onkeydown =(e)=>{
+    //     if(e.keyCode === 32  && search == ''  ){
+    //         e.preventDefault();
+    //         PlayAudioHandeller()
+    //         }
         
-        } 
+    //     } 
 useEffect(()=>{
 if (search?.length > 3) {
     setResultSearch(Data?.filter(el => el.aya_text_emlaey.includes(`${search}`)));
