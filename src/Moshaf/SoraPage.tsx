@@ -40,7 +40,7 @@ export default function SoraPage({setNameSoras,setSoraNumber,SoraNumber,AyaNumbe
         setNameSoras([...new Set(Data?.map(e=>e?.sura_name_ar))] as unknown as SetStateAction<string>)
             setTypeSora(
             //   Type?.[(+SoraNumber + 1) as unknown as number]?.type
-              [...Type]?.filter(el=> el.id === SoraNumber)[0]?.type
+              [Type as {id:number,type:string}]?.filter(el=> el.id === SoraNumber)[0]?.type
             ) as unknown as string;
 
     }, [SoraNumber, setNameSoras])
@@ -93,7 +93,7 @@ export default function SoraPage({setNameSoras,setSoraNumber,SoraNumber,AyaNumbe
                             sora.map((el, index) => {
                                 return (
                                   <p
-                                    title={Tafseer?.filter((ele) => ele?.sura_no === SoraNumber && ele?.aya_no === index+1)?.[0]?.aya_tafseer}
+                                    title={[Tafseer as {sura_no:number,aya_no:number,aya_tafseer:string}]?.filter((ele) => ele?.sura_no === SoraNumber && ele?.aya_no === index+1)?.[0]?.aya_tafseer}
                                     key={index}
                                     onClick={() => setAyaNumber(el.aya_no)}
                                     className={`${

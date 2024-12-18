@@ -88,7 +88,7 @@ for(let i = 0 ; i < 20 ; i++){
 }
 useEffect(() => {
     setNameSora(soraData?.[0]?.sura_name_ar);
-    setTypeSora(Type[+SoraNumber + 1 as unknown as number]?.type) as unknown as string;
+  setTypeSora((Type as [{type:string}])[+SoraNumber + 1] ?.type) as unknown as string;
     setLengthAyat(soraData?.length);
 }, [soraData, SoraNumber]);
   return (
