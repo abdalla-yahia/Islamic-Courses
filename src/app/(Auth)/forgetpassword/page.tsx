@@ -1,4 +1,3 @@
-'use client'
 import { forgetPassword } from "@/lib/Actions/ForgetPasswordActions"
 import { useAppDispatch, useAppSelector } from "@/lib/hooks"
 import FullTitle from "@/Utils/FullTitle"
