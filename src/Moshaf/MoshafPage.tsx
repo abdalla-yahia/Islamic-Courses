@@ -66,7 +66,7 @@ const AudioEnded =()=>{
         <div className="row">
             <div className="col-md-12">
                 <h1 className="text-center">
-                          <NavMoshaf NameSoras={NameSoras as unknown as string[]} SoraNumber={ SoraNumber as number} setSoraNumber={setSoraNumber} setShaikhSound={setShaikhSound} setAyaNumber={setAyaNumber as unknown as React.Dispatch<React.SetStateAction<number>>} audioRef={audioRef} soraData={soraData as unknown as [{sura_name_ar:string}]}/>
+                <NavMoshaf NameSoras={NameSoras as unknown as string[]} SoraNumber={ SoraNumber as number} setSoraNumber={setSoraNumber} setShaikhSound={setShaikhSound} setAyaNumber={setAyaNumber as unknown as React.Dispatch<React.SetStateAction<number>>} audioRef={audioRef} soraData={soraData as unknown as [{sura_name_ar:string}]}/>
                 </h1>
             </div>
         </div>

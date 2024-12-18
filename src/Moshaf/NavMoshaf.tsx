@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
-
 'use client'
 import { useEffect, useState } from "react"
 import * as icon from '@/Components/Icons/icons'
@@ -33,8 +31,9 @@ export default function NafMoshaf({NameSoras,SoraNumber,setSoraNumber,setShaikhS
     const [LengthAyat,setLengthAyat] = useState(0);
     const [play,setPlay] = useState(false);
     const [mute,setMute] = useState(false);
+    const [Equalizer, setEqualizer] = useState<JSX.Element[]>([]);
 
-    const PlayAudioHandeller = ()=>{
+    const PlayAudioHandeller = () => {
         if(!audioRef?.current.paused){
             audioRef?.current.pause()
             setPlay(false)
@@ -53,7 +52,9 @@ export default function NafMoshaf({NameSoras,SoraNumber,setSoraNumber,setShaikhS
         
         } 
 useEffect(()=>{
-search?.length > 3 as unknown as boolean && setResultSearch(Data?.filter(el=>el.aya_text_emlaey.includes(`${search}`))) 
+if (search?.length > 3) {
+    setResultSearch(Data?.filter(el => el.aya_text_emlaey.includes(`${search}`)));
+}
 if(search.length > 0)
     setSearchToggle(true)
 },[search])
@@ -62,7 +63,9 @@ useEffect(()=>{
     Elements.forEach((el,i)=>{
         el.addEventListener('mouseenter',async()=>{
             //Change Volume Audio
-            audioRef.current.volume !== undefined && (audioRef.current.volume = parseInt(i as unknown as string)/10)
+            if (audioRef.current.volume !== undefined) {
+                audioRef.current.volume = parseInt(i as unknown as string) / 10;
+            }
                 Elements.forEach((el2)=>{
                 el2.classList.remove(style.active)
                 })
@@ -73,19 +76,35 @@ useEffect(()=>{
     })
 },[audioRef])
 const MuteHandeller =()=>{
-    audioRef.current.muted !== undefined && (audioRef.current.muted = true)
+    if (audioRef.current.muted !== undefined) {
+        audioRef.current.muted = true;
+    }
     setMute(!mute)
 }
 const UnMuteHandeller =()=>{
-    audioRef.current.muted === true && (audioRef.current.muted = false)
+    if (audioRef.current.muted === true) {
+        audioRef.current.muted = false;
+    }
     setMute(!mute)
-}
-const Equalizer = []
-for(let i = 0 ; i < 20 ; i++){
-    Equalizer.push(<span style={{marginLeft:'1px'}} className={`${style.audio_play} hidden lg:block md:block`}>
-        <span style={{animationDelay:`calc(.3s * ${i})`}} className={`${style.audio_play_before}`}></span>
-    </span>)
-}
+  }
+  useEffect(() => {
+    for(let i = 0 ; i < 20 ; i++){
+        setEqualizer(prev => [
+          ...prev,
+          <span
+            key={i}
+            style={{ marginLeft: "1px" }}
+            className={`${style.audio_play} hidden lg:block md:block`}
+          >
+            <span
+              style={{ animationDelay: `calc(.3s * ${i})` }}
+              className={`${style.audio_play_before}`}
+            ></span>
+          </span>
+        ]);
+    }
+
+   } ,[]);
 useEffect(() => {
     setNameSora(soraData?.[0]?.sura_name_ar);
   setTypeSora((Type as [{type:string}])[+SoraNumber + 1] ?.type) as unknown as string;

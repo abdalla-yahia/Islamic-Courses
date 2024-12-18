@@ -11,7 +11,6 @@ import { Datainterface } from '@/Interfaces/InterFaces';
 const amiri = Amiri({
   subsets: ["latin"],
   weight: "400",
-  variable: "--font-amiri",
   display: "swap",
   adjustFontFallback: false,
 });
@@ -39,8 +38,7 @@ export default function SoraPage({setNameSoras,setSoraNumber,SoraNumber,AyaNumbe
         setSora(Data?.filter(el=> el.sura_no == (SoraNumber as unknown as number)))
         setNameSoras([...new Set(Data?.map(e=>e?.sura_name_ar))] as unknown as SetStateAction<string>)
             setTypeSora(
-            //   Type?.[(+SoraNumber + 1) as unknown as number]?.type
-              [Type as {id:number,type:string}]?.filter(el=> el.id === SoraNumber)[0]?.type
+              [Type as {id:number,type:string}]?.[(+SoraNumber + 1) as unknown as number]?.type
             ) as unknown as string;
 
     }, [SoraNumber, setNameSoras])
