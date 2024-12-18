@@ -7,8 +7,11 @@ import { toast } from "react-toastify"
 import { Amiri_Quran } from "next/font/google";
 import Swal from "sweetalert2"
 const amiri = Amiri_Quran({
-  subsets: ['latin'],
-  weight: "400"
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-amiri_quran",
+  display: "swap",
+  adjustFontFallback: false,
 });
 export default function LeftSidbar() {
       const {UserLogedData} = useAppSelector(state=>state.user) as unknown as {UserLogedData:LogedUserInterface}

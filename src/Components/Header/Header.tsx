@@ -8,9 +8,12 @@ import { UserPayload } from "@/Interfaces/InterFaces";
 
 
 const amiri = Amiri({
-  weight: '700',
-  subsets: ['latin'],
-})
+  weight: "700",
+  subsets: ["latin"],
+  variable: "--font-amiri",
+  display: "swap",
+  adjustFontFallback: false,
+});
 export default async function Header() {
   const token:string =(await cookies()).get('JwtToken')?.value || "";
   if(!token){

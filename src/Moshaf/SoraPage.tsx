@@ -9,9 +9,12 @@ import { Amiri } from 'next/font/google';
 import * as icon from '@/Components/Icons/icons'
 import { Datainterface } from '@/Interfaces/InterFaces';
 const amiri = Amiri({
-    subsets: ['latin'],
-    weight: '400',
-    });
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-amiri",
+  display: "swap",
+  adjustFontFallback: false,
+});
 
 export default function SoraPage({setNameSoras,setSoraNumber,SoraNumber,AyaNumber,setAyaNumber,setAyatLengthOfSora,setSoraData}:
     {

@@ -10,8 +10,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { Amiri } from "next/font/google";
 
 const amiri = Amiri({
-  subsets: ['latin'],
-  weight: "700"
+  subsets: ["latin"],
+  weight: "700",
+  variable: "--font-amiri",
+  display: "swap",
+  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {
