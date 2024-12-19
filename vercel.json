@@ -8,16 +8,16 @@
     }
   ],
   "env": {
-    "DATABASE_URL": "@DATABASE_URL",
-    "SALT": "@SALT",
-    "JWT_SECRET_KEY": "@JWT_SECRET_KEY",
+    "DATABASE_URL": "postgresql://Islamic_Course_DB_owner:AkD30MGHBYbw@ep-spring-frost-a5lpv0sw.us-east-2.aws.neon.tech/Islamic_Course_DB?sslmode=require",
+    "SALT": "405060",
+    "JWT_SECRET_KEY": "THIS-is-MYjson-SECRET-keY-2201079",
     "NODE_ENV": "@NODE_ENV",
-    "SITE_TITLE": "@SITE_TITLE",
-    "EMAL_SERVICE": "@EMAL_SERVICE",
-    "EMAL_HOST": "@EMAL_HOST",
-    "EMAIL_PORT": "@EMAIL_PORT",
-    "EMAIL_USER": "@EMAIL_USER",
-    "EMAIL_PASS": "@EMAIL_PASS",
-    "EMAIL_FROM": "@EMAIL_FROM"
+    "SITE_TITLE": "الدورات العلمية",
+    "EMAL_SERVICE": "gmail",
+    "EMAL_HOST": "smtp.gmail.com",
+    "EMAIL_PORT": "465",
+    "EMAIL_USER": "abdalla.yahia55@gmail.com",
+    "EMAIL_PASS": "fhjflcjtyyzotbvz",
+    "EMAIL_FROM": "abdalla.yahia55@gmail.com"
   }
 }
