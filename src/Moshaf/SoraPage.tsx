@@ -92,7 +92,7 @@ export default function SoraPage({setNameSoras,setSoraNumber,SoraNumber,AyaNumbe
                                 return (
                                   <p
                                     title={[Tafseer as {sura_no:number,aya_no:number,aya_tafseer:string}]?.filter((ele) => ele?.sura_no === SoraNumber && ele?.aya_no === index+1)?.[0]?.aya_tafseer}
-                                    key={index}
+                                    key={index+2000+SoraNumber}
                                     onClick={() => setAyaNumber(el.aya_no)}
                                     className={`${
                                       (AyaNumber as unknown as number) ==
