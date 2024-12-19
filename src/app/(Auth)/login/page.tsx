@@ -11,7 +11,6 @@ import FullTitle from "@/Utils/FullTitle";
 
 export default function LoginPage() {
   const {loginUser} = useAppSelector(state=>state.user) as unknown as {loginUser:{status:number}};
-
   const Roles = [{role:'users',name:'طالب / طالبة'},
     {role:'admins',name:'مشرف / مشرفة'},
     {role:'teachers',name:'مدرس  /مدرسة'},
@@ -35,7 +34,6 @@ export default function LoginPage() {
     password:password,
     role:userRole
     }
-
 
 const LoginHandeller = ()=>{
   if(userName !== '' && password !== ''){

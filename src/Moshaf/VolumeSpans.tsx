@@ -42,7 +42,7 @@ export default function VolumeSpans({
   }, [audioRef]);
   return (
     <>
-      <div className="flex justify-center gap-2 items-end">
+      <div className="w-full flex justify-center gap-2 items-end">
         <div
           aria-disabled={mute ? true : false}
           className="flex w-fit justify-center min-h-full flex-row-reverse items-end"
