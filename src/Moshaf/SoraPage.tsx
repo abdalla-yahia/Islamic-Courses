@@ -97,7 +97,7 @@ export default function SoraPage({setNameSoras,setSoraNumber,SoraNumber,AyaNumbe
                                     className={`${
                                       (AyaNumber as unknown as number) ==
                                         index + 1 && style.active_Aya
-                                    } ayat hover:text-blue-500  hover:drop-shadow-lg hover:text-2xl hover:font-bold cursor-pointer rounded inline text-justify `}
+                                    } ayat hover:text-blue-400  hover:drop-shadow-lg hover:text-2xl hover:font-bold cursor-pointer rounded inline text-justify `}
                                   >
                                     {" "}
                                     {el?.aya_text?.slice(0, -2)}
