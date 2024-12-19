@@ -9,8 +9,9 @@
 }
 .soraPage {
     background-color: #ffffff;
-    border: 50px solid transparent;
+    border: 40px solid transparent;
     border-image:url('/avatar/header.jpg') 280 round ;
+    padding: 0 15px;
     .passmalla {
       position: relative;
       /* filter: hue-rotate(180deg); */
@@ -71,6 +72,8 @@
 
 @media (max-width: 768px) {
     .soraPage{
+    border: 25px solid transparent;
+    border-image:url('/avatar/header.jpg') 280 round ;
         .passmalla {
             display: none;
         }

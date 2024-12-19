@@ -44,13 +44,7 @@ export default function NafMoshaf({NameSoras,SoraNumber,setSoraNumber,setShaikhS
             setMute(true)
         } 
     }  
-    // document.onkeydown =(e)=>{
-    //     if(e.keyCode === 32  && search == ''  ){
-    //         e.preventDefault();
-    //         PlayAudioHandeller()
-    //         }
-        
-    //     } 
+
 useEffect(()=>{
 if (search?.length > 3) {
     setResultSearch(Data?.filter(el => el.aya_text_emlaey.includes(`${search}`)));
@@ -58,23 +52,7 @@ if (search?.length > 3) {
 if(search.length > 0)
     setSearchToggle(true)
 },[search])
-useEffect(()=>{
-    const Elements = document.querySelectorAll('.elementVolume');
-    Elements.forEach((el,i)=>{
-        el.addEventListener('mouseenter',async()=>{
-            //Change Volume Audio
-            if (audioRef.current.volume !== undefined) {
-                audioRef.current.volume = parseInt(i as unknown as string) / 10;
-            }
-                Elements.forEach((el2)=>{
-                el2.classList.remove(style.active)
-                })
-            for(let y =0;y<=i;y++){
-                Elements[y].classList.add(style.active)
-            }
-        })
-    })
-},[audioRef])
+
 const MuteHandeller =()=>{
     if (audioRef.current.muted !== undefined) {
         audioRef.current.muted = true;
@@ -112,9 +90,9 @@ useEffect(() => {
 }, [soraData, SoraNumber]);
   return (
     <>
-      <nav className="text-gray-700 fixed top-0  left-0 z-30 w-full flex justify-between items-end gap-3 bg-blue-950 shadow py-3 px-2">
+      <nav className="text-gray-700 fixed top-0  left-0 z-30 w-full flex-wrap md:flex-nowrap lg:flex-nowrap flex justify-evenly md:justify-between lg:justify-between items-end gap-1 bg-blue-950 shadow py-3 px-2">
         {/*Search for Aya */}
-        <div className="w-1/6 flex  justify-between items-center">
+        <div className="w-1/3 md:w-[15%] lg:w-[15%]  flex  justify-between items-center">
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -181,10 +159,8 @@ useEffect(() => {
         </div>
         {/*Select Name Of Shaikh */}
         <div
-          onClick={() => {
-            setShaikhToggle(!shaikhToggle);
-          }}
-          className=" w-1/6 relative flex justify-evenly cursor-pointer text-sm rounded px-2 py-1 bg-gray-300"
+          className=" w-1/3 md:w-[15%] lg:w-[15%]  relative flex justify-evenly cursor-pointer text-sm rounded px-2 py-1 bg-gray-300"
+          onClick={() => setShaikhToggle(!shaikhToggle)}
         >
           {" "}
           {nameShaikh || "اختر الشيخ"}
@@ -215,7 +191,7 @@ useEffect(() => {
           />
         </div>
         {/*Play And Stop Sound */}
-        <div className="w-1/6 flex justify-between items-center">
+        <div className="w-1/3 md:w-[15%] lg:w-[15%]  flex justify-between items-center">
           <button
             disabled={!nameShaikh ? true : false}
             onClick={() => {
@@ -237,22 +213,24 @@ useEffect(() => {
           )}
         </div>
         {/*Name Of Soara */}
-        <div className="w-1/6 flex justify-between items-center">
+        <div className="w-1/3 md:w-[15%] lg:w-[15%]  flex justify-between items-center">
           <h3 className="text-white ">{`سورة ${nameSora}`}</h3>
           <h3 className="text-white ">{`التنزيل ${TypeSora}`}</h3>
           <h3 className="text-white ">{`أياتها ${LengthAyat}`}</h3>
         </div>
         {/*Volume Spans  */}
-        <VolumeSpans
-          mute={mute}
-          setMute={setMute}
-          MuteHandeller={MuteHandeller}
-          UnMuteHandeller={UnMuteHandeller}
-        />
+        <div className="w-1/3 md:w-[15%] lg:w-[15%]  flex justify-between items-center">
+          <VolumeSpans
+            mute={mute}
+            setMute={setMute}
+            MuteHandeller={MuteHandeller}
+            UnMuteHandeller={UnMuteHandeller}
+            audioRef={audioRef}
+          />
+        </div>
         {/*Select Sora*/}
-        <div
+        <div className=" w-1/3 md:w-[15%] lg:w-[15%]  relative flex justify-evenly cursor-pointer text-sm rounded px-2 py-2 bg-gray-300"
           onClick={() => setSoraToggle(!soraToggle)}
-          className=" w-1/6 relative flex justify-evenly cursor-pointer text-sm rounded px-2 py-2 bg-gray-300"
         >
           {" "}
           {nameSora || "اختر السورة"}

@@ -622,3 +622,9 @@ export interface permation {
   role: string | never,
   email: string | never
 } 
+
+export interface TafseerInterface {
+  sura_no: number;
+  aya_no: number;
+  aya_tafseer: string;
+}

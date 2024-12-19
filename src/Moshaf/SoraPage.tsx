@@ -6,7 +6,7 @@ import Tafseer from './Data/tafseerMouaser.json'
 import style from './style.module.css';
 import { Amiri } from 'next/font/google';
 import * as icon from '@/Components/Icons/icons'
-import { Datainterface } from '@/Interfaces/InterFaces';
+import { Datainterface, TafseerInterface } from '@/Interfaces/InterFaces';
 const amiri = Amiri({
   subsets: ["latin"],
   weight: "400",
@@ -112,9 +112,9 @@ export default function SoraPage({setNameSoras,setSoraNumber,SoraNumber,AyaNumbe
                                 return (
                                   <p
                                     title={
-                                      ([Tafseer as {sura_no:number,aya_no:number,aya_tafseer:string}]?.filter(
+                                      ((Tafseer as TafseerInterface[])?.filter(
                                         (ele) => ele?.sura_no === SoraNumber && ele?.aya_no === index + 1
-                                      )?.[0]?.aya_tafseer || '')
+                                      )?.[0]?.aya_tafseer as string)
                                     }
                                     key={index+2000+SoraNumber}
                                     onClick={() => setAyaNumber(el.aya_no)}
