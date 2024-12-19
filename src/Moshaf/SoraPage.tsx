@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
 'use client'
 import { SetStateAction, useEffect, useState } from 'react';
 import Data from './Data/Quran-hafs.json';
@@ -30,16 +29,20 @@ export default function SoraPage({setNameSoras,setSoraNumber,SoraNumber,AyaNumbe
     const [TypeSora, setTypeSora] = useState("");
 
     useEffect(()=>{
-        localStorage.getItem('Islamic_Course_Sora_Number') && setSoraNumber(parseInt(localStorage.getItem('Islamic_Course_Sora_Number')as unknown as string)as unknown as SetStateAction<number>)
-        localStorage.getItem('Islamic_Course_Aya_Number') && setAyaNumber(parseInt(localStorage.getItem('Islamic_Course_Aya_Number')as unknown as string)as unknown as SetStateAction<number>)
+        if (localStorage.getItem('Islamic_Course_Sora_Number')) {
+            setSoraNumber(parseInt(localStorage.getItem('Islamic_Course_Sora_Number') as unknown as string) as unknown as SetStateAction<number>);
+        }
+        if (localStorage.getItem('Islamic_Course_Aya_Number')) {
+            setAyaNumber(parseInt(localStorage.getItem('Islamic_Course_Aya_Number') as unknown as string) as unknown as SetStateAction<number>);
+        }
     },[setAyaNumber, setSoraNumber])
 
     useEffect(()=>{
         setSora(Data?.filter(el=> el.sura_no == (SoraNumber as unknown as number)))
         setNameSoras([...new Set(Data?.map(e=>e?.sura_name_ar))] as unknown as SetStateAction<string>)
             setTypeSora(
-              [Type as {id:number,type:string}]?.[(+SoraNumber + 1) as unknown as number]?.type
-            ) as unknown as string;
+              (Type as {id:number,type:string}[])[SoraNumber - 1]?.type
+            );
 
     }, [SoraNumber, setNameSoras])
     
@@ -74,8 +77,18 @@ export default function SoraPage({setNameSoras,setSoraNumber,SoraNumber,AyaNumbe
         <div className="row">
             <div className="col-md-12 relative">
                 <div  className={style.next_prev_sora}>
-                    <icon.MdKeyboardDoubleArrowRight title='السورة السابقة' onClick={()=>{SoraNumber  as unknown as number !== 1 && setSoraNumber(--SoraNumber as number);setAyaNumber(1)}} className={`${style.next_prev} ${SoraNumber   as unknown as number <= 1 ? style.visability_hidden:'visible'}`}/>
-                    <icon.MdOutlineKeyboardDoubleArrowLeft title='السورة التالية' onClick={()=>{SoraNumber  as unknown as number !== 114 && setSoraNumber((++SoraNumber));setAyaNumber(1)}} className={`${style.next_prev} ${SoraNumber   as unknown as number >= 114 ? style.visability_hidden:'visible'}`}/>
+                    <icon.MdKeyboardDoubleArrowRight title='السورة السابقة' onClick={()=>{
+                      if (SoraNumber as unknown as number !== 1) {
+                        setSoraNumber(--SoraNumber as number);
+                        setAyaNumber(1);
+                      }
+                    }} className={`${style.next_prev} ${SoraNumber   as unknown as number <= 1 ? style.visability_hidden:'visible'}`}/>
+                    <icon.MdOutlineKeyboardDoubleArrowLeft title='السورة التالية' onClick={()=>{
+                      if (SoraNumber as unknown as number !== 114) {
+                        setSoraNumber(++SoraNumber as number);
+                        setAyaNumber(1);
+                      }
+                    }} className={`${style.next_prev} ${SoraNumber as unknown as number >= 114 ? style.visability_hidden : 'visible'}`}/>
                 </div>
                 <div className={`${style.soraPage} text-center w-full h-fit`}>
                     {/*Set Pasmala And Header Of Sora */}
@@ -84,14 +97,25 @@ export default function SoraPage({setNameSoras,setSoraNumber,SoraNumber,AyaNumbe
                         <span className={`${style.sora_mak_mad, style.passmalla_title }  `}>   {`التنزيل ${TypeSora}`}  </span>
                         <span className={`${style.sora_ayas_num, style.passmalla_title } headerayatlength `}>   {`أياتها ${sora?.length > 0 && sora?.length || ''}`}  </span>
                     </div>
-                        {SoraNumber !== 9 &&<span style={{marginBottom:'30px',textShadow:'1px 1px 1px #000'}} className={`${style.passmallaText} w-full text-lg md:text-3xl lg:text-5xl  text-red-600 flex justify-center`}>   ﷽  </span>}
+                        {SoraNumber !== 9 && (
+                          <span
+                            style={{ marginBottom: '30px', textShadow: '1px 1px 1px #000' }}
+                            className={`${style.passmallaText} w-full text-lg md:text-3xl lg:text-5xl text-red-600 flex justify-center`}
+                          >
+                            ﷽
+                          </span>
+                        )}
                     {/*Set Ayat Of Sora Page */}
                     <div className={`${style.ayatPage} text-2xl text-gray-700 text-justify w-full px-2 `} >
                         {
                             sora.map((el, index) => {
                                 return (
                                   <p
-                                    title={[Tafseer as {sura_no:number,aya_no:number,aya_tafseer:string}]?.filter((ele) => ele?.sura_no === SoraNumber && ele?.aya_no === index+1)?.[0]?.aya_tafseer}
+                                    title={
+                                      ([Tafseer as {sura_no:number,aya_no:number,aya_tafseer:string}]?.filter(
+                                        (ele) => ele?.sura_no === SoraNumber && ele?.aya_no === index + 1
+                                      )?.[0]?.aya_tafseer || '')
+                                    }
                                     key={index+2000+SoraNumber}
                                     onClick={() => setAyaNumber(el.aya_no)}
                                     className={`${
