@@ -57,12 +57,12 @@ export default function LoginForm({userFromToken,setToggle,toggle}:{userFromToke
      window.location.reload();
   }
       useEffect(()=>{
-        if(loginUser?.length !== 0){
-          dispatch(SetUserLogedData(loginUser))
-          setUser(loginUser as unknown as {name:string})
-        }else if(userFromToken){
-          dispatch(SetUserLogedData(userFromToken as unknown as string))
-          setUser(userFromToken as unknown as {name:string})
+        if (loginUser) {
+          dispatch(SetUserLogedData(loginUser));
+          setUser(loginUser as unknown as { name: string });
+        } else if (userFromToken) {
+          dispatch(SetUserLogedData(userFromToken as unknown as string));
+          setUser(userFromToken as unknown as { name: string });
         }
       },[loginUser,logoutUser,userFromToken,dispatch,CreateNewUser,CreateAdmin,CreateTeacher,CreateAdmin_Teacher,CreateManager,CreateOwner])
       //Get Loged User Data
@@ -83,7 +83,7 @@ export default function LoginForm({userFromToken,setToggle,toggle}:{userFromToke
       },[userFromToken,dispatch])
   return (
                 <div className={`${style.userLink} z-50 flex justify-center items-center`}>
-                {User?.name !== '' ?
+                {User?.name !== undefined && User?.name !== '' && User?.name !== null && User?.name !== 'AxiosError' ?
                 (
                     <>
                     <div className={`text-gray-200  flex justify-center items-center px-5 lg:flex-row flex-col`}>
