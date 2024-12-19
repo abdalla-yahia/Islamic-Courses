@@ -11,7 +11,7 @@
     "DATABASE_URL": "postgresql://Islamic_Course_DB_owner:AkD30MGHBYbw@ep-spring-frost-a5lpv0sw.us-east-2.aws.neon.tech/Islamic_Course_DB?sslmode=require",
     "SALT": "405060",
     "JWT_SECRET_KEY": "THIS-is-MYjson-SECRET-keY-2201079",
-    "NODE_ENV": "@NODE_ENV",
+    "NODE_ENV": "production",
     "SITE_TITLE": "الدورات العلمية",
     "EMAL_SERVICE": "gmail",
     "EMAL_HOST": "smtp.gmail.com",
