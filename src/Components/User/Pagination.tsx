@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as icon from '@/Components/Icons/icons'
 export default function Pagination({query,setQuery,pages}:{
     query:string,
@@ -6,11 +6,15 @@ export default function Pagination({query,setQuery,pages}:{
     pages:number
 }) {
     const [currentPage,setCurrentPage] = useState(1);
-    const PagesCount = [];
-    
+    const [PagesCount, setPagesCount] = useState<number[]>([]);
+
+    useEffect(() => {
+        const pagesArray = [];
         for (let i = 1; i <= pages; i++) {
-            PagesCount.push(i)
+            pagesArray.push(i);
         }
+        setPagesCount(pagesArray);
+    },[pages])
         //Handle Next Button
         const handleNextPageChange = () => {
             if(currentPage !== pages) {
