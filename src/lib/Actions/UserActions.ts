@@ -62,7 +62,7 @@ export const LoginUser = createAsyncThunk('users/login',async (data:LoginUserInt
     try {
         const user = await PostHook(`/api/v1/${data?.role}/auth/login`,data as unknown as AxiosRequestConfig)
         return user.data;
-        } catch (error) {
+    } catch (error) {
             return error
             }
     })

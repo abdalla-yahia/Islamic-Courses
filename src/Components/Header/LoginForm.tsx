@@ -57,7 +57,7 @@ export default function LoginForm({userFromToken,setToggle,toggle}:{userFromToke
      window.location.reload();
   }
       useEffect(()=>{
-        if (loginUser) {
+        if (loginUser?.length > 0) {
           dispatch(SetUserLogedData(loginUser));
           setUser(loginUser as unknown as { name: string });
         } else if (userFromToken) {

@@ -50,7 +50,7 @@ export const deleteOwner = createAsyncThunk('Owners/deleteOwner',async(id:string
 
 export const LoginOwner = createAsyncThunk('Owners/login',async (data:LoginUserInterface)=>{
     try {
-        const Owner = await PostHook(`/api/v1/${data?.role}/auth/login`,data as unknown as AxiosRequestConfig)
+        const Owner = await PostHook(`/api/v1/owner/auth/login`,data as unknown as AxiosRequestConfig)
         return Owner.data;
         } catch (error) {
             return error

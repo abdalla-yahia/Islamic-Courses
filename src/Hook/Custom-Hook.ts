@@ -6,7 +6,7 @@ export const getAllHook =async (url: string,params?: AxiosRequestConfig<unknown>
     return res
 }
 export const PostHook =async (url: string,params?: AxiosRequestConfig<unknown> | undefined) =>{
-    const res = await BaseUrl.post(url,params)
+    const res = await BaseUrl.post(url, params)
     return res
 }
 
