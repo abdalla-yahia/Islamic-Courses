@@ -8,16 +8,16 @@
     }
   ],
   "env": {
-    "DATABASE_URL": "@database_url",
-    "SALT": "@salt",
-    "JWT_SECRET_KEY": "@jwt_secret_key",
-    "NODE_ENV": "@node_env",
-    "SITE_TITLE": "@site_title",
-    "EMAL_SERVICE": "@email_service",
-    "EMAL_HOST": "@email_host",
-    "EMAIL_PORT": "@email_port",
-    "EMAIL_USER": "@email_user",
-    "EMAIL_PASS": "@email_pass",
-    "EMAIL_FROM": "@email_from"
+    "DATABASE_URL": "@DATABASE_URL",
+    "SALT": "@SALT",
+    "JWT_SECRET_KEY": "@JWT_SECRET_KEY",
+    "NODE_ENV": "@NODE_ENV",
+    "SITE_TITLE": "@SITE_TITLE",
+    "EMAL_SERVICE": "@EMAL_SERVICE",
+    "EMAL_HOST": "@EMAL_HOST",
+    "EMAIL_PORT": "@EMAIL_PORT",
+    "EMAIL_USER": "@EMAIL_USER",
+    "EMAIL_PASS": "@EMAIL_PASS",
+    "EMAIL_FROM": "@EMAIL_FROM"
   }
 }
