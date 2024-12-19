@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+    reactStrictMode: true,
+  swcMinify: true,
   images:{
     remotePatterns:[
     {
@@ -18,9 +20,16 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
       resolve: {
-    extensions: ['.ts', '.tsx']
-  }
+    extensions: ['.js', '.jsx']
+  },
+
+      
   /* config options here */
 };
 
 export default nextConfig;
+
+
+
+
+
