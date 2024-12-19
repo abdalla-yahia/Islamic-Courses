@@ -1,3 +1,4 @@
+'use client'
 import { resetPassword } from "@/lib/Actions/ForgetPasswordActions"
 import { useAppDispatch, useAppSelector } from "@/lib/hooks"
 import FullTitle from "@/Utils/FullTitle"
