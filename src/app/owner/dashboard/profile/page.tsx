@@ -40,7 +40,7 @@ export default function ProfilePage() {
         setPath(e.target.files[0])
         const formData = new FormData();
         Object.values(e.target.files).forEach((file) => {
-          formData.append("file", file);
+          formData.append("file", file as File);
         });
         const response = await fetch("/api/v1/upload", {
           method: "POST",
