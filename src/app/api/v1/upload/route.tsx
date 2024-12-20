@@ -1,23 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import path from "path";
 import fs from "fs";
-// import { ROOT_PATH } from '@/Utils/Constant'
 
-// const UPLOAD_DIR = path.resolve(ROOT_PATH ?? "", "public/uploads");
-// const UPLOAD_IMAGES_DIR = path.resolve(ROOT_PATH ?? "", "public/uploads/images");
-// const UPLOAD_FILES_DIR = path.resolve(ROOT_PATH ?? "", "public/uploads/files");
-// const UPLOAD_AUDIOS_DIR = path.resolve(ROOT_PATH ?? "", "public/uploads/audios");
-// const UPLOAD_VEDIOS_DIR = path.resolve(ROOT_PATH ?? "", "public/uploads/videos");
-const UPLOAD_DIR = path.resolve("public/uploads");
-const UPLOAD_IMAGES_DIR = path.resolve("public/uploads/images");
-const UPLOAD_FILES_DIR = path.resolve("public/uploads/files");
-const UPLOAD_AUDIOS_DIR = path.resolve("public/uploads/audios");
-const UPLOAD_VEDIOS_DIR = path.resolve("public/uploads/videos");
+const UPLOAD_DIR = path.resolve("./public/uploads");
+const UPLOAD_IMAGES_DIR = path.resolve("./public/uploads/images");
+const UPLOAD_FILES_DIR = path.resolve("./public/uploads/files");
+const UPLOAD_AUDIOS_DIR = path.resolve("./public/uploads/audios");
+const UPLOAD_VEDIOS_DIR = path.resolve("./public/uploads/videos");
 
 export const POST = async (req: NextRequest) => {
   const formData = await req.formData();
   const body = Object.fromEntries(formData);
-  const file = (body.file) || null;
+  const file = (body.file as File) || null;
 
   if (file) {
     if (!fs.existsSync(UPLOAD_DIR)) {
@@ -31,7 +25,7 @@ export const POST = async (req: NextRequest) => {
                 fs.mkdirSync(UPLOAD_IMAGES_DIR);
             }
             fs.writeFileSync(
-                path.resolve(UPLOAD_IMAGES_DIR, (body.file as File).name),
+                path.resolve(UPLOAD_IMAGES_DIR, (body.file as File).name.slice(0,(file as File)?.name?.indexOf('.'))+new Date().getTime()+Extention),
                 buffer
               );
           }
@@ -41,7 +35,7 @@ export const POST = async (req: NextRequest) => {
                 fs.mkdirSync(UPLOAD_FILES_DIR);
             }
             fs.writeFileSync(
-                path.resolve(UPLOAD_FILES_DIR, (body.file as File).name),
+                path.resolve(UPLOAD_FILES_DIR, (body.file as File).name.slice(0,(file as File)?.name?.indexOf('.'))+new Date().getTime()+Extention),
                 buffer
               );
           }
@@ -51,7 +45,7 @@ export const POST = async (req: NextRequest) => {
                 fs.mkdirSync(UPLOAD_AUDIOS_DIR);
             }
             fs.writeFileSync(
-                path.resolve(UPLOAD_AUDIOS_DIR, (body.file as File).name),
+                path.resolve(UPLOAD_AUDIOS_DIR, (body.file as File).name.slice(0,(file as File)?.name?.indexOf('.'))+new Date().getTime()+Extention),
                 buffer
               );
           }
@@ -61,7 +55,7 @@ export const POST = async (req: NextRequest) => {
                 fs.mkdirSync(UPLOAD_VEDIOS_DIR);
             }
             fs.writeFileSync(
-                path.resolve(UPLOAD_VEDIOS_DIR, (body.file as File).name),
+                path.resolve(UPLOAD_VEDIOS_DIR, (body.file as File).name.slice(0,(file as File)?.name?.indexOf('.'))+new Date().getTime()+Extention),
                 buffer
               );
           }
@@ -69,11 +63,12 @@ export const POST = async (req: NextRequest) => {
   } else {
     return NextResponse.json({
       success: false,
+      file: file,
     });
   }
 
   return NextResponse.json({
     success: true,
-    name: (body.file as File).name,
+    name: (body.file as File).name.slice(0,(file as File)?.name?.indexOf('.'))+new Date().getTime()+(body.file as File).name.slice((file as File)?.name?.indexOf('.'),),
   });
 };
