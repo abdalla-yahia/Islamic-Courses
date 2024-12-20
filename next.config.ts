@@ -17,16 +17,13 @@ const nextConfig: NextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true,
-  },
-    resolve: {
-    extensions: ['.ts', '.tsx']
   }
 
+      
   /* config options here */
 };
 
 export default nextConfig;
-
 
 
 
