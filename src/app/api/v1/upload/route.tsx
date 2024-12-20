@@ -23,14 +23,14 @@ export const POST = async (req: NextRequest) => {
 
   if (file) {
     if (!fs.existsSync(UPLOAD_DIR)) {
-        fs.mkdirSync(UPLOAD_DIR);
+        fs.mkdirSync(UPLOAD_DIR, { recursive: true });
     }
       const imageExtensions = ['.jpg','.jpeg','.png','.gif','.bmp','.tiff','.webp','.svg','.heif','.raw'];
       const Extention = file?.name?.slice(file?.name?.indexOf('.'), )
           if(imageExtensions.includes(Extention)){
               const buffer = Buffer.from(await file.arrayBuffer());
               if (!fs.existsSync(UPLOAD_IMAGES_DIR)) {
-                fs.mkdirSync(UPLOAD_IMAGES_DIR);
+                fs.mkdirSync(UPLOAD_IMAGES_DIR, { recursive: true });
             }
             fs.writeFileSync(
                 path.resolve(UPLOAD_IMAGES_DIR, (body.file as File).name),
@@ -40,7 +40,7 @@ export const POST = async (req: NextRequest) => {
           if(Extention === '.pdf'){
             const buffer = Buffer.from(await file.arrayBuffer());
               if (!fs.existsSync(UPLOAD_FILES_DIR)) {
-                fs.mkdirSync(UPLOAD_FILES_DIR);
+                fs.mkdirSync(UPLOAD_FILES_DIR, { recursive: true });
             }
             fs.writeFileSync(
                 path.resolve(UPLOAD_FILES_DIR, (body.file as File).name),
@@ -50,7 +50,7 @@ export const POST = async (req: NextRequest) => {
           if(Extention === '.mp3' || Extention === '.wav' || Extention === '.ogg' || Extention === '.flac'){
             const buffer = Buffer.from(await file.arrayBuffer());
               if (!fs.existsSync(UPLOAD_AUDIOS_DIR)) {
-                fs.mkdirSync(UPLOAD_AUDIOS_DIR);
+                fs.mkdirSync(UPLOAD_AUDIOS_DIR, { recursive: true });
             }
             fs.writeFileSync(
                 path.resolve(UPLOAD_AUDIOS_DIR, (body.file as File).name),
@@ -60,7 +60,7 @@ export const POST = async (req: NextRequest) => {
           if(Extention === '.mp4' || Extention === '.avi' || Extention === '.mov' || Extention === '.flv'){
             const buffer = Buffer.from(await file.arrayBuffer());
               if (!fs.existsSync(UPLOAD_VEDIOS_DIR)) {
-                fs.mkdirSync(UPLOAD_VEDIOS_DIR);
+                fs.mkdirSync(UPLOAD_VEDIOS_DIR, { recursive: true });
             }
             fs.writeFileSync(
                 path.resolve(UPLOAD_VEDIOS_DIR, (body.file as File).name),
