@@ -20,7 +20,6 @@ export const POST = async (req: NextRequest) => {
   const file = (body.file) || null;
 
   if (file) {
-    console.log('first file',file)
     if (!fs.existsSync(UPLOAD_DIR)) {
         fs.mkdirSync(UPLOAD_DIR);
     }
