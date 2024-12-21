@@ -25,7 +25,7 @@ export const POST = async (req: NextRequest) => {
                 fs.mkdirSync(UPLOAD_IMAGES_DIR);
             }
             fs.writeFileSync(
-                path.resolve(UPLOAD_IMAGES_DIR, (body.file as File).name.slice(0,(file as File)?.name?.indexOf('.'))+new Date().getTime()+Extention),
+                path.resolve(UPLOAD_IMAGES_DIR, (body.file as File).name.slice(0,(file as File)?.name?.indexOf('.'))+new Date().getDate()+Extention),
                 buffer
               );
           }

@@ -53,7 +53,9 @@ export default function ProfilePage() {
     }
     //Update Owner Data  Handeller
     const UpdateOwnerHAndeller = ()=>{
-    if(name !=='' && email !=='' && phone !=='' && password.length >= 8){
+        if (name !== '' && email !== '' && phone !== '' && password.length >= 8) {
+              const Extention = path?.name?.slice(path?.name?.indexOf('.'), )
+
         if( password === confirmPassword){
             dispatch(updateOwner({
                 id:parseInt(UserLogedData?.id),
@@ -64,7 +66,7 @@ export default function ProfilePage() {
                 age:parseInt(age),
                 education,
                 password,
-                image:path !== undefined? '/uploads/images/' + path?.name : image
+                image:path !== undefined? '/uploads/images/' + path?.name.slice(0,path?.name?.indexOf('.'))+new Date().getDate()+Extention : image
                 }))
             }else {
                 toast.error('الرقم السري غير متطابق')

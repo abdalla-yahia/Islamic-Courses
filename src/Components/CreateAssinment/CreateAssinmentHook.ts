@@ -36,7 +36,7 @@ export default function CreateAssinmentHook() {
     useEffect(()=>{
         dispatch(fetchSubjectByID(subjectId))
         setLessons(Subject?.Lessons as unknown as AllLessonsInterFace[])
-    },[subjectId, dispatch, Subject?.Lessons])
+    },[Subject, dispatch, subjectId])
     
     //Get All Lessons Of Subject
     useEffect(()=>{
