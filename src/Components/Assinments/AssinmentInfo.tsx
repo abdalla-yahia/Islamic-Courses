@@ -29,7 +29,7 @@ export default function AssinmentInfo({
   } = AssinmentHook({ Assinment });
   return (
     <>
-      {Assinment && (
+      {Assinment ? (
         <div className="w-full">
           <h2 className="text-center flex gap-2 text-xl my-3 font-bold text-gray-900">
             معلومات عن التكليف:
@@ -186,8 +186,8 @@ export default function AssinmentInfo({
             </div>
           )}
         </div>
-      )}
-      {!Assinment && AssinmentResult && (
+      )
+      :(
         <>
           <div className="w-full   flex items-start justify-center">
             <div className="flex gap-3 flex-col md:flex-row lg:flex-row justify-center items-center font-bold text-2xl">
