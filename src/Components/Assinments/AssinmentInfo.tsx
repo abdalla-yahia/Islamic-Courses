@@ -29,7 +29,7 @@ export default function AssinmentInfo({
   } = AssinmentHook({ Assinment });
   return (
     <>
-      {Assinment ? (
+      {Assinment && (
         <div className="w-full">
           <h2 className="text-center flex gap-2 text-xl my-3 font-bold text-gray-900">
             معلومات عن التكليف:
@@ -71,9 +71,8 @@ export default function AssinmentInfo({
             <div className="w-full flex-col">
               {Assinment?.assinmentbody?.time && (
                 <span
-                  className={`${
-                    toggle ? "hidden" : "block"
-                  } my-1 text-blue-600`}
+                  className={`${toggle ? "hidden" : "block"
+                    } my-1 text-blue-600`}
                 >
                   <span className="text-red-700">ملحوظة:</span> يوجد مؤقت زمني
                   لللإختبار يبدأ بمجرد الضغط على زر فتح الإختبار
@@ -84,9 +83,8 @@ export default function AssinmentInfo({
                   setToggle(true);
                   OpenAssinment();
                 }}
-                className={`${
-                  toggle ? "hidden" : "block"
-                } rounded text-xl p-2 w-full bg-green-700 cursor-pointer`}
+                className={`${toggle ? "hidden" : "block"
+                  } rounded text-xl p-2 w-full bg-green-700 cursor-pointer`}
               >
                 اضغط لفتح الإختبار
               </button>
@@ -143,7 +141,7 @@ export default function AssinmentInfo({
                 </div>
               </div>
               {Assinment?.assinmentbody?.questions &&
-              +Assinment?.assinmentbody?.questions?.length > +answers.length ? (
+                +Assinment?.assinmentbody?.questions?.length > +answers.length ? (
                 <span className="text-red-800">
                   تنبيه: يوجد عدد{" "}
                   <span className="font-bold text-blue-600">
@@ -159,17 +157,17 @@ export default function AssinmentInfo({
               )}
               {answers?.length ===
                 Assinment?.assinmentbody?.questions?.length && (
-                <button
-                  onClick={() => {
-                    SendAnswersHandeller();
-                    setToggle(false);
-                    setToggleAssinment(false);
-                  }}
-                  className="w-full my-3 bg-green-600 p-3 rounded shadow hover:bg-red-700"
-                >
-                  إرسال الإجابات
-                </button>
-              )}
+                  <button
+                    onClick={() => {
+                      SendAnswersHandeller();
+                      setToggle(false);
+                      setToggleAssinment(false);
+                    }}
+                    className="w-full my-3 bg-green-600 p-3 rounded shadow hover:bg-red-700"
+                  >
+                    إرسال الإجابات
+                  </button>
+                )}
             </>
           )}
           {!toggleAssinment && (
@@ -186,8 +184,8 @@ export default function AssinmentInfo({
             </div>
           )}
         </div>
-      )
-      :(
+      )}
+      {AssinmentResult &&(
         <>
           <div className="w-full   flex items-start justify-center">
             <div className="flex gap-3 flex-col md:flex-row lg:flex-row justify-center items-center font-bold text-2xl">
