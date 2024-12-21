@@ -32,11 +32,13 @@ export default function CreateAssinmentHook() {
     const [AssinmentDescription,SetAssinmentDescription]=useState('')
 
     const dispatch = useAppDispatch()
+    useEffect(() => {
+        dispatch(fetchSubjectByID(subjectId))
+    },[dispatch, subjectId])
     //Get A Specific subject By ID
     useEffect(()=>{
-        dispatch(fetchSubjectByID(subjectId))
         setLessons(Subject?.Lessons as unknown as AllLessonsInterFace[])
-    },[Subject, dispatch, subjectId])
+    },[Subject, dispatch])
     
     //Get All Lessons Of Subject
     useEffect(()=>{
