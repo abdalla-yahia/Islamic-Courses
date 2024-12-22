@@ -1,5 +1,8 @@
 import type { NextConfig } from "next";
-
+// /** @type {import('next').NextConfig} */
+// module.exports = {
+//   output: "standalone",
+// };
 const nextConfig: NextConfig = {
 
   images:{

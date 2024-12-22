@@ -214,9 +214,9 @@ useEffect(() => {
         </div>
         {/*Name Of Soara */}
         <div className="w-1/3 md:w-[15%] lg:w-[15%]  flex justify-between items-center">
-          <h3 className="text-white ">{`سورة ${nameSora}`}</h3>
-          <h3 className="text-white ">{`التنزيل ${TypeSora}`}</h3>
-          <h3 className="text-white ">{`أياتها ${LengthAyat}`}</h3>
+          <h3 className="text-white shadow-md shadow-blue-700">{`سورة ${nameSora}`}</h3>
+          <h3 className="text-white shadow-md shadow-blue-700">{`التنزيل ${TypeSora}`}</h3>
+          <h3 className="text-white shadow-md shadow-blue-700">{`أياتها ${LengthAyat}`}</h3>
         </div>
         {/*Volume Spans  */}
         <div className="w-1/3 md:w-[15%] lg:w-[15%]  flex justify-between items-center">

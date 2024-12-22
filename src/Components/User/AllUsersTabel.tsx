@@ -96,7 +96,7 @@ export default function AllUsersTabel({place,query,setUserGender,setUserGroup}:
       <div className="w-full text-gray-700 overflow-x-scroll scrollbar-hide flex flex-col justify-start items-center shadow">
         {/*Show Only Excelent Students */}
         <h1>جدول الأوائل</h1>
-        <TopUsersTabel place={place} />
+        <TopUsersTabel />
         {/*Show All Students */}
         <h1>جدول كل الطلاب</h1>
         <div className="table  w-full overflow-x-scroll  justify-center items-center border-blue-500 border-2">
