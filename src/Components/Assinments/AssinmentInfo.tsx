@@ -2,22 +2,21 @@ import Accordion from "react-bootstrap/Accordion";
 import QuestionsPage from "../Questions/QuestionsPage";
 import Link from "next/link";
 import TimerQuestions from "../Questions/TimerQuestions";
-import style from "./style.module.css";
 import AssinmentHook from "./AssinmentHook";
-import AssinmentResultTable from "./AssinmentResultTable";
 import { AllAssinmentInterface } from "@/Interfaces/InterFaces";
+// import { useEffect } from "react";
+// import { useParams } from "next/navigation";
+// import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+// import { fetchAssinmentResultByID } from "@/lib/Actions/AssinmentsResultsActions";
 
 export default function AssinmentInfo({
   Assinment,
 }: {
   Assinment: AllAssinmentInterface;
-}) {
+  }) {
   const {
-    AssinmentResult,
     answers,
     setAnswers,
-    DetailsToggle,
-    setDetailsToggle,
     toggle,
     setToggle,
     toggleAssinment,
@@ -27,9 +26,10 @@ export default function AssinmentInfo({
     OpenAssinment,
     SendAnswersHandeller,
   } = AssinmentHook({ Assinment });
+
   return (
     <>
-      {Assinment && (
+
         <div className="w-full">
           <h2 className="text-center flex gap-2 text-xl my-3 font-bold text-gray-900">
             معلومات عن التكليف:
@@ -71,8 +71,9 @@ export default function AssinmentInfo({
             <div className="w-full flex-col">
               {Assinment?.assinmentbody?.time && (
                 <span
-                  className={`${toggle ? "hidden" : "block"
-                    } my-1 text-blue-600`}
+                  className={`${
+                    toggle ? "hidden" : "block"
+                  } my-1 text-blue-600`}
                 >
                   <span className="text-red-700">ملحوظة:</span> يوجد مؤقت زمني
                   لللإختبار يبدأ بمجرد الضغط على زر فتح الإختبار
@@ -83,8 +84,9 @@ export default function AssinmentInfo({
                   setToggle(true);
                   OpenAssinment();
                 }}
-                className={`${toggle ? "hidden" : "block"
-                  } rounded text-xl p-2 w-full bg-green-700 cursor-pointer`}
+                className={`${
+                  toggle ? "hidden" : "block"
+                } rounded text-xl p-2 w-full bg-green-700 cursor-pointer`}
               >
                 اضغط لفتح الإختبار
               </button>
@@ -94,7 +96,6 @@ export default function AssinmentInfo({
             <>
               <div className="text-center flex flex-col w-full gap-2 text-xl my-3 font-bold text-gray-900">
                 <p className="text-3xl text-red-500 shadow p-2"> الإمتحان </p>
-
                 {Assinment?.assinmentbody?.time && (
                   <TimerQuestions
                     houres={Assinment?.assinmentbody?.time?.hours}
@@ -141,7 +142,7 @@ export default function AssinmentInfo({
                 </div>
               </div>
               {Assinment?.assinmentbody?.questions &&
-                +Assinment?.assinmentbody?.questions?.length > +answers.length ? (
+              +Assinment?.assinmentbody?.questions?.length > +answers.length ? (
                 <span className="text-red-800">
                   تنبيه: يوجد عدد{" "}
                   <span className="font-bold text-blue-600">
@@ -157,17 +158,17 @@ export default function AssinmentInfo({
               )}
               {answers?.length ===
                 Assinment?.assinmentbody?.questions?.length && (
-                  <button
-                    onClick={() => {
-                      SendAnswersHandeller();
-                      setToggle(false);
-                      setToggleAssinment(false);
-                    }}
-                    className="w-full my-3 bg-green-600 p-3 rounded shadow hover:bg-red-700"
-                  >
-                    إرسال الإجابات
-                  </button>
-                )}
+                <button
+                  onClick={() => {
+                    SendAnswersHandeller();
+                    setToggle(false);
+                    setToggleAssinment(false);
+                  }}
+                  className="w-full my-3 bg-green-600 p-3 rounded shadow hover:bg-red-700"
+                >
+                  إرسال الإجابات
+                </button>
+              )}
             </>
           )}
           {!toggleAssinment && (
@@ -184,34 +185,7 @@ export default function AssinmentInfo({
             </div>
           )}
         </div>
-      )}
-      {AssinmentResult &&(
-        <>
-          <div className="w-full   flex items-start justify-center">
-            <div className="flex gap-3 flex-col md:flex-row lg:flex-row justify-center items-center font-bold text-2xl">
-              <h1 className="text-red-600">درجتك فى هذا التكليف : </h1>
-              <h2 className="text-blue-600  ">
-                {AssinmentResult?.score}
-                <span className="text-gray-600">درجة</span>
-              </h2>
-              {AssinmentResult?.answersbody !== null && (
-                <span
-                  className="cursor-pointer hover:text-red-600 transition-colors"
-                  onClick={() => setDetailsToggle(!DetailsToggle)}
-                >
-                  عرض {DetailsToggle ? "أقل" : "المزيد"}
-                  <span className={style.span_toggle}>
-                    <span className={` ${style.span_toggle}`}>.</span>
-                    <span className={` ${style.span_toggle}`}>.</span>
-                    <span className={` ${style.span_toggle}`}>.</span>
-                  </span>
-                </span>
-              )}
-            </div>
-          </div>
-          {DetailsToggle && <AssinmentResultTable sorce={AssinmentResult} />}
-        </>
-      )}
+
     </>
   );
 }

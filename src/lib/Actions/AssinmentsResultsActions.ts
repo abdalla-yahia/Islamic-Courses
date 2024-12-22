@@ -17,7 +17,6 @@ export const fetchAssinmentResultByID = createAsyncThunk('AssinmentsResults/geto
         const res = await getAllHook(`/api/v1/assinments-results/${id}`)
         return res.data;
         } catch (error) {
-            
             return error
         }
     })

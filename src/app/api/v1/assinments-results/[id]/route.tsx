@@ -1,7 +1,7 @@
 import prisma from "@/Utils/db";
 import { NextRequest, NextResponse } from "next/server";
 import  Jwt  from "jsonwebtoken";
-import { TokenInterFace, UserPayload } from "@/Interfaces/InterFaces";
+import { TokenInterFace } from "@/Interfaces/InterFaces";
 import { AssinmentResultSchema } from "@/Utils/ValidationShema";
 import Role from "@/Utils/Role";
 
@@ -23,13 +23,13 @@ export async function GET(request:NextRequest,{ params }: { params: Promise<{ id
         }
         const token =  cookie?.value;
         const SecretKey = process.env.JWT_SECRET_KEY as string
-        const UserFromToken = Jwt.verify(token,SecretKey) as UserPayload
+        const UserFromToken = Jwt.verify(token, SecretKey) as TokenInterFace;
         if(!UserFromToken){
             return NextResponse.json({message:'User Not Found'},{status:404})
         }
         if(UserFromToken?.role === 'USER'){
         const FindAssinmentResult = await prisma.assinmentResult.findFirst({
-            where:{userId:UserFromToken.id,assinmentId:parseInt(id)},
+            where:{userId:UserFromToken?.id,assinmentId:parseInt(id)},
             include:{
                 lesson:{
                     select:{

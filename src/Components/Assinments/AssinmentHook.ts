@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { createAssinmentResult, fetchAssinmentResultByID, updateAssinmentResult } from "@/lib/Actions/AssinmentsResultsActions";
-import { redirect, useParams } from "next/navigation";
+import { createAssinmentResult, updateAssinmentResult } from "@/lib/Actions/AssinmentsResultsActions";
+import { redirect } from "next/navigation";
 import { SetStateAction, useEffect,useState } from "react";
 import { AllAssinmentInterface, AssinmentResultInterface, LogedUserInterface } from "@/Interfaces/InterFaces";
 
@@ -14,7 +14,8 @@ export default function AssinmentHook({Assinment}:{Assinment:AllAssinmentInterfa
     const [toggleAssinment, setToggleAssinment]=useState(true)
     const [UserDegree, setUserDegree]=useState(0)
     const dispatch = useAppDispatch()
-    const {id} = useParams() as unknown as {id: string}
+
+
     let Degree = 0
     const Correct: ((prevState: never[]) => never[]) | { id: unknown; answer: unknown; degree: unknown; type: unknown; }[]= []
     const [FullDegree, setFullDegree]=useState(0)
@@ -68,12 +69,10 @@ export default function AssinmentHook({Assinment}:{Assinment:AllAssinmentInterfa
     }))
     redirect('../')
   }
-  useEffect(()=>{
-    dispatch(fetchAssinmentResultByID(id))
-  },[dispatch,id])
+
 
   return (
-    {AssinmentResult,answers, setAnswers,DetailsToggle, setDetailsToggle,
+    {answers, setAnswers,DetailsToggle, setDetailsToggle,
         toggle, setToggle,toggleAssinment, setToggleAssinment,UserDegree,FullDegree,
         OpenAssinment,SendAnswersHandeller
 }

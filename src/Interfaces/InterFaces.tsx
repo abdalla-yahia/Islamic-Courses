@@ -124,7 +124,6 @@ export interface AssinmentResultInterface {
   score: number;
   createdAt:Date,
   answersbody?:string,
-  
   User: {id:string,name:string,Groups:{id:string,name:string}},
   Assinments:{assinmentbody:{questions:[{degree:string,id:string,answer:string[],type:string,question:string,choase:string[]}]}}
 }
