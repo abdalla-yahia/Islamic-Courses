@@ -9,16 +9,18 @@ import FullTitle from "@/Utils/FullTitle"
 import Image from "next/image"
 import * as img from '../../../../../public/avatar';
 import * as icon from '@/Components/Icons/icons'
-import { LogedUserInterface } from "@/Interfaces/InterFaces";
-import { AssinmentResult, Assinments, ExamResult, User } from "@prisma/client";
+import { AllUserInterface, LogedUserInterface } from "@/Interfaces/InterFaces";
+import { AssinmentResult, Assinments, Exam, ExamResult } from "@prisma/client";
 import Swal from "sweetalert2";
+import { fetchExams } from "@/lib/Actions/ExamsActions";
 
 export default function ProfilePage() {
     const {AllAssinments} = useAppSelector(state=>state.assinment) as unknown as {AllAssinments:Assinments[]}
+    const {AllExams} = useAppSelector(state=>state.exam) as unknown as {AllExams:Exam[]}
     const {UserLogedData}  = useAppSelector(state=>state.user) as unknown as {UserLogedData:LogedUserInterface}
     const {DeleteUser}  = useAppSelector(state=>state.user) as unknown as {DeleteUser:{status:number}}
     const {UpdateUser}  = useAppSelector(state=>state.user) as unknown as {UpdateUser:{status:number}}
-    const {user}  = useAppSelector(state=>state.user) as unknown as {user:{user:User,AssinmentResult:AssinmentResult[],ExamResult:ExamResult[]}}
+    const {user}  = useAppSelector(state=>state.user) as unknown as {user:{user:AllUserInterface,AssinmentResult:AssinmentResult[],ExamResult:ExamResult[]}}
     const [toggle,setToggle] = useState(false);
     const [name,setName] = useState('')
     const [email,setEmail] = useState('')
@@ -30,12 +32,12 @@ export default function ProfilePage() {
     const [confirmPassword,setConfirmPassword] = useState('')
     const [image,setImage] = useState('')
     const [path,setPath] = useState({name:''})
-
     const dispatch = useAppDispatch()
     //Get User Data And All Assinments
     useEffect(()=>{
         dispatch(fetchUserById(UserLogedData?.id))
         dispatch(fetchAssinments())
+        dispatch(fetchExams())
     },[UserLogedData,dispatch,UpdateUser,DeleteUser])
     //Get Upload Image From User
     const uploadFilesHandeller = async (e: ChangeEvent<HTMLInputElement>)=>{
@@ -79,9 +81,9 @@ export default function ProfilePage() {
     //Set User Data To State On First Time Open Page and open toggle
     const ShowBoxEditHandeller =()=>{
         setToggle(!toggle)
-        setName(user?.user?.name)
-        setEmail(user?.user?.email)
-        setPhone(user?.user?.telephone)
+        setName(user?.user?.name || '')
+        setEmail(user?.user?.email || '')
+        setPhone(user?.user?.telephone || '')
         setAddress(user?.user?.address as unknown as string)
         setAge(user?.user?.age as unknown as string)
         setEducation(user?.user?.education as unknown as string)
@@ -134,7 +136,7 @@ export default function ProfilePage() {
 
   return (
     <>
-    <FullTitle  F_Title={`الصفحة الشخصية ل ${user?.user?.name}`} />
+    <FullTitle  F_Title={`الصفحة الشخصية لـ ( ${user?.user?.name} )`} />
     {/*Personal Data Card */}
     <div className="card w-full relative flex justify-center items-start pt-3">
         <div className="card-head mb-3 self-center w-full flex justify-center items-center">
@@ -215,12 +217,12 @@ export default function ProfilePage() {
         </div>
         <div className="card-body  w-full pl-3">
             <p className="card-text">إجمالي التكليفات: {AllAssinments?.length} </p>
-            <p className="card-text">عدد تكليفاتك: {user?.AssinmentResult?.length} </p>
-            <p className="card-text">عدد التكليفات المتبقية لك: {(+(AllAssinments?.length) - +(user?.AssinmentResult?.length) ) === 0 && <span className="text-green-500">تم إداء كل التكليفات 👍</span>} </p>
-            <p className="card-text">درجات التكليفات: {user?.AssinmentResult?.length && user?.AssinmentResult?.map(e=>e.score + ' , ')} </p>
+            <p className="card-text">عدد تكليفاتك: {user?.user?.AssinmentResult?.length} </p>
+            <p className="card-text">عدد التكليفات المتبقية لك: {(+(AllAssinments?.length) - +(user?.user?.AssinmentResult?.length) ) === 0 && <span className="text-green-500">تم إداء كل التكليفات 👍</span>} </p>
+            <p className="card-text">درجات التكليفات: {user?.user?.AssinmentResult?.length && user?.user?.AssinmentResult?.map(e=>e.score + ' , ')} </p>
             </div>
                 <div className="card-footer w-full bg-slate-400">
-                    <p className="text-blue-700">إجمالي درجات التكليفات : {user?.AssinmentResult?.length > 0 && user?.AssinmentResult?.map(e=>+e?.score)?.reduce((e,el)=>e+el) } درجة</p>
+                    <p className="text-blue-700">إجمالي درجات التكليفات : {user?.user?.AssinmentResult?.length > 0 && user?.user?.AssinmentResult?.map(e=>+e?.score)?.reduce((e,el)=>e+el) } درجة</p>
                 </div>
         </div>
     {/*Exams Data Card */}
@@ -229,18 +231,18 @@ export default function ProfilePage() {
             <h2 className="card-head-title"> بيانات الإختبارات</h2>
         </div>
             <div className="card-body  w-full pl-3">
-            <p className="card-text">إجمالي الإختبارات: {AllAssinments?.length} </p>
-            <p className="card-text">عدد إختباراتك: {user?.ExamResult?.length} </p>
-            <p className="card-text">عدد الإختبارات المتبقية لك: {(+(AllAssinments?.length) - +(user?.AssinmentResult?.length) ) === 0 && <span className="text-green-500">تم إداء كل التكليفات 👍</span>} </p>
-            <p className="card-text">درجات الإختبارات: {user?.ExamResult?.length && user?.ExamResult?.map(e=>e.score)} </p>
+            <p className="card-text">إجمالي الإختبارات: {AllExams?.length} </p>
+            <p className="card-text">عدد إختباراتك: {user?.user?.ExamResult?.length} </p>
+            <p className="card-text">عدد الإختبارات المتبقية لك: {(+(AllExams?.length) - +(user?.user?.ExamResult?.length) ) === 0 && <span className="text-green-500">تم إداء كل الإختبارات 👍</span>} </p>
+            <p className="card-text">درجات الإختبارات: {user?.user?.ExamResult?.length && user?.user?.ExamResult?.map(e=>e.score)} </p>
             </div>
         <div className="card-footer w-full bg-slate-400">
-        <p className="text-orange-700">إجمالي درجات الإختبارات : {user?.ExamResult?.length && user?.ExamResult?.map(e=>+e?.score)?.reduce((e,el)=>e+el) } درجة</p>
+        <p className="text-orange-700">إجمالي درجات الإختبارات : {user?.user?.ExamResult?.length && user?.user?.ExamResult?.map(e=>+e?.score)?.reduce((e,el)=>e+el) } درجة</p>
         </div>
     </div>
     {/*Total Data Box */}
-    <div className="card-footer rounded border-2 border-emerald-50 shadow p-2 w-full text-2xl bg-slate-400 flex justify-center items-center">
-        <p className="text-blue-950">إجمالي كل الدرجات : {(user?.ExamResult?.length && user?.ExamResult?.map(e=>+e?.score)?.reduce((e,el)=>e+el)) + (user?.AssinmentResult?.length && +user?.AssinmentResult?.map(e=>+e?.score)?.reduce((e,el)=>e+el)) } درجة</p>
+    <div className="card-footer rounded border-2 border-emerald-50 shadow p-2 w-full text-2xl bg-blue-950 flex justify-center items-center">
+        <p className="bg-blue-950">إجمالي كل الدرجات : {(user?.user?.ExamResult?.length && user?.user?.ExamResult?.map(e=>+e?.score)?.reduce((e,el)=>e+el)) + (user?.user?.AssinmentResult?.length && +user?.user?.AssinmentResult?.map(e=>+e?.score)?.reduce((e,el)=>e+el)) } درجة</p>
     </div>
     </>
   )
