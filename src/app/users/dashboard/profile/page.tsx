@@ -218,7 +218,7 @@ export default function ProfilePage() {
         <div className="card-body  w-full pl-3">
             <p className="card-text">إجمالي التكليفات: {AllAssinments?.length} </p>
             <p className="card-text">عدد تكليفاتك: {user?.user?.AssinmentResult?.length} </p>
-                  <p className="card-text">عدد التكليفات المتبقية لك: {(+(AllAssinments?.length) - +(user?.user?.AssinmentResult?.length)) === 0 ? <span className="text-green-500">تم إداء كل التكليفات 👍</span> : <span className="text-green-500">{(+(AllAssinments?.length) - +(user?.user?.AssinmentResult?.length))} تكليف </span>}  </p>
+                  <p className="card-text">عدد التكليفات المتبقية لك: {(+(AllAssinments?.length) - +(user?.user?.AssinmentResult?.length)) === 0 ? <span className="text-green-500">تم إداء كل التكليفات 👍</span> : <span className="text-red-500">{(+(AllAssinments?.length) - +(user?.user?.AssinmentResult?.length))} تكليف </span>}  </p>
             <p className="card-text">درجات التكليفات: {user?.user?.AssinmentResult?.length && user?.user?.AssinmentResult?.map(e=>e.score + ' , ')} </p>
             </div>
                 <div className="card-footer w-full bg-slate-400">
@@ -233,7 +233,7 @@ export default function ProfilePage() {
             <div className="card-body  w-full pl-3">
             <p className="card-text">إجمالي الإختبارات: {AllExams?.length} </p>
             <p className="card-text">عدد إختباراتك: {user?.user?.ExamResult?.length} </p>
-                  <p className="card-text">عدد الإختبارات المتبقية لك: {(+(AllExams?.length) - +(user?.user?.ExamResult?.length)) === 0 ? <span className="text-green-500">تم إداء كل الإختبارات 👍</span> : <span>{ (+(AllExams?.length) - +(user?.user?.ExamResult?.length) ) }إختبار</span>} </p>
+                  <p className="card-text">عدد الإختبارات المتبقية لك: {(+(AllExams?.length) - +(user?.user?.ExamResult?.length)) === 0 ? <span className="text-green-500">تم إداء كل الإختبارات 👍</span > : <span className="text-red-500">{ (+(AllExams?.length) - +(user?.user?.ExamResult?.length) ) }إختبار</span>} </p>
             <p className="card-text">درجات الإختبارات: {user?.user?.ExamResult?.length && user?.user?.ExamResult?.map(e=>e.score)} </p>
             </div>
         <div className="card-footer w-full bg-slate-400">
