@@ -27,11 +27,13 @@ export default  function SubjectDetails() {
   return (
     <>
       <FullTitle F_Title={AssinmentResult?.User?.name} />
-      {AssinmentResult?.status !== 400 && <Assinment_ResultInfo
-        Assinment_Result={
-          (AssinmentResult?.AssinmentResult)
-        }
-      />}
+      {AssinmentResult?.status !== 400 && (
+        <Assinment_ResultInfo
+          Assinment_Result={
+            AssinmentResult as unknown as AssinmentResultInterface
+          }
+        />
+      )}
     </>
   );
 }

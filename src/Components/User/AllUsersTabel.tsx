@@ -9,6 +9,7 @@ import Swal from 'sweetalert2'
 import { Groups } from '@prisma/client';
 import { AllUserInterface, LogedUserInterface } from '@/Interfaces/InterFaces';
 import { usePathname } from 'next/navigation';
+import TopUsersTabel from './TopStudents';
 
 export default function AllUsersTabel({place,query,setUserGender,setUserGroup}:
   {
@@ -25,6 +26,7 @@ export default function AllUsersTabel({place,query,setUserGender,setUserGroup}:
     const [toggle,setToggle]=useState(false)
     const [indexId,setIndexId]=useState('')
     const [userId,setUserId]=useState('')
+    const [AllStudentsDegree,setAllStudentsDegree]=useState<number[]>([])
     const dispatch = useAppDispatch()
 
   const path = usePathname()
@@ -78,79 +80,359 @@ export default function AllUsersTabel({place,query,setUserGender,setUserGroup}:
           toast.success('تم حذف الطالب  بنجاح')
         }else if(DeleteUser?.status === 500) toast.error('لم يتم حذف الطالب  ')
       }
-    },[UpdateUser,DeleteUser])
-
-
+    }, [UpdateUser, DeleteUser])
+  //Set All  Users Final Degree
+  useEffect(() => {
+    if (place?.User?.length > 0) {
+      setAllStudentsDegree(place.User.map(user => 
+        (+(user?.AssinmentResult?.length && (user?.AssinmentResult?.map(e => +(e.score))).reduce((acc, cur) => acc + cur) || 0) + 
+        +(user?.ExamResult?.length && (user?.ExamResult?.map(e => +(e?.score))).reduce((acc, curr) => acc + curr) || 0))
+      ));
+    }
+  }, [place.User])
+  
   return (
     <>
-          <div className="w-full text-gray-700 overflow-x-scroll scrollbar-hide flex justify-start items-center shadow">
+      <div className="w-full text-gray-700 overflow-x-scroll scrollbar-hide flex flex-col justify-start items-center shadow">
+        {/*Show Only Excelent Students */}
+        <h1>جدول الأوائل</h1>
+        <TopUsersTabel place={place} />
+        {/*Show All Students */}
+        <h1>جدول كل الطلاب</h1>
         <div className="table  w-full overflow-x-scroll  justify-center items-center border-blue-500 border-2">
-        <div className="table-header-group  bg-orange-100 text-blue-600">
-          <span className="table-cell text-center line-clamp-2 p-1 border-l border-red-500 text-sm">م</span>
-          <span  className="ttext-center line-clamp-2 p-1 border-l border-red-500 text-sm hidden md:table-cell lg:table-cell">ID</span>
-          <span  className="table-cell text-center line-clamp-2 p-1 border-l border-red-500 text-sm">الاسم</span>
-          <span className="text-center line-clamp-2 p-1 border-l border-red-500 text-sm hidden md:table-cell lg:table-cell">الجنس
-           {!path.includes('/groups/') && <select onChange={(e)=>setUserGender(`${query?.length?'&':''}userGender=${e.target.value}`)} className='bg-transparent border-none outline-none'>
-              <option selected value="">الكل</option>
-              <option value="MALE">ذكر</option>
-              <option value="FEMALE">انثى</option>
-            </select>}
-          </span>
-          <span className="text-center line-clamp-2 p-1 border-l border-red-500 text-sm hidden md:table-cell lg:table-cell">العمر</span>
-          <span className="text-center line-clamp-2 p-1 border-l border-red-500 text-sm hidden md:table-cell lg:table-cell">العنوان</span>
-          <span className="text-center line-clamp-2 p-1 border-l border-red-500 text-sm hidden md:table-cell lg:table-cell">المجموعة
-              {!path.includes('/groups/') && <select onChange={(e) => setUserGroup(`${query?.length ? '&' : ''}userGroup=${e.target.value}`)} name="" id="" className='bg-transparent border-none outline-none'>
-                <option selected value="">الكل</option>
-                {
-                  AllGroups?.Groups?.length > 0 && AllGroups?.Groups?.map((group, index) => {
-                    return <option key={index} value={group.name}>{group.name}</option>
-                  })
-                }
-              </select>}
-          </span>
-          <span className="text-center line-clamp-2 p-1 border-l border-red-500 text-sm hidden md:table-cell lg:table-cell">تاريخ التسجيل</span>
-          <span className="text-center line-clamp-2 p-1 border-l border-red-500 text-sm hidden md:table-cell lg:table-cell">عدد التكليفات</span>
-          <span className="table-cell text-center line-clamp-2 p-1 border-l border-red-500 text-sm">درجات التكليفات</span>
-          <span className="table-cell text-center line-clamp-2 p-1 border-l border-red-500 text-sm">درجات الامتحانات</span>
-          <span className="table-cell text-center line-clamp-2 p-1 border-l border-red-500 text-sm">إجمالي الدرجات</span>
-          <span className="table-cell text-center line-clamp-2 p-1 border-l border-red-500 text-sm">ترتيب الطالب</span>
-          <span className="table-cell text-center line-clamp-2 p-1 border-l border-red-500 text-sm"> إعدادات الطالب</span>
-        </div>
-        {
-          place?.User?.length > 0 && place?.User?.map((user, index:number) => {
-            return  <div key={index} className="table-row-group ">
-            <span className={`${index % 2 == 0 ? 'bg-yellow-50 text-red-700' : 'bg-blue-100 text-gray-800'} table-cell text-center p-1 border-t border-l border-blue-500 text-sm`}>{index + 1}</span>
-            <span className={`${index % 2 == 0 ? 'bg-yellow-50 text-red-700' : 'bg-blue-100 text-gray-800'} text-center p-1 border-t border-l border-blue-500 text-sm hidden md:table-cell lg:table-cell`}>{user?.id}</span>
-            <span className={`${index % 2 == 0 ? 'bg-yellow-50 text-red-700' : 'bg-blue-100 text-gray-800'} table-cell text-center p-1 border-t border-l border-blue-500 text-sm`}><Link className='bg-transparent flex flex-col w-full border-none items-center hover:text-orange-600 hover:font-bold transition-all cursor-pointer' href={`/${UserLogedData?.path}/dashboard/students/details/${user?.id}`}>{user?.name} </Link> </span>
-            <span className={`${index % 2 == 0 ? 'bg-yellow-50 text-red-700' : 'bg-blue-100 text-gray-800'} text-center p-1 border-t border-l border-blue-500 text-sm hidden md:table-cell lg:table-cell`}>{user?.gender === 'MALE'?'رجل':'أنثي'}</span>
-            <span className={`${index % 2 == 0 ? 'bg-yellow-50 text-red-700' : 'bg-blue-100 text-gray-800'} text-center p-1 border-t border-l border-blue-500 text-sm hidden md:table-cell lg:table-cell`}>{user?.age && user?.age + ' عام' || 'لم يُذكَرْ'}</span>
-            <span className={`${index % 2 == 0 ? 'bg-yellow-50 text-red-700' : 'bg-blue-100 text-gray-800'} text-center p-1 border-t border-l border-blue-500 text-sm hidden md:table-cell lg:table-cell`}>{user?.address && user?.address || 'لم يُذكَرْ'}</span>
-            <span className={`${index % 2 == 0 ? 'bg-yellow-50 text-red-700' : 'bg-blue-100 text-gray-800'} text-center p-1 border-t border-l border-blue-500 text-sm hidden md:table-cell lg:table-cell`}><Link className='bg-transparent flex flex-col border-none hover:text-orange-600 hover:font-bold transition-all items-center cursor-pointer' href={`/${UserLogedData?.path}/dashboard/groups/details/${user?.Groups?.id}`}>{user?.Groups?.name} </Link></span>
-            <span className={`${index % 2 == 0 ? 'bg-yellow-50 text-red-700' : 'bg-blue-100 text-gray-800'} text-center p-1 border-t border-l border-blue-500 text-sm hidden md:table-cell lg:table-cell`}> {new Date(user?.createdAt).toLocaleDateString('ar-eg',{year:'numeric',month:'long',day:'2-digit'}) }</span>
-            <span className={`${index % 2 == 0 ? 'bg-yellow-50 text-red-700' : 'bg-blue-100 text-gray-800'} text-center p-1 border-t border-l border-blue-500 text-sm hidden md:table-cell lg:table-cell`}> {user?.AssinmentResult?.length}</span>
-            <span className={`${index % 2 == 0 ? 'bg-yellow-50 text-red-700' : 'bg-blue-100 text-gray-800'} table-cell text-center p-1 border-t border-l border-blue-500 text-sm`}> {user?.AssinmentResult?.length &&  user?.AssinmentResult?.map((el,i)=><Link className='bg-transparent border-none' key={i} href={`./assinments-results/details/${el.id}`}>{el.score + ' ,'}</Link>) || 0}</span>
-            <span className={`${index % 2 == 0 ? 'bg-yellow-50 text-red-700' : 'bg-blue-100 text-gray-800'} table-cell text-center p-1 border-t border-l border-blue-500 text-sm`}> {user?.ExamResult?.length && user?.ExamResult?.map(e=>e.score + ' ,') || 0}</span>
-            <span className={`${index % 2 == 0 ? 'bg-yellow-50 text-red-700' : 'bg-blue-100 text-gray-800'} table-cell text-center p-1 border-t border-l border-blue-500 text-sm`}> {+(user?.AssinmentResult?.length && (user?.AssinmentResult?.map(e=>+(e.score))).reduce((acc,cur)=>acc+cur)  || 0) + +(user?.ExamResult?.length && (user?.ExamResult?.map((e)=>+(e?.score))).reduce((acc,curr)=>acc+curr) || 0)}</span>
-            <span className={`${index % 2 == 0 ? 'bg-yellow-50 text-red-700' : 'bg-blue-100 text-gray-800'} table-cell text-center p-1 border-t border-l border-blue-500 text-sm`}> {1}</span>
-            <span className={`${index % 2 == 0 ? 'bg-yellow-50 text-red-700' : 'bg-blue-100 text-gray-800'} table-cell text-center p-0 border-t border-l border-blue-500 text-sm`}>
-              <span className="text-center border-none flex justify-between items-start  w-full bg-transparent">
-               {parseInt(indexId) === index && toggle && <select onChange={(e)=>{{TransfareUserToGroupHandeller(e.target.value);setToggle(false)}}} name="" id="" className="rounded text-sm  outline-none bg-transparent">
-                  <option selected disabled value="">نقل إلى مجموعة</option>
-                  {
-                    AllGroups?.Groups?.length > 0 && AllGroups?.Groups?.filter(ele=>ele.gender === user.gender).filter(el=>el.id !== place?.id).map((e, index) => {
-                      return <option key={index} value={e.id}>{e.name}</option>
-                  })
-                }
-                </select>}
-              <icon.MdTransferWithinAStation onClick={()=>ShowGroupsHandeller(index,user.id as unknown as number)} title="نقل من المجموعة" className="text-4xl px-2 hover:text-green-600 transition-all cursor-pointer font-bold text-blue-500"/>
-              <icon.CiTrash onClick={()=>DeleteUserHandeller(user?.id as unknown as string)} title='حذف الطالب نهائياً' className="text-4xl px-2 hover:text-green-600 transition-all cursor-pointer font-bold text-red-500"/>
-              </span>
-              </span>
+          <div className="table-header-group  bg-orange-100 text-blue-600">
+            <span className="table-cell text-center line-clamp-2 p-1 border-l border-red-500 text-sm">
+              م
+            </span>
+            <span className="table-cell text-center line-clamp-2 p-1 border-l border-red-500 text-sm">
+              الاسم
+            </span>
+            <span className="text-center line-clamp-2 p-1 border-l border-red-500 text-sm hidden md:table-cell lg:table-cell">
+              الجنس
+              {!path.includes("/groups/") && (
+                <select
+                  onChange={(e) =>
+                    setUserGender(
+                      `${query?.length ? "&" : ""}userGender=${e.target.value}`
+                    )
+                  }
+                  className="bg-transparent border-none outline-none"
+                >
+                  <option selected value="">
+                    الكل
+                  </option>
+                  <option value="MALE">ذكر</option>
+                  <option value="FEMALE">انثى</option>
+                </select>
+              )}
+            </span>
+            <span className="text-center line-clamp-2 p-1 border-l border-red-500 text-sm hidden md:table-cell lg:table-cell">
+              العمر
+            </span>
+            <span className="text-center line-clamp-2 p-1 border-l border-red-500 text-sm hidden md:table-cell lg:table-cell">
+              العنوان
+            </span>
+            <span className="text-center line-clamp-2 p-1 border-l border-red-500 text-sm hidden md:table-cell lg:table-cell">
+              المجموعة
+              {!path.includes("/groups/") && (
+                <select
+                  onChange={(e) =>
+                    setUserGroup(
+                      `${query?.length ? "&" : ""}userGroup=${e.target.value}`
+                    )
+                  }
+                  name=""
+                  id=""
+                  className="bg-transparent border-none outline-none"
+                >
+                  <option selected value="">
+                    الكل
+                  </option>
+                  {AllGroups?.Groups?.length > 0 &&
+                    AllGroups?.Groups?.map((group, index) => {
+                      return (
+                        <option key={index} value={group.name}>
+                          {group.name}
+                        </option>
+                      );
+                    })}
+                </select>
+              )}
+            </span>
+            <span className="text-center line-clamp-2 p-1 border-l border-red-500 text-sm hidden md:table-cell lg:table-cell">
+              تاريخ التسجيل
+            </span>
+            <span className="text-center line-clamp-2 p-1 border-l border-red-500 text-sm hidden md:table-cell lg:table-cell">
+              عدد التكليفات
+            </span>
+            <span className="table-cell text-center line-clamp-2 p-1 border-l border-red-500 text-sm">
+              درجات التكليفات
+            </span>
+            <span className="table-cell text-center line-clamp-2 p-1 border-l border-red-500 text-sm">
+              درجات الامتحانات
+            </span>
+            <span className="table-cell text-center line-clamp-2 p-1 border-l border-red-500 text-sm">
+              إجمالي الدرجات
+            </span>
+            <span className="table-cell text-center line-clamp-2 p-1 border-l border-red-500 text-sm">
+              ترتيب الطالب
+            </span>
+            <span className="table-cell text-center line-clamp-2 p-1 border-l border-red-500 text-sm">
+              {" "}
+              إعدادات الطالب
+            </span>
           </div>
-          })
-        }
+          {place?.User?.length > 0 &&
+            place?.User?.map((user, index: number) => {
+              const UserRank =
+                AllStudentsDegree?.toReversed().indexOf(
+                  +(
+                    (user?.AssinmentResult?.length &&
+                      user?.AssinmentResult?.map((e) => +e.score).reduce(
+                        (acc, cur) => acc + cur
+                      )) ||
+                    0
+                  ) +
+                    +(
+                      (user?.ExamResult?.length &&
+                        user?.ExamResult?.map((e) => +e?.score).reduce(
+                          (acc, curr) => acc + curr
+                        )) ||
+                      0
+                    )
+                ) + 1;
+              return (
+                <div key={index} className="table-row-group ">
+                  <span
+                    className={`${
+                      index % 2 == 0
+                        ? "bg-yellow-50 text-red-700"
+                        : "bg-blue-100 text-gray-800"
+                    } table-cell text-center p-1 border-t border-l border-blue-500 text-sm`}
+                  >
+                    {index + 1}
+                  </span>
+                  <span
+                    className={`${
+                      index % 2 == 0
+                        ? "bg-yellow-50 text-red-700"
+                        : "bg-blue-100 text-gray-800"
+                    } table-cell text-center p-1 border-t border-l border-blue-500 text-sm`}
+                  >
+                    <Link
+                      className="bg-transparent flex flex-col w-full border-none items-center hover:text-orange-600 hover:font-bold transition-all cursor-pointer"
+                      href={`/${UserLogedData?.path}/dashboard/students/details/${user?.id}`}
+                    >
+                      {user?.name}{" "}
+                    </Link>{" "}
+                  </span>
+                  <span
+                    className={`${
+                      index % 2 == 0
+                        ? "bg-yellow-50 text-red-700"
+                        : "bg-blue-100 text-gray-800"
+                    } text-center p-1 border-t border-l border-blue-500 text-sm hidden md:table-cell lg:table-cell`}
+                  >
+                    {user?.gender === "MALE" ? "رجل" : "أنثي"}
+                  </span>
+                  <span
+                    className={`${
+                      index % 2 == 0
+                        ? "bg-yellow-50 text-red-700"
+                        : "bg-blue-100 text-gray-800"
+                    } text-center p-1 border-t border-l border-blue-500 text-sm hidden md:table-cell lg:table-cell`}
+                  >
+                    {(user?.age && user?.age + " عام") || "لم يُذكَرْ"}
+                  </span>
+                  <span
+                    className={`${
+                      index % 2 == 0
+                        ? "bg-yellow-50 text-red-700"
+                        : "bg-blue-100 text-gray-800"
+                    } text-center p-1 border-t border-l border-blue-500 text-sm hidden md:table-cell lg:table-cell`}
+                  >
+                    {(user?.address && user?.address) || "لم يُذكَرْ"}
+                  </span>
+                  <span
+                    className={`${
+                      index % 2 == 0
+                        ? "bg-yellow-50 text-red-700"
+                        : "bg-blue-100 text-gray-800"
+                    } text-center p-1 border-t border-l border-blue-500 text-sm hidden md:table-cell lg:table-cell`}
+                  >
+                    <Link
+                      className="bg-transparent flex flex-col border-none hover:text-orange-600 hover:font-bold transition-all items-center cursor-pointer"
+                      href={`/${UserLogedData?.path}/dashboard/groups/details/${user?.Groups?.id}`}
+                    >
+                      {user?.Groups?.name}{" "}
+                    </Link>
+                  </span>
+                  <span
+                    className={`${
+                      index % 2 == 0
+                        ? "bg-yellow-50 text-red-700"
+                        : "bg-blue-100 text-gray-800"
+                    } text-center p-1 border-t border-l border-blue-500 text-sm hidden md:table-cell lg:table-cell`}
+                  >
+                    {" "}
+                    {new Date(user?.createdAt).toLocaleDateString("ar-eg", {
+                      year: "numeric",
+                      month: "long",
+                      day: "2-digit",
+                    })}
+                  </span>
+                  <span
+                    className={`${
+                      index % 2 == 0
+                        ? "bg-yellow-50 text-red-700"
+                        : "bg-blue-100 text-gray-800"
+                    } text-center p-1 border-t border-l border-blue-500 text-sm hidden md:table-cell lg:table-cell`}
+                  >
+                    {" "}
+                    {user?.AssinmentResult?.length}
+                  </span>
+                  <span
+                    className={`${
+                      index % 2 == 0
+                        ? "bg-yellow-50 text-red-700"
+                        : "bg-blue-100 text-gray-800"
+                    } table-cell text-center p-1 border-t border-l border-blue-500 text-sm`}
+                  >
+                    {" "}
+                    {(user?.AssinmentResult?.length &&
+                      user?.AssinmentResult?.map((el, i) => (
+                        <Link
+                          className="bg-transparent border-none"
+                          key={i}
+                          href={`./assinments-results/details/${el.id}`}
+                        >
+                          {el.score + " ,"}
+                        </Link>
+                      ))) ||
+                      0}
+                  </span>
+                  <span
+                    className={`${
+                      index % 2 == 0
+                        ? "bg-yellow-50 text-red-700"
+                        : "bg-blue-100 text-gray-800"
+                    } table-cell text-center p-1 border-t border-l border-blue-500 text-sm`}
+                  >
+                    {" "}
+                    {(user?.ExamResult?.length &&
+                      user?.ExamResult?.map((e) => e.score + " ,")) ||
+                      0}
+                  </span>
+                  <span
+                    className={`${
+                      index % 2 == 0
+                        ? "bg-yellow-50 text-red-700"
+                        : "bg-blue-100 text-gray-800"
+                    } table-cell text-center p-1 border-t border-l border-blue-500 text-sm`}
+                  >
+                    {" "}
+                    {+(
+                      (user?.AssinmentResult?.length &&
+                        user?.AssinmentResult?.map((e) => +e.score).reduce(
+                          (acc, cur) => acc + cur
+                        )) ||
+                      0
+                    ) +
+                      +(
+                        (user?.ExamResult?.length &&
+                          user?.ExamResult?.map((e) => +e?.score).reduce(
+                            (acc, curr) => acc + curr
+                          )) ||
+                        0
+                      )}
+                  </span>
+                  <span
+                    className={`${
+                      index % 2 == 0
+                        ? "bg-yellow-50 text-red-700"
+                        : "bg-blue-100 text-gray-800"
+                    } table-cell text-center p-1 border-t border-l border-blue-500 text-sm ${
+                      UserRank === 1 && "text-green-500"
+                    }`}
+                  >
+                    {" "}
+                    {UserRank === 1
+                      ? "الأول"
+                      : UserRank === 2
+                      ? "الثاني"
+                      : UserRank === 3
+                      ? "الثالث"
+                      : UserRank === 4
+                      ? "الرابع"
+                      : UserRank === 5
+                      ? "الخامس"
+                      : UserRank === 6
+                      ? "السادس"
+                      : UserRank === 7
+                      ? "السابع"
+                      : UserRank}
+                  </span>
+                  <span
+                    className={`${
+                      index % 2 == 0
+                        ? "bg-yellow-50 text-red-700"
+                        : "bg-blue-100 text-gray-800"
+                    } table-cell text-center p-0 border-t border-l border-blue-500 text-sm`}
+                  >
+                    <span className="text-center border-none flex justify-between items-start  w-full bg-transparent">
+                      {parseInt(indexId) === index && toggle && (
+                        <select
+                          onChange={(e) => {
+                            {
+                              TransfareUserToGroupHandeller(e.target.value);
+                              setToggle(false);
+                            }
+                          }}
+                          name=""
+                          id=""
+                          className="rounded text-sm  outline-none bg-transparent"
+                        >
+                          <option selected disabled value="">
+                            نقل إلى مجموعة
+                          </option>
+                          {AllGroups?.Groups?.length > 0 &&
+                            AllGroups?.Groups?.filter(
+                              (ele) => ele.gender === user.gender
+                            )
+                              .filter((el) => el.id !== place?.id)
+                              .map((e, index) => {
+                                return (
+                                  <option key={index} value={e.id}>
+                                    {e.name}
+                                  </option>
+                                );
+                              })}
+                        </select>
+                      )}
+                      <icon.MdTransferWithinAStation
+                        onClick={() =>
+                          ShowGroupsHandeller(
+                            index,
+                            user.id as unknown as number
+                          )
+                        }
+                        title="نقل من المجموعة"
+                        className="text-4xl px-2 hover:text-green-600 transition-all cursor-pointer font-bold text-blue-500"
+                      />
+                      <icon.CiTrash
+                        onClick={() =>
+                          DeleteUserHandeller(user?.id as unknown as string)
+                        }
+                        title="حذف الطالب نهائياً"
+                        className="text-4xl px-2 hover:text-green-600 transition-all cursor-pointer font-bold text-red-500"
+                      />
+                    </span>
+                  </span>
+                </div>
+              );
+            })}
         </div>
       </div>
     </>
-  )
+  );
 }
