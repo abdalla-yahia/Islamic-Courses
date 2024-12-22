@@ -2,18 +2,13 @@ import Accordion from "react-bootstrap/Accordion";
 import QuestionsPage from "../Questions/QuestionsPage";
 import Link from "next/link";
 import TimerQuestions from "../Questions/TimerQuestions";
-import style from "./style.module.css";
 import ExamHook from "./ExamHook";
-import ExamResultTable from "./ExamResultTable";
 import { AllExamsInterface } from "@/Interfaces/InterFaces";
 
 export default function ExamInfo({ Exam }: { Exam: AllExamsInterface}) {
   const {
-    ExamResult,
     answers,
     setAnswers,
-    DetailsToggle,
-    setDetailsToggle,
     toggle,
     setToggle,
     toggleExam,
@@ -26,7 +21,6 @@ export default function ExamInfo({ Exam }: { Exam: AllExamsInterface}) {
 
   return (
     <>
-      {Exam && (
         <div className="w-full">
           <h2 className="text-center flex gap-2 text-xl my-3 font-bold text-gray-900">
             الدرجة النهائية للإختبار:
@@ -174,34 +168,7 @@ export default function ExamInfo({ Exam }: { Exam: AllExamsInterface}) {
             </div>
           )}
         </div>
-      )}
-      {!Exam && ExamResult && (
-        <>
-          <div className="w-full   flex items-start justify-center">
-            <div className="flex gap-3 flex-col md:flex-row lg:flex-row justify-center items-center font-bold text-2xl">
-              <h1 className="text-red-600">درجتك فى هذا الإختبار : </h1>
-              <h2 className="text-blue-600  ">
-                {ExamResult?.score}
-                <span className="text-gray-600">درجة</span>
-              </h2>
-              {ExamResult?.answersbody !== null && (
-                <span
-                  className="cursor-pointer hover:text-red-600 transition-colors"
-                  onClick={() => setDetailsToggle(!DetailsToggle)}
-                >
-                  عرض {DetailsToggle ? "أقل" : "المزيد"}
-                  <span className={style.span_toggle}>
-                    <span className={` ${style.span_toggle}`}>.</span>
-                    <span className={` ${style.span_toggle}`}>.</span>
-                    <span className={` ${style.span_toggle}`}>.</span>
-                  </span>
-                </span>
-              )}
-            </div>
-          </div>
-          {DetailsToggle && <ExamResultTable sorce={ExamResult} />}
-        </>
-      )}
+      
     </>
   );
 }

@@ -20,7 +20,7 @@ export default function RadioQuestion({setCountOfChoies,countOfChoies,ChoiesFiel
     const [ChoiesMulty,setChoiesMulty]=useState<string[]>([])
 
     useEffect(()=>{
-        return setChoiesMulty(ChoiesValue.map(e => e.value))
+        return setChoiesMulty(ChoiesValue.map((e) => e.value));
     },[ChoiesValue])
 
     //Send Data Of Question To Save It In File Before send It to Server
@@ -99,13 +99,14 @@ export default function RadioQuestion({setCountOfChoies,countOfChoies,ChoiesFiel
         {/*Select The Correct Answer */}
     <div className="flex justify-start w-full  items-center gap-2">
         <h3 className="hidden md:block lg:block">الإجابة الصحيحة</h3>
-        {questionType === 'radio' && <select value={answer} onChange={(e)=>setAnswer(e.target.value)} name="" id="" className="text-gray-600 rounded outline-none">
+              {questionType === 'radio' &&
+                  <select value={answer} onChange={(e) => setAnswer(e.target.value)} name="" id="" className="text-gray-600 rounded outline-none">
             <option selected disabled value="">اختر الإجابة الصحيحة</option>
-            {
-                ChoiesValue.length && ChoiesValue.map((item, index) => {
-                    return <option key={index} value={item.value}>{item.value}</option>
-                })
-            }
+                  {
+                      ChoiesValue.length && ChoiesValue.map((item, index) => 
+                        item.value && <option key={index} value={item.value}>{item.value}</option>
+                    )
+                }
         </select>}
             
        {questionType === 'checkbox' &&
@@ -113,9 +114,9 @@ export default function RadioQuestion({setCountOfChoies,countOfChoies,ChoiesFiel
         <select value={answer} onChange={(e)=>ChoaseMultyAnswerHandeller(e)} name="" id="" className="text-gray-600 rounded outline-none">
             <option selected disabled value="">اختر الإجابات الصحيحة</option>
             {
-                ChoiesMulty.length && ChoiesMulty.map((item, index) => {
-                    return <option key={index} value={item}>{item}</option>
-                })
+                ChoiesMulty.length && ChoiesMulty.map((item, index) => 
+                    item && <option key={index} value={item}>{item}</option>
+                )
             }
         </select>
         <div className="flex gap-2">

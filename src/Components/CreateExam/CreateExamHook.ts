@@ -23,7 +23,7 @@ export default function CreateExamHook() {
     const [ChoiesValue,setChoiesValue]=useState([{id:0,value:''}])
     const [EditQuestion,setEditQuestion]=useState('')
     const [ExamName,SetExamName]=useState('')
-    const [countOfChoies,setCountOfChoies]=useState(0)
+    const [countOfChoies,setCountOfChoies]=useState<number>(0)
     const [QuestuionsInBody,SetQuestuionsInBody]=useState([])
     const [QuestionIdForEdit,setQuestionIdForEdit]=useState(0)
     const [EditQuestionToggle,setEditQuestionToggle]=useState(false)

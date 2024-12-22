@@ -27,8 +27,8 @@ export default function NewAssinment() {
        secondsSelection.push(<option value={i}>{i}</option>)
    //Create multible choice Option
    const ChoiesFieldCount = []
-   for(let i =1 ;i <= (countOfChoies as unknown as number);i++)
-   ChoiesFieldCount.push({id:i,input:<input id="" onChange={(e)=>ChoiesValue?.find((ele:{id:number})=>ele.id == i) ? setChoiesValue([...ChoiesValue?.filter((ele: { id: number; }) => ele.id !== i),{id:i,value:e.target.value}]):setChoiesValue([...ChoiesValue,{id:i,value:e.target.value}])} name="" className="text-gray-500 text-sm rounded lg:w-1/4 md:w-1/4 w-[50%] px-2 m-1" placeholder={` ${i} اكتب الاختيار`}/>})
+   for(let i =0 ;i <= (countOfChoies as unknown as number)-1;i++)
+   ChoiesFieldCount.push({id:i,input:<input id="" onChange={(e)=>ChoiesValue?.find((ele:{id:number})=>ele.id == i) ? setChoiesValue([...ChoiesValue?.filter((ele: { id: number; }) => ele.id !== i),{id:i,value:e.target.value}]):setChoiesValue([...ChoiesValue,{id:i,value:e.target.value}])} name="" className="text-gray-500 text-sm rounded lg:w-1/4 md:w-1/4 w-[50%] px-2 m-1" placeholder={` ${i+1} الاختيار`}/>})
 
   return (
     <>

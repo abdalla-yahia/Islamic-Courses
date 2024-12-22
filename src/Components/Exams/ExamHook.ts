@@ -1,12 +1,11 @@
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { createExamResult, fetchExamResultByID, updateExamResult } from "@/lib/Actions/ExamsResultsActions";
-import { redirect, useParams } from "next/navigation";
+import { createExamResult, updateExamResult } from "@/lib/Actions/ExamsResultsActions";
+import { redirect } from "next/navigation";
 import { SetStateAction, useEffect,useState } from "react";
-import { AllExamsInterface, ExamResultInterface, LogedUserInterface } from "@/Interfaces/InterFaces";
+import { AllExamsInterface, LogedUserInterface } from "@/Interfaces/InterFaces";
 
 export default function ExamHook({Exam}:{Exam:AllExamsInterface}) {
     const {UserLogedData} = useAppSelector((state ) => state.user) as unknown as {UserLogedData:LogedUserInterface}
-    const {ExamResult} = useAppSelector((state ) => state.examResult) as unknown as {ExamResult:ExamResultInterface}
     const [answers, setAnswers]=useState([])
     const [DetailsToggle, setDetailsToggle]=useState(false)
     const [CoorectAnswers, setCorrectAnswers]=useState([])
@@ -14,7 +13,6 @@ export default function ExamHook({Exam}:{Exam:AllExamsInterface}) {
     const [toggleExam, setToggleExam]=useState(true)
     const [UserDegree, setUserDegree]=useState(0)
     const dispatch = useAppDispatch()
-    const {id} = useParams()
     let Degree = 0
     const Correct: ((prevState: never[]) => never[]) | { id: unknown; answer: unknown; degree: unknown; type: unknown; }[]= []
     const [FullDegree, setFullDegree]=useState(0)
@@ -27,7 +25,7 @@ export default function ExamHook({Exam}:{Exam:AllExamsInterface}) {
       })
       setCorrectAnswers(Correct as unknown as SetStateAction<never[]>)
       setFullDegree(+Degree)
-    },[Exam,ExamResult])
+    },[Exam])
     //On Click Button Open Exam
     const OpenExam = () => {
         dispatch(createExamResult({
@@ -67,12 +65,10 @@ export default function ExamHook({Exam}:{Exam:AllExamsInterface}) {
     }))
     redirect('../')
   }
-  useEffect(()=>{
-    dispatch(fetchExamResultByID(id as unknown as string))
-  },[dispatch, id])
+
 
   return (
-    {ExamResult,answers, setAnswers,DetailsToggle, setDetailsToggle,
+    {answers, setAnswers,DetailsToggle, setDetailsToggle,
         toggle, setToggle,toggleExam, setToggleExam,UserDegree,FullDegree,
         OpenExam,SendAnswersHandeller
 }
