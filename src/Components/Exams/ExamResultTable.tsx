@@ -30,7 +30,7 @@ export default function ExamResultTable({ ExamResult, Exam }: { ExamResult: Exam
           )}
         </div>
       </div>
-      <div className="w-full text-gray-700 border-black flex justify-center items-center">
+      {DetailsToggle && <div className="w-full text-gray-700 border-black flex justify-center items-center">
         <div className="table w-full bg-green-200 border-1 border-blue-400">
           <div className="table-row-group">
             <span className=" text-sm p-0 hidden md:table-cell lg:table-cell text-center -rotate-45 md:-rotate-90 ">
@@ -210,7 +210,7 @@ export default function ExamResultTable({ ExamResult, Exam }: { ExamResult: Exam
             </>
           ))}
         </div>
-      </div>
+      </div>}
     </>
   );
 }
