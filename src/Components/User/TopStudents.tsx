@@ -21,7 +21,7 @@ export default function TopUsersTabel() {
       setAllStudentsDegree(AllUsers?.User?.map((user) => +((user?.AssinmentResult?.length && user?.AssinmentResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur)) || 0) + +((user?.ExamResult?.length && user?.ExamResult?.map((e) => +e?.score).reduce((acc, curr) => acc + curr)) || 0)));
     }
   }, [AllUsers]);
-  console.log(AllStudentsDegree.sort((a, b) => a - b).reverse());
+  // console.log(AllStudentsDegree.sort((a, b) => a - b).reverse());
   return (
     <>
       {/*Show Only Top Students */}
