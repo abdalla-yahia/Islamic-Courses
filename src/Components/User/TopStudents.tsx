@@ -21,7 +21,7 @@ export default function TopUsersTabel() {
       setAllStudentsDegree(AllUsers?.User?.map((user) => +((user?.AssinmentResult?.length && user?.AssinmentResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur)) || 0) + +((user?.ExamResult?.length && user?.ExamResult?.map((e) => +e?.score).reduce((acc, curr) => acc + curr)) || 0)));
     }
   }, [AllUsers]);
-  // console.log(AllStudentsDegree.sort((a, b) => a - b).reverse());
+  console.log(AllStudentsDegree.sort((a, b) => a - b).reverse());
   return (
     <>
       {/*Show Only Top Students */}
@@ -43,8 +43,12 @@ export default function TopUsersTabel() {
               AllStudentsDegree?.sort((a, b) => a - b)
                 .reverse()
                 .indexOf(+((user?.AssinmentResult?.length && user?.AssinmentResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur)) || 0) + +((user?.ExamResult?.length && user?.ExamResult?.map((e) => +e?.score).reduce((acc, curr) => acc + curr)) || 0)) +
-                1 <=7
-          )
+                1 <= 7
+          ).filter(a=>+((a?.AssinmentResult?.length && a?.AssinmentResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur)) || 0) + +((a?.ExamResult?.length && a?.ExamResult?.map((e) => +e?.score).reduce((acc, curr) => acc + curr)))!==0)
+        //   ?.sort((a, b) => +((a?.AssinmentResult?.length && a?.AssinmentResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur)) || 0) + +((a?.ExamResult?.length && a?.ExamResult?.map((e) => +e?.score).reduce((acc, curr) => acc + curr))) - 
+        //   +((b?.AssinmentResult?.length && b?.AssinmentResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur)) || 0) + +((b?.ExamResult?.length && b?.ExamResult?.map((e) => +e?.score).reduce((acc, curr) => acc + curr)) )
+        // ).reverse()
+        .sort((a, b) => +((a?.AssinmentResult?.length && a?.AssinmentResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur)) || 0) + +((a?.ExamResult?.length && a?.ExamResult?.map((e) => +e?.score).reduce((acc, curr) => acc + curr)) || 0) - +((b?.AssinmentResult?.length && b?.AssinmentResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur)) || 0) + +((b?.ExamResult?.length && b?.ExamResult?.map((e) => +e?.score).reduce((acc, curr) => acc + curr)) || 0))
             ?.map((user, index: number) => {
               const UserRank =
                 AllStudentsDegree?.sort((a, b) => a - b)
@@ -76,7 +80,9 @@ export default function TopUsersTabel() {
                   </span>
                 </div>
               );
-            })}
+            })
+            
+            }
       </div>
     </>
   );
