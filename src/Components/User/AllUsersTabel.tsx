@@ -95,11 +95,11 @@ export default function AllUsersTabel({place, query, setUserGender, setUserGroup
 
   return (
     <>
-      <div className='w-full text-gray-700 overflow-x-scroll scrollbar-hide flex flex-col justify-start items-center shadow'>
+      <div className='w-full text-gray-700 overflow-x-scroll scrollbar-hide flex flex-col justify-start items-start shadow'>
 
         {/*Show All Students Table*/}
-        <h1>جدول كل الطلاب</h1>
-        <div className='table  w-full overflow-x-scroll  justify-center items-center border-blue-500 border-2'>
+        <h1 className='flex w-full justify-center items-center'>جدول كل الطلاب</h1>
+        <div className='table  w-full   justify-center items-center border-blue-500 border-2'>
           <div className='table-header-group  bg-orange-100 text-blue-600'>
             <span className='table-cell text-center line-clamp-2 p-1 border-l border-red-500 text-sm'>م</span>
             <span className='table-cell text-center line-clamp-2 p-1 border-l border-red-500 text-sm'>الاسم</span>
