@@ -9,7 +9,6 @@ import Swal from 'sweetalert2';
 import {Groups} from '@prisma/client';
 import {AllUserInterface, LogedUserInterface} from '@/Interfaces/InterFaces';
 import {usePathname} from 'next/navigation';
-import TopUsersTabel from './TopStudents';
 
 export default function AllUsersTabel({place, query, setUserGender, setUserGroup}: {place: {id: number; User: AllUserInterface[]}; query: string | null; setUserGender: React.Dispatch<React.SetStateAction<string>>; setUserGroup: React.Dispatch<React.SetStateAction<string>>}) {
   const {AllGroups} = useAppSelector((state) => state.group) as unknown as {AllGroups: {Groups: Groups[]}};
@@ -97,9 +96,7 @@ export default function AllUsersTabel({place, query, setUserGender, setUserGroup
   return (
     <>
       <div className='w-full text-gray-700 overflow-x-scroll scrollbar-hide flex flex-col justify-start items-center shadow'>
-        {/*Show Only Top Students Table*/}
-        <h1>جدول الأوائل</h1>
-        <TopUsersTabel />
+
         {/*Show All Students Table*/}
         <h1>جدول كل الطلاب</h1>
         <div className='table  w-full overflow-x-scroll  justify-center items-center border-blue-500 border-2'>

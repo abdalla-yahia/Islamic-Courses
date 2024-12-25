@@ -7,6 +7,7 @@ import Pagination from '@/Components/User/Pagination';
 import FullTitle from "@/Utils/FullTitle";
 import { User } from '@prisma/client';
 import { AllUserInterface } from '@/Interfaces/InterFaces';
+import TopUsersTabel from '@/Components/User/TopStudents';
 
 export default function UserStudents() {
   const {AllUsersByPage} = useAppSelector(state  => state.user) as unknown as {AllUsersByPage:{User:User[]}}
@@ -44,6 +45,11 @@ export default function UserStudents() {
             <div className="card-header">
               <input type="text" className="form-control" placeholder=" بحث باسم الطالب / الطالبة" onChange={(e)=> setQuery(`userName=${e.target.value}`)} />
               </div>
+            {/*Show Only Top Students Table*/}
+                <div className="card-body w-full">
+                          <h1 className='w-full flex justify-center items-center'>جدول الأوائل</h1>
+                          <TopUsersTabel />
+                </div>
               <div className="card-body">
               <AllUsersTabel place={AllUsersByPage as unknown as {id:number,User:AllUserInterface[]}} query={query} setUserGender={setQuery} setUserGroup={setQuery}/>
               <Pagination query={query} setQuery={setQuery} pages={AllUsers?.pageCount}/>
