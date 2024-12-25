@@ -59,6 +59,7 @@ export default function RadioQuran() {
             Radios?.length > 0 && SearchText === '' ?
             (
                 <>
+                <span onClick={()=>{seturlRadio('https://stream.radiojar.com/8s5u5tpdtwzuv');setToggle(false);setRadioName('إذاعة القرآن الكريم من القاهرة');setplay(true)}} className='hover:bg-blue-500 hover:text-white px-2 py-1 cursor-pointer rounded'  title={'إذاعة القرآن الكريم من القاهرة'}>{'إذاعة القرآن الكريم من القاهرة'}</span>
                 <span className='text-2xl font-bold text-white border-b-2 border-red-600'>حفص عن عاصم الكوفي</span>
                 {
                     Radios?.filter(el=>!el?.name.includes('رواي') && !el?.name.includes('باللغة') ).map((radio,index)=>
