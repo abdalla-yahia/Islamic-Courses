@@ -18,9 +18,29 @@ export default function TopUsersTabel() {
   //Set All  Users Final Degree
   useEffect(() => {
     if (AllUsers?.User?.length > 0) {
-      setAllStudentsDegree(AllUsers?.User?.map((user) => +((user?.AssinmentResult?.length && user?.AssinmentResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur)) || 0) + +((user?.ExamResult?.length && user?.ExamResult?.map((e) => +e?.score).reduce((acc, curr) => acc + curr)) || 0)));
+      setAllStudentsDegree(AllUsers?.User?.map((user) => +((user?.AssinmentResult?.length && user?.AssinmentResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur)) || 0) + +((user?.ExamResult?.length && user?.ExamResult?.map((e) => +e?.score).reduce((acc, curr) => acc + curr)) || 0)))
     }
   }, [AllUsers]);
+    //Sort All  Users Final Degree
+  useEffect(() => {
+    if (AllStudentsDegree.length > 0) {
+      setAllStudentsDegree(AllStudentsDegree?.sort((a, b) => a - b).reverse());
+    }
+  },[AllUsers, AllStudentsDegree]);
+  //Sort Users Based on the Total Score
+  const sortedUsers = AllUsers?.User
+  ?.filter(a=>+((a?.AssinmentResult?.length && a?.AssinmentResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur)) || 0) + +((a?.ExamResult?.length && a?.ExamResult?.map((e) => +e?.score).reduce((acc, curr) => acc + curr))) > 0)
+  .sort((a, b) => {
+    const aTotalScore = 
+      ((a?.AssinmentResult?.length && a?.AssinmentResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur, 0)) || 0) +
+      ((a?.ExamResult?.length && a?.ExamResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur, 0)) || 0);
+  
+    const bTotalScore = 
+      ((b?.AssinmentResult?.length && b?.AssinmentResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur, 0)) || 0) +
+      ((b?.ExamResult?.length && b?.ExamResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur, 0)) || 0);
+  
+    return bTotalScore - aTotalScore; // For descending order
+  });
   return (
     <>
       {/*Show Only Top Students */}
@@ -35,20 +55,17 @@ export default function TopUsersTabel() {
           <span className='table-cell text-center line-clamp-2 p-1 border-l border-blue-500 text-sm'>إجمالي الدرجات</span>
           <span className='table-cell text-center line-clamp-2 p-1 border-l border-blue-500 text-sm'>ترتيب الطالب</span>
         </div>
-        {AllUsers?.User?.length > 0 &&
+        {sortedUsers?.length > 0 &&
           AllStudentsDegree?.length > 0 &&
-          AllUsers?.User?.filter(
+          //Filter results by score and return the top 7 students
+          sortedUsers?.filter(
             (user) =>
-              AllStudentsDegree?.sort((a, b) => a - b)
-                .reverse()
+              AllStudentsDegree
                 .indexOf(+((user?.AssinmentResult?.length && user?.AssinmentResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur)) || 0) + +((user?.ExamResult?.length && user?.ExamResult?.map((e) => +e?.score).reduce((acc, curr) => acc + curr)) || 0)) +
                 1 <= 7
-          ).filter(a=>+((a?.AssinmentResult?.length && a?.AssinmentResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur)) || 0) + +((a?.ExamResult?.length && a?.ExamResult?.map((e) => +e?.score).reduce((acc, curr) => acc + curr)))!==0)
-        //   ?.sort((a, b) => +((a?.AssinmentResult?.length && a?.AssinmentResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur)) || 0) + +((a?.ExamResult?.length && a?.ExamResult?.map((e) => +e?.score).reduce((acc, curr) => acc + curr))) - 
-        //   +((b?.AssinmentResult?.length && b?.AssinmentResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur)) || 0) + +((b?.ExamResult?.length && b?.ExamResult?.map((e) => +e?.score).reduce((acc, curr) => acc + curr)) )
-        // ).reverse()
-        .sort((a, b) => +((a?.AssinmentResult?.length && a?.AssinmentResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur)) || 0) + +((a?.ExamResult?.length && a?.ExamResult?.map((e) => +e?.score).reduce((acc, curr) => acc + curr)) || 0) - +((b?.AssinmentResult?.length && b?.AssinmentResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur)) || 0) + +((b?.ExamResult?.length && b?.ExamResult?.map((e) => +e?.score).reduce((acc, curr) => acc + curr)) || 0))
+          )
             ?.map((user, index: number) => {
+              const RepeatScore = AllStudentsDegree?.filter((el) => el === +((user?.AssinmentResult?.length && user?.AssinmentResult?.map((e) => +e.score).reduce((acc, cur) => acc + cur)) || 0) + +((user?.ExamResult?.length && user?.ExamResult?.map((e) => +e?.score).reduce((acc, curr) => acc + curr)) || 0))?.length;
               const UserRank =
                 AllStudentsDegree?.sort((a, b) => a - b)
                   .reverse()
@@ -75,12 +92,11 @@ export default function TopUsersTabel() {
                   </span>
                   <span className={`${index % 2 == 0 ? 'bg-green-50 text-green-700' : 'bg-green-100 text-blue-800'} table-cell text-center p-1 border-t border-l border-blue-500 text-sm ${UserRank === 1 && 'text-green-500'}`}>
                     {' '}
-                    {UserRank === 1 ? 'الأول' : UserRank === 2 ? 'الثاني' : UserRank === 3 ? 'الثالث' : UserRank === 4 ? 'الرابع' : UserRank === 5 ? 'الخامس' : UserRank === 6 ? 'السادس' : UserRank === 7 ? 'السابع' : UserRank}
+                    {UserRank === 1 ? (RepeatScore === 1 ? 'الأول':'الأول مكرر') : UserRank === 2 ? (RepeatScore === 1 ? 'الثاني':'الثاني مكرر') : UserRank === 3 ? (RepeatScore === 1 ? 'الثالث':'الثالث مكرر') : UserRank === 4 ? (RepeatScore === 1 ? 'الرابع':'الرابع مكرر') : UserRank === 5 ? (RepeatScore === 1 ? 'الخامس':'الخامس مكرر') : UserRank === 6 ? (RepeatScore === 1 ? 'السادس':'السادس مكرر') : UserRank === 7 ? (RepeatScore === 1 ? 'السابع':'السابع مكرر') : UserRank}
                   </span>
                 </div>
               );
             })
-            
             }
       </div>
     </>
