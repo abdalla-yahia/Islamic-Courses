@@ -56,8 +56,8 @@ const PlusAya = ()=>{
 
     }
 const AudioEnded =()=>{
-    audioRef?.current?.play()
     PlusAya()
+    audioRef?.current?.play()
 }
 
   return (
