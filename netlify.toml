@@ -1,5 +1,3 @@
-[dependencies]
-    command = "npm install --force"
 [build]
-  command = "prisma generate && prisma migrate deploy && npm run build --force"
+  command = "npm install --force && prisma generate && prisma migrate deploy && npm run build"
   publish = "out"
