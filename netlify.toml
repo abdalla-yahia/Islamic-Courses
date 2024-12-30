@@ -1,3 +1,6 @@
+[installation]
+command = "npm install --force"
+force = true
 [build]
-  command = "npm install --force && prisma generate && prisma migrate deploy && npm run build"
+  command = "prisma generate && prisma migrate deploy && npm run build"
   publish = "out"
