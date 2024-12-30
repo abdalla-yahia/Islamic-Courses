@@ -1,7 +1,5 @@
 [dependencies]
     command = "npm install --force"
-    subprocess.run(command, shell=True)
-    
 [build]
-  command = "npm run build --force"
+  command = "prisma generate && prisma migrate deploy && npm run build --force"
   publish = "out"
