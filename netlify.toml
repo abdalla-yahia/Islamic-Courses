@@ -1,6 +1,6 @@
-[installation]
-command = "npm install --force"
-force = true
 [build]
-  command = "prisma generate && prisma migrate deploy && npm run build"
+  command = "npm run netlify-build"
   publish = "out"
+
+[build.environment]
+  NODE_VERSION = "20.16.0"
