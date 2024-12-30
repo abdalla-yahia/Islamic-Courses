@@ -4,3 +4,4 @@
 
 [build.environment]
   NODE_VERSION = "20.16.0"
+  NPM_CONFIG_LOGLEVEL = "verbose"
