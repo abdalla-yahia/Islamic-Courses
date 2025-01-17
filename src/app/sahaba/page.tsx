@@ -35,8 +35,8 @@ export default function SahabaBage() {
         (Search === undefined || Search === null) ?
         Sahaba.sort((a, b) =>a.name.localeCompare(b.name)).map((sahaba) => {
             return (
-                <div style={{backgroundColor:`${ID === sahaba.id ?'#006':''}`,color:`${ID === sahaba.id ?'white':''}`}} onClick={()=>{setAudioUrl(sahaba.url);setplay(true);SetID(sahaba.id as number);SetSahapyName(sahaba.name)}} key={sahaba.id} className={`cursor-pointer w-full md:w-1/3 lg:w-1/4 text-center text-lg p-2 hover:bg-blue-900 hover:text-white bg-slate-400 rounded m-2 text-blue-950`}>
-                    <h1>{sahaba.name}</h1>
+                <div style={{backgroundColor:`${ID === sahaba.id ?'#006':''}`,color:`${ID === sahaba.id ?'white':''}`}} onClick={()=>{setAudioUrl(sahaba.url);setplay(true);SetID(sahaba.id as number);SetSahapyName(sahaba.name)}} key={sahaba.id} className={`cursor-pointer line-clamp-1 w-full md:w-1/3 lg:w-1/4 text-center text-lg p-2 hover:bg-blue-900 hover:text-white bg-slate-400 rounded m-2 text-blue-950`}>
+                    <h1 className='line-clamp-1'>{sahaba.name}</h1>
                     </div>
                     )
                     })
@@ -45,7 +45,7 @@ export default function SahabaBage() {
                         Sahaba.filter(item=>item.name.startsWith(Search)).sort((a, b) =>a.name.localeCompare(b.name)).map((sahaba) => {
                             return (
                                 <div style={{backgroundColor:`${ID === sahaba.id ?'#006':''}`,color:`${ID === sahaba.id ?'white':''}`}} onClick={()=>{setAudioUrl(sahaba.url);setplay(true);SetID(sahaba.id as number);SetSahapyName(sahaba.name)}} key={sahaba.id} className={`cursor-pointer w-full md:w-1/3 lg:w-1/4 text-center text-lg p-2 hover:bg-blue-900 hover:text-white bg-slate-400 rounded m-2 text-blue-950`}>
-                                    <h1>{sahaba.name}</h1>
+                                    <h1 className='line-clamp-1'>{sahaba.name}</h1>
                                     </div>
                                     )
                         })
@@ -55,13 +55,13 @@ export default function SahabaBage() {
         {/*Player Audio Box */}
         
         <div className="fixed bottom-2 left-0 w-full flex justify-evenly items-center rounded h-9 px-2 py-1 bg-blue-950 shadow">
-            {ID && ('ّالصَحَابِيُ :' +' ' + SahapyName + ' ' + 'رَضْيَّ اللَّهُ عَنْهُ')}
+            {ID && ('ّالصَحَابِيُ :' +' ' + SahapyName + ' ' + `${ID <= 108 ? 'رَضْيَّ اللَّهُ عَنْهُ ':"" }` )}
             <icon.VscUnmute onClick={()=>{selectMute();setplay(false)}} className={`${mute ? 'hidden':'block'} cursor-pointer hover:text-blue-600 shadow `}/>
             <icon.VscMute onClick={()=>{selectUnMute();setplay(true)}} className={`${!mute ? 'hidden':'block  text-gray-600'} cursor-pointer hover:text-blue-600 shadow `}/>
             <icon.FaPause onClick={()=>{refAudio?.current?.pause();setplay(false)}} className={`${!play && 'text-blue-600'} cursor-pointer hover:text-blue-600 shadow `}/>
             <icon.FaPlay  onClick={()=>{refAudio?.current?.play();setplay(true)}} className={`${play && 'text-blue-600'} cursor-pointer hover:text-blue-600 shadow `}/>
         </div>
-    <audio  ref={refAudio  as unknown as LegacyRef<HTMLAudioElement>} className='hidden' controls autoPlay src={`https://ia601506.us.archive.org/9/items/Sowar.mn.Hayat.Sehaba/${audioUrl}`}></audio>
+    <audio  ref={refAudio  as unknown as LegacyRef<HTMLAudioElement>} className='hidden' controls autoPlay src={ID !== null && ID <= 108 ?`https://ia601506.us.archive.org/9/items/Sowar.mn.Hayat.Sehaba/${audioUrl}`:`https://archive.org/download/10-almobachirin-biljana/${audioUrl}`}></audio>
     </>
   )
 }
