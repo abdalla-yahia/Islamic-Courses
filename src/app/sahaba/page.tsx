@@ -30,7 +30,7 @@ export default function SahabaBage() {
     <div className='w-full flex justify-center items-center'>
     <input onChange={(e)=>SetSearch(e.target.value)} type="search" name="" id="" className='w-[80%] rounded outline-none border-none my-2 p-1 text-gray-900' placeholder='بحث عن صحابي ...'/>
     </div>
-    <div className='flex w-full flex-wrap justify-center items-start mt-3 max-h-[800px] md:h-[550px] lg:h-[400px] overflow-y-scroll scrollbar-hide'>
+    <div className='flex w-full flex-wrap justify-center items-start mt-3 h-screen overflow-y-scroll scrollbar-hide'>
     {
         (Search === undefined || Search === null) ?
         Sahaba.sort((a, b) =>a.name.localeCompare(b.name)).map((sahaba) => {
