@@ -7,10 +7,10 @@ export default function RadioQuran() {
     const [selectedOption, setSelectedOption] = useState(Radios[0]);
     const [urlRadio,seturlRadio] = useState('')
     const [play,setplay] = useState(false)
+    const [mute,SetMute] = useState(false)
     const [toggle,setToggle] = useState(false)
     const [RadioName,setRadioName] = useState('')
     const [SearchText,SetSearchText] = useState('')
-    const [mute,SetMute] = useState(false)
     
     const refAudio = useRef<HTMLAudioElement>() as unknown as { current: {muted:boolean|undefined,volume:number,play:()=>void,pause:()=>void} }
     useEffect(()=>{

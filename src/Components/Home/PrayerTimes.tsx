@@ -16,6 +16,7 @@ export default  function PrayerTimesPage() {
         .then(res=>res.json())
         .then(res=>setPrayer(res.data[Today - 1]) as unknown as {prayer:PrayerTime})
     }, [Month, Today, date])
+
     return (
       <>
         {/*Hijiry Time */}
@@ -36,6 +37,7 @@ export default  function PrayerTimesPage() {
         <div className="container w-full p-0 flex flex-col justify-center items-center ">
           <div className="row w-full">
             <div className="col-md-12 flex flex-col justify-center items-center">
+              {/*El Fagr */}
               <div className="card w-full mb-2 flex justify-center text-center items-center bg-blue-950 shadow text-white">
                 <div className="card-body text-sm">
                   <h5 className="card-title flex justify-center items-center gap-1">
@@ -48,6 +50,7 @@ export default  function PrayerTimesPage() {
                   </p>
                 </div>
               </div>
+              {/*El Shrooq */}
               <div className="card w-full mb-2 flex justify-center text-center items-center bg-blue-950 shadow text-white">
                 <div className="card-body text-sm">
                   <h5 className="card-title flex justify-center items-center gap-1">
@@ -60,6 +63,7 @@ export default  function PrayerTimesPage() {
                   </p>
                 </div>
               </div>
+              {/*El Dohr */}
               <div className="card w-full mb-2 flex justify-center text-center items-center bg-blue-950 shadow text-white">
                 <div className="card-body text-sm">
                   <h5 className="card-title flex justify-center items-center gap-1">
@@ -71,7 +75,9 @@ export default  function PrayerTimesPage() {
                     {prayer?.timings?.Dhuhr?.slice(0, 5)} AM
                   </p>
                 </div>
+                
               </div>
+              {/*El Asr */}
               <div className="card w-full mb-2 flex justify-center text-center items-center bg-blue-950 shadow text-white">
                 <div className="card-body text-sm">
                   <h5 className="card-title flex justify-center items-center gap-1">
@@ -88,6 +94,7 @@ export default  function PrayerTimesPage() {
                   </p>
                 </div>
               </div>
+              {/*El Maghrib */}
               <div className="card w-full mb-2 flex justify-center text-center items-center bg-blue-950 shadow text-white">
                 <div className="card-body text-sm">
                   <h5 className="card-title flex justify-center items-center gap-1">
@@ -103,6 +110,7 @@ export default  function PrayerTimesPage() {
                   </p>
                 </div>
               </div>
+              {/*El Esha */}
               <div className="card w-full mb-2 flex justify-center text-center items-center bg-blue-950 shadow text-white">
                 <div className="card-body text-sm">
                   <h5 className="card-title flex justify-center items-center gap-1">
