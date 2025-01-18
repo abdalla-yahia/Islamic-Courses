@@ -27,6 +27,7 @@ export default function NavLinks({user}:{user:UserPayload | null}) {
               <Link onClick={()=>setToggle(false)} className={'font-bold text-fuchsia-600 my-2 mx-3 hover:text-gray-300 '} href="/">الرئيسية</Link>
               <Link onClick={()=>setToggle(false)} className={'font-bold text-fuchsia-600 my-2 mx-3 hover:text-gray-300 '} href="/moshaf">المصحف</Link>
               <Link onClick={()=>setToggle(false)} className={'font-bold text-fuchsia-600 my-2 mx-3 hover:text-gray-300 '} href="/sahaba">الصحابة</Link>
+              <Link onClick={()=>setToggle(false)} className={'font-bold text-fuchsia-600 my-2 mx-3 hover:text-gray-300 '} href="/tabean">التابعين</Link>
               <Link onClick={()=>setToggle(false)} className={'font-bold text-fuchsia-600 my-2 mx-3 hover:text-gray-300 '} href="/about">من نحن</Link>
               <Link onClick={()=>setToggle(false)} className={'font-bold text-fuchsia-600 my-2 mx-3 hover:text-gray-300 '} href="/contact">إتصل بنا</Link>
               
