@@ -164,7 +164,7 @@ export default function AudioPlayer({Book, audioUrl, setAudioUrl, play, setplay,
     <div className="fixed bottom-0 left-2 w-full flex flex-col justify-center items-center rounded h-fit px-2 py-1 bg-blue-950 shadow">
         {/* Progress Bar */}
         <div onClick={(e)=>handleProgress(e)} className='w-[80%] absolute self-center -top-1  flex justify-end items-center h-1 bg-gray-500'>
-            <input id="rangebar" type="range" min="0" max="100" value={progress || 0} onChange={(e)=>SetProgress(Number(e.target.value))} className='w-full text-red-500 rotate-180 h-1 relative '/>
+            <input type="range" min="0" max="100" value={progress || 0} onChange={(e)=>SetProgress(Number(e.target.value))} className='w-full text-red-500 rotate-180 h-1 relative '/>
         </div>
         {/* Audio Info */}
         <div style={{maxWidth:'100%'}}>

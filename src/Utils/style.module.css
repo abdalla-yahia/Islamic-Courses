@@ -22,20 +22,3 @@
     }
 }
 
-#rangebar {
-    overflow: hidden;
-    width: 80px;
-    appearance: none;
-    -webkit-appearance: none;
-    background-color: #9a905d;
-  }
-    #rangebar::-webkit-slider-runnable-track {
-        width: 100%;
-        height: 5px;
-        cursor: pointer;
-        transition: 0.2s;
-        box-shadow: 1px 1px 1px #000000;
-        background: #ffffff;
-        border-radius: 5px;
-        border: 1px solid #000000;
-    }
