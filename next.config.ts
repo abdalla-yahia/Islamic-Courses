@@ -1,8 +1,5 @@
 import type { NextConfig } from "next";
-// /** @type {import('next').NextConfig} */
-// module.exports = {
-//   output: "standalone",
-// };
+
 const nextConfig: NextConfig = {
 
   images:{
@@ -14,6 +11,10 @@ const nextConfig: NextConfig = {
     {
       protocol:'https',
       hostname:'img.pikbest.com'
+    },
+    {
+      protocol:'https',
+      hostname:'www.noor-book.com'
     }
 
     ]

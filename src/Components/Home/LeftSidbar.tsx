@@ -6,6 +6,7 @@ import * as icon from '@/Components/Icons/icons'
 import { toast } from "react-toastify"
 import { Amiri_Quran } from "next/font/google";
 import Swal from "sweetalert2"
+import DateConvert from "@/Utils/Date"
 const amiri = Amiri_Quran({
   subsets: ["latin"],
   weight: "400",
@@ -171,7 +172,10 @@ export default function LeftSidbar() {
                 {hadith?.content}
               </p>
               <p className="text-gray-500 mt-5">
-                وكتبه / {hadith?.author?.name as unknown as string}
+                الناشر / {hadith?.author?.name as unknown as string}
+              </p><br/>
+              <p className="text-gray-500 mt-5">
+                تاريخ النشر : {DateConvert(hadith?.createdAt  as unknown as Date)}
               </p>
             </div>
           )
