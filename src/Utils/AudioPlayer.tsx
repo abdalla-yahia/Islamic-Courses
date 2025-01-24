@@ -34,7 +34,7 @@ export default function AudioPlayer({Book, audioUrl, setAudioUrl, play, setplay,
                 SetMute(!mute)
             }
             const PlayNextAudio = () =>{
-            const index = Book?.data.findIndex((item: any) => item?.id === ID);
+            const index = Book?.data.findIndex((item: { id: number; url: string; name: string }) => item?.id === ID);
             if (index !== -1) {
                 const nextIndex = index + 1;
                 if (nextIndex < Book.data.length) {
@@ -45,7 +45,7 @@ export default function AudioPlayer({Book, audioUrl, setAudioUrl, play, setplay,
                 }
             }
             const PlayPrevAudio = () =>{
-                const index = Book?.data.findIndex((item: any) => item.id === ID);
+                const index = Book?.data.findIndex((item: { id: number; url: string; name: string }) => item.id === ID);
                 if (index !== -1) {
                     const prevIndex = index - 1;
                     if (prevIndex >= 0) {
@@ -96,7 +96,6 @@ export default function AudioPlayer({Book, audioUrl, setAudioUrl, play, setplay,
                         SetProgress(progress);
             }
             const handleDuration = () => {
-                const duration = refAudio.current.duration;
                 let houres:string|number = Math.floor(refAudio.current.duration / 3600);
                 let minutes:string|number = Math.floor(refAudio.current.duration / 60 % 60);
                 let seconds:string|number = Math.floor(refAudio.current.duration % 60);
