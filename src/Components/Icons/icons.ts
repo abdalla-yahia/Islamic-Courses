@@ -16,6 +16,7 @@ import { WiSunrise } from "react-icons/wi";
 import { IoPartlySunny,IoQrCodeOutline } from "react-icons/io5";
 import { IoIosCloudyNight } from "react-icons/io";
 import { VscUnmute,VscMute } from "react-icons/vsc";
+import { SiAudiobookshelf } from "react-icons/si";
 
 
 export {
@@ -77,5 +78,6 @@ export {
     FaMinus,
     FaDownload,
     TbRewindBackward10,
-    TbRewindForward10
+    TbRewindForward10,
+    SiAudiobookshelf
 }

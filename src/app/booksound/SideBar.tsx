@@ -1,11 +1,13 @@
 'use client'
 import * as icon from '@/Components/Icons/icons'
 import { useState } from 'react';
-import Books from './Books.json'
+import  BooksData from './Data'
 import { Chapter } from '@/Interfaces/InterFaces';
 
 export default function SideBar({setBook}:{setBook:(chapter:Chapter)=>void}) {
- const [toggle,setToggle]=useState(0)
+    const Books = BooksData()
+    const [toggle,setToggle]=useState(0)
+
   return (
     <section className="w-1/6 sm:w-1/6 h-screen overflow-y-scroll scrollbar-hide bg-gray-400 rounded flex justify-center p-2">
         <div className="w-full flex justify-start items-center flex-col ">
