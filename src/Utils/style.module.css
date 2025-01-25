@@ -11,6 +11,7 @@
         display: none;
         position: absolute;
         border-radius: 5px;
+        bottom: 200%;
         z-index: 100;
         transition: 1s ease-in-out;
         top: -200%;
