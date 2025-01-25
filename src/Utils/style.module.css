@@ -10,13 +10,16 @@
     .volumeProgress{
         display: none;
         position: absolute;
-        bottom: 250%;
         border-radius: 5px;
         z-index: 100;
         transition: 1s ease-in-out;
         top: -200%;
         left: 50%;
-        transform: translate(-50%, -200%) rotate(90deg) ;
+        transform: translate(-55%, -100%) rotate(90deg) ;
+        .volumeCount{
+            color: rgb(52, 44, 44);
+            transform: rotate(-90deg);
+        }
     }
     &:hover{
         .volumeProgress{
@@ -25,3 +28,12 @@
     }
 }
 
+.progressbar{
+    position: absolute;
+    width: 80%;
+    height: 5px;
+    top: -4px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}

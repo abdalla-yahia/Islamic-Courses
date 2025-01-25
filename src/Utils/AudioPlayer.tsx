@@ -163,7 +163,7 @@ export default function AudioPlayer({Book, audioUrl, setAudioUrl, play, setplay,
      {/*Player Audio Box */}
     <div className="fixed bottom-0 left-2 w-full flex flex-col justify-center items-center rounded h-fit px-2 py-1 bg-blue-950 shadow">
         {/* Progress Bar */}
-        <div onClick={(e)=>handleProgress(e)} className='w-[80%] absolute -top-1  flex justify-end items-center h-1 bg-gray-500'>
+        <div onClick={(e)=>handleProgress(e)} className={`${styleProgress.progressbar}`}>
             <input type="range" min="0" max="100" value={progress || 0} onChange={(e)=>SetProgress(Number(e.target.value))} className='w-full text-red-500 rotate-180 h-1 relative '/>
         </div>
         {/* Audio Info */}
@@ -178,7 +178,7 @@ export default function AudioPlayer({Book, audioUrl, setAudioUrl, play, setplay,
         <div className={`${styleProgress.volumeParent}`} >
             <div className={`${styleProgress.volumeProgress} `}>
                 <input type="range" min="0" max="100" value={volume} onChange={(e)=>handleVolume(e)} className='w-20 h-4 bg-gray-400'/>
-                <p className='text-gray-800 -rotate-90'>{volume}%</p>
+                <p className={`${styleProgress.volumeCount} `}>{volume}%</p>
             </div >
             <icon.VscUnmute onClick={()=>{selectMute();setplay(false)}} className={`${mute ? 'hidden':'block'} cursor-pointer hover:text-blue-600 shadow `}/>
             <icon.VscMute  onClick={()=>selectUnMute()} className={`${!mute ? 'hidden':'block  text-gray-600'}  cursor-pointer hover:text-blue-600 shadow `}/>

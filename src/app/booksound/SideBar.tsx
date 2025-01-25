@@ -13,25 +13,25 @@ export default function SideBar({setBook}:{setBook:(chapter:Chapter)=>void}) {
                 {
                     Books?.map((book, index) => {
                         return (
-                            <>
-                <li key={index} onClick={()=>setToggle(toggle === book?.id ?0:book?.id)}  className={` ${toggle !== book?.id ? ' border-1 border-gray-500' : 'border-t border-l border-r border-b-0 border-gray-500 '} cursor-pointer h-auto flex justify-start items-center gap-3 w-full py-2 `} >
-                    
-                    {toggle === book?.id ? 
-                    <icon.FaMinus /> :
-                    <icon.FaPlus />
-                    }
-                    {book.title}
-                    </li>
-                    <div className='px-1 border-t-0 border-l border-r border-b border-gray-500  text-black flex flex-col justify-end items-end line-clamp-1  w-full gap-1' style={{display: toggle === book?.id ?'flex':'none'}}>
-                        {book?.books?.map((chapter, index) => {
-                            return (
-                                <div onClick={()=>setBook(chapter as Chapter)}  key={index} className='w-full text-center line-clamp-1 flex justify-end items-start py-2 cursor-pointer hover:text-white'>
-                                    {chapter.title}
+                            <div key={index} className='w-full'>
+                                <li  onClick={()=>setToggle(toggle === book?.id ?0:book?.id)}  className={` ${toggle !== book?.id ? ' border-1 border-gray-500' : 'border-t border-l border-r border-b-0 border-gray-500 '} cursor-pointer h-auto flex justify-start items-center gap-3 w-full py-2 `} >
+                                    
+                                    {toggle === book?.id ? 
+                                    <icon.FaMinus /> :
+                                    <icon.FaPlus />
+                                    }
+                                    {book.title}
+                                    </li>
+                                <div className='px-1 border-t-0 border-l border-r border-b border-gray-500  text-black flex flex-col justify-end items-end line-clamp-1  w-full gap-1' style={{display: toggle === book?.id ?'flex':'none'}}>
+                                    {book?.books?.map((chapter, index) => {
+                                        return (
+                                            <div onClick={()=>setBook(chapter as Chapter)}  key={index} className='w-full text-center line-clamp-1 flex justify-end items-start py-2 cursor-pointer hover:text-white'>
+                                                {chapter.title}
+                                            </div>
+                                        )
+                                    })}
                                 </div>
-                            )
-                        })}
-                    </div>
-                    </>
+                            </div>
                         )
                 })
             }
