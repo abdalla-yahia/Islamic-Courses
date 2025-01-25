@@ -15,7 +15,7 @@
         transition: 1s ease-in-out;
         top: -250%;
         left: 50%;
-        transform: translate(-55%, -100%) rotate(90deg) ;
+        transform: translate(-50%, -150%) rotate(90deg) ;
         .volumeCount{
             color: rgb(52, 44, 44);
             transform: rotate(-90deg);
