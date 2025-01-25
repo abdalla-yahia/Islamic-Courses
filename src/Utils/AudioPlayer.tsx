@@ -1,6 +1,6 @@
 import { LegacyRef, useRef, useState } from "react"
 import * as icon from '@/Components/Icons/icons'
-import style from './style.module.css'
+import styleProgress from './style.module.css'
 
 interface BookType {
   data: { id: number; url: string; name: string }[];
@@ -163,25 +163,27 @@ export default function AudioPlayer({Book, audioUrl, setAudioUrl, play, setplay,
      {/*Player Audio Box */}
     <div className="fixed bottom-0 left-2 w-full flex flex-col justify-center items-center rounded h-fit px-2 py-1 bg-blue-950 shadow">
         {/* Progress Bar */}
-        <div onClick={(e)=>handleProgress(e)} className='w-[80%] absolute self-center -top-1  flex justify-end items-center h-1 bg-gray-500'>
+        <div onClick={(e)=>handleProgress(e)} className='w-[80%] absolute -top-1  flex justify-end items-center h-1 bg-gray-500'>
             <input type="range" min="0" max="100" value={progress || 0} onChange={(e)=>SetProgress(Number(e.target.value))} className='w-full text-red-500 rotate-180 h-1 relative '/>
         </div>
         {/* Audio Info */}
         <div style={{maxWidth:'100%'}}>
         <p className="w-full line-clamp-1">{(`${type || ''} :  ${SahapyName || ''} ${type === 'ّالصَحَابِيُ'  ? 'رَضْيَّ اللَّهُ عَنْهُ ':"" }` )}</p>
         </div>
-        {/* Volume Control */}
+        {/* Audio Control */}
         <div className="w-full flex justify-evenly items-center gap-2">
 
         <p>{currentTime}</p>
-        <div className={`${style.volumeParent} relative w-2`} >
-        <div className={`${style.volumeProgress} absolute -top-20 -left-12 w-fit rotate-90 flex justify-between items-center gap-2 `}>
-        <input type="range" min="0" max="100" value={volume} onChange={(e)=>handleVolume(e)} className='w-20 h-4 bg-gray-400'/>
-        <p className='text-gray-800 -rotate-90'>{volume}%</p>
-        </div >
-        <icon.VscUnmute onClick={()=>{selectMute();setplay(false)}} className={`${mute ? 'hidden':'block'} cursor-pointer hover:text-blue-600 shadow `}/>
-        <icon.VscMute  onClick={()=>selectUnMute()} className={`${!mute ? 'hidden':'block  text-gray-600'}  cursor-pointer hover:text-blue-600 shadow `}/>
+        {/* Volume Control */}
+        <div className={`${styleProgress.volumeParent}`} >
+            <div className={`${styleProgress.volumeProgress} `}>
+                <input type="range" min="0" max="100" value={volume} onChange={(e)=>handleVolume(e)} className='w-20 h-4 bg-gray-400'/>
+                <p className='text-gray-800 -rotate-90'>{volume}%</p>
+            </div >
+            <icon.VscUnmute onClick={()=>{selectMute();setplay(false)}} className={`${mute ? 'hidden':'block'} cursor-pointer hover:text-blue-600 shadow `}/>
+            <icon.VscMute  onClick={()=>selectUnMute()} className={`${!mute ? 'hidden':'block  text-gray-600'}  cursor-pointer hover:text-blue-600 shadow `}/>
         </div>
+        {/* Play Pause Next Prev Control */}
         <icon.TbPlayerTrackNextFilled  onClick={()=>{PlayNextAudio();setplay(true)}} className={` cursor-pointer hover:text-blue-600 shadow `}/>
         <icon.TbRewindForward10 className='cursor-pointer hover:text-blue-600' onClick={()=>handlePlustensecond()}/>
         <icon.FaPause onClick={()=>handlePause()} className={`${!play && 'text-blue-600'} cursor-pointer hover:text-blue-600 shadow `}/>
