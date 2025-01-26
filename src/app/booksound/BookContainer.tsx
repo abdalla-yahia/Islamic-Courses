@@ -12,7 +12,7 @@ export default function BookContainer({Book}:{Book:Chapter}) {
       {
         Book.title !== null && Book.title !== undefined ? (
             <>
-            <FullTitle F_Title={Book?.title}/>
+            <FullTitle F_Title={Book?.description}/>
             <BookInfo Book={Book}/>
             <BookSoundPage Book={Book}/>
             </>
