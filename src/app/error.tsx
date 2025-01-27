@@ -12,7 +12,7 @@ export default function Error({error,reset}:ErrorHandelling) {
       <MdError/>
       </h1>
     <p> {error.message}</p>
-    <polygon onClick={()=>reset()}>حاول مجدداً</polygon>
+    <button className='p-2 bg-green-500' onClick={()=>reset()}>حاول مجدداً</button>
     <Link  className='underline text-green-600 font-bold text-2xl' href={'/'}>إذهب إلى الرئيسيه</Link>
     </div>
     </>
