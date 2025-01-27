@@ -5,7 +5,7 @@ import Elrawd_ElMorbeaa from './Elrawd_Elmorbea.json';
 import Zad_ElMostaqneaa from './Zad_Elmostaqneaa.json';
 import Mokhtasr_ElKheraky from './Mokhtasar_Elkheraky.json';
 import Elrahabia from './AlRahbia.json';
-
+import Blogh_Almaram from './Blogh_Almaram.json';
 export default function Feqh_Hanbalyan(){
     return {
         id:2,
@@ -17,6 +17,7 @@ export default function Feqh_Hanbalyan(){
             Elrahabia,
             Manar_Elsabil,
             Elrawd_ElMorbeaa,
+            Blogh_Almaram,
             Zad_ElMostaqneaa,
             Mokhtasr_ElKheraky
         ]
