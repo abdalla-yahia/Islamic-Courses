@@ -2,7 +2,7 @@ import Kawaed_Mothla from './Kaqwaed_Mothla.json';
 import Tahawya from './Tahawea.json';
 import Wastya from './Wastya.json';
 import MenaOne from './Mena_Part_one.json';
-import MenaTwo from './Mena_Part_two.json';
+import MenaTwo from './Mena_Part_Two.json';
 import Fath_ElMajeed from './Fath_ElMajeed.json';
 import MarejOne from './Marej_Part_One.json';
 import MarejTwo from './Marej_Part_Two.json';
