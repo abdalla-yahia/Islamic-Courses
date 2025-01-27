@@ -9,8 +9,8 @@ import Elrahabia from './AlRahbia.json';
 export default function Feqh_Hanbalyan(){
     return {
         id:2,
-        title:"فقة حنبلي",
-        description:"فقة حنبلي",
+        title:"فقه حنبلي",
+        description:"فقه حنبلي",
         books:[
             Manhaj_Salkeen,
             Akhsar_Mokhtasarat,
