@@ -3,14 +3,15 @@ import FullTitle from "@/Utils/FullTitle";
 import * as icon from "@/Components/Icons/icons";
 import BookInfo from "./BookInfo";
 import { Chapter } from "@/Interfaces/InterFaces";
-import BookSoundPage from "app/booksound/BookSoundPage";
+import BookSoundPage from "@/Components/Books/BookSoundPage";
 
 
 export default function BookContainer({Book}:{Book:Chapter}) {
   return (
-    <div className="w-full h-full">
+    <>
+    <div  className="w-full h-full">
       {
-        Book.title !== null && Book.title !== undefined ? (
+        Book.title !== null && Book?.title !== undefined ? (
             <>
             <FullTitle F_Title={Book?.description}/>
             <BookInfo Book={Book}/>
@@ -27,5 +28,6 @@ export default function BookContainer({Book}:{Book:Chapter}) {
             )
       }
         </div>
+    </>
   )
 }

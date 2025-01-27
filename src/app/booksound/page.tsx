@@ -1,7 +1,7 @@
 'use client'
 import { Container, Row } from "react-bootstrap";
-import SideBar from "./SideBar";
-import BookContainer from "./BookContainer";
+import SideBar from "@/Components/Books/SideBar";
+import BookContainer from "@/Components/Books/BookContainer";
 import { useState } from "react";
 import { Chapter } from "@/Interfaces/InterFaces";
 
