@@ -8,7 +8,7 @@ import { GrDocumentTest,GrUserAdmin } from "react-icons/gr";
 import { SiLeaderprice } from "react-icons/si";
 import { FaTasks,FaRegEdit,FaRegEye,FaEyeSlash,FaPlay,FaPause,FaCloudMoon,FaCloudMoonRain,FaFacebookF,FaTelegramPlane,FaWhatsapp,FaYoutube,FaUserGraduate } from "react-icons/fa";
 import { CiTrash } from "react-icons/ci";
-import { RiApps2AddFill,RiStickyNoteAddFill,RiImageAddLine } from "react-icons/ri";
+import { RiApps2AddFill,RiStickyNoteAddFill,RiImageAddLine,RiFolderVideoFill } from "react-icons/ri";
 import { TbVariablePlus } from "react-icons/tb";
 import { GiCheckMark,GiEarthAfricaEurope } from 'react-icons/gi';
 import { TbPlayerTrackNextFilled,TbPlayerTrackPrevFilled,TbRewindBackward10,TbRewindForward10 } from "react-icons/tb";
@@ -17,6 +17,7 @@ import { IoPartlySunny,IoQrCodeOutline } from "react-icons/io5";
 import { IoIosCloudyNight } from "react-icons/io";
 import { VscUnmute,VscMute } from "react-icons/vsc";
 import { SiAudiobookshelf } from "react-icons/si";
+import { LuFileAudio } from "react-icons/lu";
 
 
 export {
@@ -79,5 +80,7 @@ export {
     FaDownload,
     TbRewindBackward10,
     TbRewindForward10,
-    SiAudiobookshelf
+    SiAudiobookshelf,
+    LuFileAudio,
+    RiFolderVideoFill
 }

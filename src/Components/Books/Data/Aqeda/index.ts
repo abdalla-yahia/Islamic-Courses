@@ -4,6 +4,7 @@ import Wastya from './Wastya.json';
 import MenaOne from './Almena1.json';
 import MenaTwo from './AlMena2.json';
 import Fath_ElMajeed from './Fath_ElMajeed.json';
+import Fath_ElMajeed_Mansour from './Fath_ElMajeed_Mansour.json';
 import MarejOne from './Marej_Part_One.json';
 import MarejTwo from './Marej_Part_Two.json';
 import MarejThree from './Marej_Part_Three.json';
@@ -21,6 +22,7 @@ export default function Aqeda_Books(){
             MenaOne,
             MenaTwo,
             Fath_ElMajeed,
+            Fath_ElMajeed_Mansour,
             MarejOne,
             MarejTwo,
             MarejThree,

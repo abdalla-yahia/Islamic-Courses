@@ -1,5 +1,6 @@
 import Khelaf from './Elkhelaf.json'
 import Eman_We_Kofr from './Eman_Kofr.json';
+import Eman_We_Kofr_Mansour from './Eman_Kofr_Mansour.json';
 import Masalaeh_We_Mafased from './Masaleh_Mafased.json';
 import Walaa_We_Baeaa from './Walaa_Baraa.json';
 import Kada_We_Kadar from './Kadaa_Kadar.json';
@@ -16,6 +17,7 @@ export default function Kadaya_Books(){
         books:[
             Khelaf,
             Eman_We_Kofr,
+            Eman_We_Kofr_Mansour,
             Masalaeh_We_Mafased,
             Walaa_We_Baeaa,
             Kada_We_Kadar,

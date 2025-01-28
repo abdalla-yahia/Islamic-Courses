@@ -29,6 +29,7 @@ export default function SideBar({setBook}:{setBook:(chapter:Chapter)=>void}) {
                                         return (
                                             <div onClick={()=>setBook(chapter as Chapter)}  key={index} className='w-full text-center shadow-sm line-clamp-1 flex justify-end items-start py-2 cursor-pointer hover:text-white'>
                                                 {chapter.title}
+                                                {chapter.audio_type === 'mp3' ? <icon.LuFileAudio className='mx-2 text-blue-700'/>:<icon.RiFolderVideoFill className='mx-2 text-red-600'/>}
                                             </div>
                                         )
                                     })}
