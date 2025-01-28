@@ -9,7 +9,7 @@ export default function SideBar({setBook}:{setBook:(chapter:Chapter)=>void}) {
     const [toggle,setToggle]=useState(0)
 
   return (
-    <section className="w-1/6 sm:w-1/6 h-screen overflow-y-scroll scrollbar-hide bg-gray-400 rounded flex justify-center p-2">
+    <section className=" h-screen overflow-y-scroll scrollbar-hide bg-gray-400 rounded flex justify-center p-2">
         <div className="w-full flex justify-start items-center flex-col ">
             <ul className="text-fuchsia-600 font-bold w-full flex justify-center items-center flex-col">
                 {
