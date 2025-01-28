@@ -192,7 +192,10 @@ export default function AudioPlayer({Book, audioUrl, setAudioUrl, play, setplay,
         <icon.TbPlayerTrackPrevFilled  onClick={()=>{PlayPrevAudio();setplay(true)}} className={` cursor-pointer hover:text-blue-600 shadow `}/>
         
         <div className='flex justify-between items-center gap-2'>
-        <p>{duration}</p>
+        <p>{audioUrl !== '' && (duration == "NaN:NaN" || duration == "00:00") ? 
+            <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>        :duration}</p>
         </div>
         </div>
     </div>
