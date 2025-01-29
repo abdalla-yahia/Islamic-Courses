@@ -6,10 +6,11 @@ interface BookType {
   data: { id: number; url: string; name: string }[];
   url: string;
   sort: string;
+  title: string;
 }
 
-export default function AudioPlayer({Book, audioUrl, setAudioUrl, play, setplay, ID, SetID, type, SahapyName, SetSahapyName}: 
-    {Book: BookType, audioUrl: string, setAudioUrl: (url: string) => void, play: boolean, setplay: (play: boolean) => void, ID: number, SetID: (id: number) => void, type: string, SahapyName: string, SetSahapyName: (name: string) => void}) 
+export default function AudioPlayer({Book, audioUrl, BookTitle, setAudioUrl, play, setplay, ID, SetID, type, SahapyName, SetSahapyName}: 
+    {Book: BookType, audioUrl: string, BookTitle: string, setAudioUrl: (url: string) => void, play: boolean, setplay: (play: boolean) => void, ID: number, SetID: (id: number) => void, type: string, SahapyName: string, SetSahapyName: (name: string) => void}) 
     {
         const [mute,SetMute] = useState(false)
         const [progress, SetProgress] = useState(0);
@@ -167,8 +168,16 @@ export default function AudioPlayer({Book, audioUrl, setAudioUrl, play, setplay,
             <input type="range" min="0" max="100" value={progress || 0} onChange={(e)=>SetProgress(Number(e.target.value))} className='w-full text-red-500 rotate-180 h-1 relative '/>
         </div>
         {/* Audio Info */}
-        <div style={{maxWidth:'100%'}}>
-        <p className="w-full line-clamp-1">{(`${type || ''} :  ${SahapyName || ''} ${type === 'ّالصَحَابِيُ'  ? 'رَضْيَّ اللَّهُ عَنْهُ ':"" }` )}</p>
+        <div style={{maxWidth:'100%'}} className="flex gap-2">
+        <p>{BookTitle ? 
+            <>
+            <span className="text-blue-500">الكتاب : </span>
+            <span>{BookTitle}</span> </> 
+            : ''}
+            </p>
+        <p>
+            <span className="text-blue-500">{type} : </span>
+            {(`${SahapyName || ''} ${type === 'ّالصَحَابِيُ'  ? 'رَضْيَّ اللَّهُ عَنْهُ ':"" }` )}</p>
         </div>
         {/* Audio Control */}
         <div className="w-full flex justify-evenly items-center gap-2">
