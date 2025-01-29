@@ -5,6 +5,7 @@ import Ghayat_Elsawl from './Gkayat_Elsawl.json';
 import Elwadeh from './Elwadeh.json';
 import Elwadeh_Nabile from './Elwadeh_Nabile.json';
 import Rawdat_Elnazar from './Rawdat_Elnazar.json';
+import Al_Resala from './AL_Resala.json';
 
 export default function Osol_Books(){
     return {
@@ -18,7 +19,8 @@ export default function Osol_Books(){
             Ghayat_Elsawl,
             Elwadeh,
             Elwadeh_Nabile,
-            Rawdat_Elnazar
+            Rawdat_Elnazar,
+            Al_Resala
         ]
     }
 }

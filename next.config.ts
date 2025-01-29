@@ -15,6 +15,10 @@ const nextConfig: NextConfig = {
     {
       protocol:'https',
       hostname:'www.noor-book.com'
+    },
+    {
+      protocol:'https',
+      hostname:'ktabpdf.com'
     }
 
     ]
