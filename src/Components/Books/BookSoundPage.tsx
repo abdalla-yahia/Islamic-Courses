@@ -22,7 +22,7 @@ export default function BookSoundPage({Book}:{Book:Chapter}) {
     </div>
     <input onChange={(e)=>SetSearch(e.target.value)} type="search" name="" id="" className='w-full rounded outline-none border-none my-2 p-1 text-gray-900' placeholder={`${Book?.search}....`}/>
     </div>
-    <div className={` flex flex-wrap justify-center items-start mt-3 h-screen overflow-y-scroll scrollbar-hide`}>
+    <div className={` flex flex-wrap justify-center items-start mt-3 h-[200vh] overflow-y-scroll scrollbar-hide`}>
     {
         (Search === undefined || Search === null ) ?
         

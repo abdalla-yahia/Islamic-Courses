@@ -6,6 +6,8 @@ import Kadaya_Manhagea from './Kadaya_Manhajea';
 import Keywaed_feqh from './Kawaeed_Feqhya';
 import Mostalh_Hadith from './Mostalh';
 import Hadith from './Hadith';
+import Tafseer from './Tafseer';
+
 export default function BooksData(){
     return [
         Sera(),
@@ -15,6 +17,7 @@ export default function BooksData(){
         Feqh_Hanbaly(),
         Kadaya_Manhagea(),
         Aqeda(),
-        Hadith()
+        Hadith(),
+        Tafseer()
     ]
 }

@@ -12,7 +12,7 @@ export default function UserDAshboardLayout() {
     <Container>
       <Row>
     <section className="flex  justify-start items-start gap-1">
-      <div className="w-2/6 md:w-1/6 lg:w-1/6">
+      <div className="h-full w-2/6 md:w-1/6 lg:w-1/6">
       <SideBar setBook={setBook as (chapter:Chapter) => void}/>
       </div>
       <div className="md:w-5/6 lg:w-5/6 w-4/6 h-full gap-3 bg-gray-400 min-h-screen rounded p-3 flex justify-start items-start flex-col flex-wrap">

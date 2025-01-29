@@ -1,3 +1,5 @@
+import salasat_Osol from './Salasat_Osol.json';
+import Lomat_Eatekad from './Lomat_Al_Eatekad.json'
 import Kawaed_Mothla from './Kaqwaed_Mothla.json';
 import Kawaed_Mothla_Mansour from './Kaqwaed_Mothla_Mansour.json';
 import Tahawya from './Tahawea.json';
@@ -20,6 +22,8 @@ export default function Aqeda_Books(){
         title:"عقيدة",
         description:"عقيدة",
         books:[
+            salasat_Osol,
+            Lomat_Eatekad,
             Kawaed_Mothla,
             Kawaed_Mothla_Mansour,
             Tahawya,
