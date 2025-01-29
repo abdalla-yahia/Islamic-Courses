@@ -1,3 +1,4 @@
+import Kawaed_Osol_Mansour from './Kawaed_Osol_Feqh_MAnsour.json';
 import Alosol_Mn_Alosol from './AlOsol_Mn_Alosol.json';
 import Ghayat_Elsawl from './Gkayat_Elsawl.json';
 import Elwadeh from './Elwadeh.json';
@@ -10,6 +11,7 @@ export default function Osol_Books(){
         title:"أصول فقه",
         description:"أصول فقه",
         books:[
+            Kawaed_Osol_Mansour,
             Alosol_Mn_Alosol,
             Ghayat_Elsawl,
             Elwadeh,
