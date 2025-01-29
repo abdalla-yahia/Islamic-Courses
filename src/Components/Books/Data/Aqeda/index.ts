@@ -6,6 +6,7 @@ import Kawaed_Mothla_Mansour from './Kaqwaed_Mothla_Mansour.json';
 import Tahawya from './Tahawea.json';
 import Wastya from './Wastya.json';
 import Wastya_Borhamy from './Wastya_Borhamy.json';
+import ELMena_Basem from './ElMena_Basem.json';
 import MenaOne from './Almena1.json';
 import MenaTwo from './AlMena2.json';
 import Fath_ElMajeed from './Fath_ElMajeed.json';
@@ -32,6 +33,7 @@ export default function Aqeda_Books(){
             Tahawya,
             Wastya,
             Wastya_Borhamy,
+            ELMena_Basem,
             MenaOne,
             MenaTwo,
             Fath_ElMajeed,
