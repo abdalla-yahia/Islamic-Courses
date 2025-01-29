@@ -23,13 +23,13 @@ export default function BookSoundPage({Book}:{Book:Chapter}) {
     </div>
     <input onChange={(e)=>SetSearch(e.target.value)} type="search" name="" id="" className='w-full rounded outline-none border-none my-2 p-1 text-gray-900' placeholder={`${Book?.search}....`}/>
     </div>
-    <div className={` flex flex-wrap justify-center items-start mt-3 h-[200vh] overflow-y-scroll scrollbar-hide`}>
+    <div className={`w-full flex flex-wrap  justify-evenly items-start mt-3 gap-1 h-[200vh] overflow-y-scroll scrollbar-hide`}>
     {
-        (Search === undefined || Search === null ) ?
+        (Search === '' || Search === null ) ?
         
         (Book?.data?.sort((a, b) =>a[SORT] > b[SORT] ? 1 : -1).map((sound) => {
             return (
-                <div title={`${sound.name}`} style={{backgroundColor:`${ID === sound.id ?'#006':''}`,color:`${ID === sound.id ?'white':''}`}} onClick={()=>{setAudioUrl(`${Book?.url}/${sound.url}`);SetType(Book?.type);SetBookTitle(Book?.title);setplay(true);SetID(sound.id as number);SetSahapyName(sound.name)}} key={sound.id} className={`w-full md:w-1/3 lg:w-1/4 cursor-pointer shadow-sm line-clamp-1  text-end text-lg p-2 hover:bg-blue-900 hover:text-white bg-slate-400 rounded m-2 text-blue-950`}>
+                <div title={`${sound.name}`} style={{backgroundColor:`${ID === sound.id ?'#006':''}`,color:`${ID === sound.id ?'white':''}`}} onClick={()=>{setAudioUrl(`${Book?.url}/${sound.url}`);SetType(Book?.type);SetBookTitle(Book?.title);setplay(true);SetID(sound.id as number);SetSahapyName(sound.name)}} key={sound.id} className={`w-full sm:w-1/3 md:w-1/4 lg:w-1/5 cursor-pointer shadow-sm line-clamp-1  text-end text-lg p-2 hover:bg-blue-900 hover:text-white bg-slate-400 rounded text-blue-950`}>
                     {   Book?.id === 3?
                         <h1  className='line-clamp-1'>{`( ${sound.id} ) - ${sound.name}`}</h1>:
                         <h1  className='line-clamp-1'>{sound.name}</h1>
@@ -40,16 +40,19 @@ export default function BookSoundPage({Book}:{Book:Chapter}) {
                 )
                     :
                     (
-                        Book?.data?.filter(item=>item.name.includes(Search)).sort((a, b) =>a[SORT] > b[SORT] ? 1 : -1).map((sound) => {
+                        <>
+                        <p className=' w-full text-blue-950'>عدد نتائج البحث : <span className='text-blue-600'>{Book?.data?.filter(item=>item.name.includes(Search))?.length} </span>نتيجة</p>
+                        {Book?.data?.filter(item=>item.name.includes(Search)).sort((a, b) =>a[SORT] > b[SORT] ? 1 : -1).map((sound) => {
                             return (
-                                <div title={`${sound.name}`} style={{backgroundColor:`${ID === sound.id ?'#006':''}`,color:`${ID === sound.id ?'white':''}`}} onClick={()=>{setAudioUrl(`${Book?.url}/${sound.url}`);SetType(Book?.type);setplay(true);SetID(sound.id as number);SetSahapyName(sound.name)}} key={sound.id} className={`w-full md:w-1/3 lg:w-1/4 cursor-pointer shadow-sm line-clamp-1  text-end text-lg p-2 hover:bg-blue-900 hover:text-white bg-slate-400 rounded m-2 text-blue-950`}>
+                                <div title={`${sound.name}`} style={{backgroundColor:`${ID === sound.id ?'#006':''}`,color:`${ID === sound.id ?'white':''}`}} onClick={()=>{setAudioUrl(`${Book?.url}/${sound.url}`);SetType(Book?.type);setplay(true);SetID(sound.id as number);SetSahapyName(sound.name)}} key={sound.id} className={`w-full sm:w-1/3 md:w-1/4 lg:w-1/5 cursor-pointer shadow-sm line-clamp-1  text-end text-lg p-2 hover:bg-blue-900 hover:text-white bg-slate-400 rounded m-2 text-blue-950`}>
                                     {   Book?.id === 3?
                                         <h1 className='line-clamp-1'>{`( ${sound.id} ) - ${sound.name}`}</h1>:
                                         <h1 className='line-clamp-1'>{sound.name}</h1>
                                     }
                                     </div>
                                     )
-                        })
+                                })}
+                                </>
                     )
     }
     </div>
