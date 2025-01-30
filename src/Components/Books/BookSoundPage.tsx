@@ -12,7 +12,7 @@ export default function BookSoundPage({Book}:{Book:Chapter}) {
     const [play,setplay] = useState(false)
         
     const SORT: keyof typeof Book.data[0] = Book?.sort as keyof typeof Book.data[0]
-  return (
+ return (
     <>
     <div className='w-full flex flex-col justify-center items-center'>
     <div className='w-full flex justify-center items-center md:w-[70%] lg:w-[50%]'>
