@@ -155,7 +155,7 @@ if(CreateNewUser?.status){
    <Link className="text-green-600 cursor-pointer hover:text-green-400" href={`/login`}>اضغط هنا</Link>
     </span>
     <span className="my-2">
-    لديك  كود دعوة من الدكتور / باسم ؟
+    لديك  كود دعوة من موقع الدورات العلمية ؟
    <Link className="text-green-600 cursor-pointer hover:text-green-400" href={`/invite-code`}>اضغط هنا</Link>
     </span>
    </div>

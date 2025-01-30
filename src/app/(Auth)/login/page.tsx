@@ -16,7 +16,7 @@ export default function LoginPage() {
     {role:'teachers',name:'مدرس  /مدرسة'},
     {role:'admin-teacher',name:'مشرف / مشرفة عام'},
     {role:'managers',name:'  مدير/ مديرة'},
-    {role:'owner',name:'الدكتور: باسم'}];
+    {role:'owner',name:'الدكتور '}];
     const [userName,setUserName]= useState('')
     const [password,setPassword]= useState('')
     const [userRole,setUserRole]= useState('users')

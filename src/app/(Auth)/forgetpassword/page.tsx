@@ -13,7 +13,7 @@ export default function ForgetPassword() {
                    {role:'TEACHER',name:'مدرس  /مدرسة'},
                    {role:'ADMIN_TEACHER',name:'مشرف عام / مشرفة عام'},
                    {role:'MANAGER',name:'  مدير/ مديرة'},
-                   {role:'OWNER',name:'الدكتور: باسم'}];
+                   {role:'OWNER',name:'الدكتور '}];
 
     const [email, setEmail] = useState('')
     const [userRole, setUserRole] = useState('USER')

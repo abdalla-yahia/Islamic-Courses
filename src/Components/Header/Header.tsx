@@ -22,10 +22,10 @@ export default async function Header() {
      <nav  className={`${amiri.className} relative w-full z-50 bg-gray-900`}>
         <div className="container  w-full p-2 flex justify-around items-center">
           <Link  href="/" className={'flex justify-center  items-center font-bold text-fuchsia-700 hover:text-white'}>
-          <Image className="rounded-lg ml-2" alt="logo" width={50} height={80} src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9myW1PlBH70Q6CqJtsX523qtXdQrn9s1dfw&s'}/>
+          <Image className="rounded-lg ml-2" alt="logo" width={50} height={80} src={'/Salaf_Logo.png'}/>
           <div className="flex flex-col justify-center items-center">
             <h1 className="text-xl font-bold text-fuchsia-700 hover:text-white">الدورات العلمية</h1>
-            <h4 className="text-[12px] text-gray-400">للدكتور باسم عبد رب الرسول</h4>
+            <h4 className="text-[12px] text-gray-400">للدعوة السلفية</h4>
           </div>
           </Link>
             <NavLinks user={null}/>
@@ -45,7 +45,7 @@ const Decoade = Jwt.verify(token, process.env.JWT_SECRET_KEY as string) as UserP
           <Image className="rounded-lg ml-2" alt="logo" width={50} height={80} src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9myW1PlBH70Q6CqJtsX523qtXdQrn9s1dfw&s'}/>
           <div className="flex flex-col justify-center items-center">
             <h1 className="text-xl font-bold text-fuchsia-700 hover:text-white">الدورات العلمية</h1>
-            <h4 className="text-[12px] text-gray-400">للدكتور باسم عبد رب الرسول</h4>
+            <h4 className="text-[12px] text-gray-400">للدعوة السلفية</h4>
           </div>
           </Link>
             <NavLinks user={Decoade}/>

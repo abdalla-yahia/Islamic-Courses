@@ -11,7 +11,7 @@ export function ParseRoles(role:string){
         {role:'teachers',name:'مدرس  /مدرسة'},
         {role:'admin-teacher',name:'مشرف عام / مشرفة عام'},
         {role:'managers',name:'  مدير / مديرة'},
-        {role:'owner',name:'الدكتور: باسم'}];
+        {role:'owner',name:'الدكتور '}];
         const roleIndex = Roles.indexOf(role);
         return parser[roleIndex].role
 }
@@ -22,7 +22,7 @@ export function JopRoles(role:string){
         {role:'teachers',name:'مدرس  /مدرسة'},
         {role:'admin-teacher',name:'مشرف / مشرفة عام'},
         {role:'managers',name:'  مدير/ مديرة'},
-        {role:'owner',name:'الدكتور: باسم'}];
+        {role:'owner',name:'الدكتور'}];
         const roleIndex = Roles.indexOf(role);
         return parser[roleIndex]?.name
 }

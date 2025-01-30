@@ -10,12 +10,13 @@ export default function Footer() {
     <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div className="flex justify-between w-full items-center">
           <Navbar.Brand href="/" className="flex justify-center items-center font-bold text-fuchsia-700">
-          <Image alt="logo" width={50} height={50} src={'https://img.pikbest.com/origin/09/10/97/802pIkbEsT8Fj.png!sw800'}/>
+          <Image alt="logo" width={50} height={50} src={'/Salaf_Logo.png'}/>
           الدورات العلمية 
           </Navbar.Brand>
             <Nav className="text-fuchsia-500 font-bold">
               <Nav.Link href="/">الرئيسية</Nav.Link>
               <Nav.Link href="/moshaf">المصحف</Nav.Link>
+              <Nav.Link href="/booksound">المكتبة</Nav.Link>
               <Nav.Link href="/about">من نحن</Nav.Link>
               <Nav.Link href="/contact">إتصل بنا</Nav.Link>
             </Nav>

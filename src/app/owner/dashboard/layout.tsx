@@ -7,7 +7,7 @@ import Sidebar from "@/Components/DashvoardSideBar/Sidebar";
 
 export const metadata: Metadata = {
   title: " الدورات العلمية  ",
-  description: " الدورات العلمية تحت إشراف الدكتور باسم عبد رب الرسول تهدف لإخراج جيل جديد على الكتاب والسنة بدون إفراط أو تفريط",
+  description: " الدورات العلمية للدعوة السلفية تهدف لإخراج جيل جديد على الكتاب والسنة بدون إفراط أو تفريط",
 };
 
 export default function UserDAshboardLayout({
