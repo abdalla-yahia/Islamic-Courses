@@ -24,11 +24,11 @@ export default function NavLinks({user}:{user:UserPayload | null}) {
           >
             
             <ul className='  rounded p-2 flex flex-col lg:flex-row'>
-              <Link onClick={()=>setToggle(false)} className={'font-bold text-fuchsia-600 my-2 mx-3 hover:text-gray-300 '} href="/">الرئيسية</Link>
-              <Link onClick={()=>setToggle(false)} className={'font-bold text-fuchsia-600 my-2 mx-3 hover:text-gray-300 '} href="/moshaf">المصحف</Link>
-              <Link onClick={()=>setToggle(false)} className={'font-bold text-fuchsia-600 my-2 mx-3 hover:text-gray-300 '} href="/booksound">المكتبة</Link>
-              <Link onClick={()=>setToggle(false)} className={'font-bold text-fuchsia-600 my-2 mx-3 hover:text-gray-300 '} href="/about">من نحن</Link>
-              <Link onClick={()=>setToggle(false)} className={'font-bold text-fuchsia-600 my-2 mx-3 hover:text-gray-300 '} href="/contact">إتصل بنا</Link>
+              <Link onClick={()=>setToggle(false)} className={'font-bold text-gray-200 my-2 mx-3 hover:text-blue-400 '} href="/">الرئيسية</Link>
+              <Link onClick={()=>setToggle(false)} className={'font-bold text-gray-200 my-2 mx-3 hover:text-blue-400 '} href="/moshaf">المصحف</Link>
+              <Link onClick={()=>setToggle(false)} className={'font-bold text-gray-200 my-2 mx-3 hover:text-blue-400 '} href="/booksound">المكتبة</Link>
+              <Link onClick={()=>setToggle(false)} className={'font-bold text-gray-200 my-2 mx-3 hover:text-blue-400 '} href="/about">من نحن</Link>
+              <Link onClick={()=>setToggle(false)} className={'font-bold text-gray-200 my-2 mx-3 hover:text-blue-400 '} href="/contact">إتصل بنا</Link>
               
             </ul>
 

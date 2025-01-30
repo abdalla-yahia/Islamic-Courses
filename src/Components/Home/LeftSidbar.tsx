@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react"
 import * as icon from '@/Components/Icons/icons'
 import { toast } from "react-toastify"
 import Swal from "sweetalert2"
-import DateConvert from "@/Utils/Date"
+// import DateConvert from "@/Utils/Date"
 import { Amiri } from "next/font/google";
 const amiri = Amiri({
   subsets: ["latin"],
@@ -175,9 +175,9 @@ export default function LeftSidbar() {
               <p className="text-gray-500 mt-5">
                 الناشر / {hadith?.author?.name as unknown as string}
               </p><br/>
-              <p className="text-gray-500 mt-5">
+              {/* <p className="text-gray-300 mt-5">
                 تاريخ النشر : {DateConvert(hadith?.createdAt  as unknown as Date)}
-              </p>
+              </p> */}
             </div>
           )
         )}

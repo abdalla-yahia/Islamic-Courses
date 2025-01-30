@@ -94,10 +94,10 @@ export default function LoginForm({userFromToken,setToggle,toggle}:{userFromToke
               width={50}
               height={50}
               alt="User Image"
-              className="rounded-full hover:text-fuchsia-700"/>
-                        <p className="rounded-full hover:text-white text-fuchsia-700">{(User?.name)}</p>
+              className="rounded-full hover:text-gray-300"/>
+                        <p className="rounded-full hover:text-white text-gray-300">{(User?.name)}</p>
               </Link>
-                <button onClick={()=>{LogoutHandeller();setToggle(!toggle)}} className="hover:bg-blue-800 bg-blue-950 hover:text-white mx-2 p-2 rounded">
+                <button onClick={()=>{LogoutHandeller();setToggle(!toggle)}} className="hover:bg-blue-900 bg-blue-800 hover:text-white mx-2 p-2 rounded">
                   خروج
                 </button>
               </div>
