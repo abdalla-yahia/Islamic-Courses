@@ -5,15 +5,7 @@ import React, { useEffect, useState } from "react"
 import * as icon from '@/Components/Icons/icons'
 import { toast } from "react-toastify"
 import Swal from "sweetalert2"
-// import DateConvert from "@/Utils/Date"
-import { Amiri } from "next/font/google";
-const amiri = Amiri({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-amiri_quran",
-  display: "swap",
-  adjustFontFallback: false,
-});
+
 export default function LeftSidbar() {
       const {UserLogedData} = useAppSelector(state=>state.user) as unknown as {UserLogedData:LogedUserInterface}
       const {CreateHadith} = useAppSelector(state=>state.hadith) as unknown as {CreateHadith:{status:number}}
@@ -22,11 +14,18 @@ export default function LeftSidbar() {
         (state) => state.hadith
       ) as unknown as { AllHadith: { Hadith: CreateHadithInterface[] } };
       const [toggle,setToggle]= useState(false)
+      const [PostToggle,setPostToggle]= useState(false)
       const [showAlot, setShowAlot] = useState(false);
       const [title,setTitle]= useState('')
       const [content,setContent]= useState('')
-      // const [body,setBody]= useState({src:''})
-      const [HadithIndex,setHadithIndex]= useState(0)
+      const [SearchText,SetSearchText] = useState('');
+      const [Post, setPost] = useState<CreateHadithInterface>({
+        id: '',
+        title: '',
+        content: '',
+        author: { id: 0, name: '', image: '' }
+      })
+
       const dispatch = useAppDispatch();
       const CreatePostHandeller = ()=>{
           dispatch(createHadith({
@@ -48,13 +47,10 @@ export default function LeftSidbar() {
               }
           }
       }, [CreateHadith,DeleteHadith,dispatch])
-  setTimeout(() => {
-    if (HadithIndex !== AllHadith?.Hadith?.length - 1) {
-      setHadithIndex(HadithIndex + 1)
-    } else {
-      setHadithIndex(0)
-    }
-  }, 1000 * 60 * 2)
+      // //Set Post To State 
+      useEffect(()=>{
+          setPost(AllHadith?.Hadith?.[AllHadith?.Hadith?.length - 1]);
+      },[AllHadith])
   //Delete Hadith
   const DeleteHadithHandeller = (e: string) => {
      Swal.fire({
@@ -126,7 +122,6 @@ export default function LeftSidbar() {
       {toggle && (
         <div className="container text-gray-700 w-full flex flex-col justify-center items-center">
           <div className="w-full flex gap-2 mb-2  justify-center items-center">
-            {/* <h3 className="flex hidden text-gray-200">عنوان الموضوع : </h3> */}
             <input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -138,7 +133,6 @@ export default function LeftSidbar() {
             />
           </div>
           <div className="w-full flex gap-2 mb-2  justify-center items-center">
-            {/* <h3 className="flex hidden text-blue-400">محتوي الموضوع :</h3> */}
             <input
               value={content}
               onChange={(e) => setContent(e.target.value)}
@@ -149,10 +143,7 @@ export default function LeftSidbar() {
               placeholder="ادخل محتوي الموضوع"
             />
           </div>
-          {/* <div className="w-full flex gap-2 mb-2  justify-center items-center">
-                  <h3 className="flex hidden text-red-500"> رابط الفيديو :</h3>
-                  <input  onChange={(e)=>setBody({src:e.target.value})} type="text" name="" id="" className="rounded px-2 w-full" placeholder="ادخل رابط فيديو الموضوع"/>
-              </div> */}
+
           <button
             onClick={() => CreatePostHandeller()}
             className="p-2 rounded text-white hover:bg-blue-700 bg-blue-500 cursor-pointer"
@@ -161,26 +152,54 @@ export default function LeftSidbar() {
           </button>
         </div>
       )}
+     
 
-      {AllHadith?.Hadith?.length > 0 &&
-        AllHadith?.Hadith?.slice(HadithIndex, HadithIndex + 1).map(
-          (hadith, index) => (
-            <div key={index} className="transition ease-in-out opacity-1">
-              <h1 className="text-2xl w-full my-3 text-orange-600 flex justify-center items-center">
-                {hadith?.title}
-              </h1>
-              <p style={{lineHeight:'2'}} className={`${amiri.className} text-justify`}>
-                {hadith?.content}
-              </p>
-              <p className="text-gray-500 mt-5">
-                الناشر / {hadith?.author?.name as unknown as string}
-              </p><br/>
-              {/* <p className="text-gray-300 mt-5">
-                تاريخ النشر : {DateConvert(hadith?.createdAt  as unknown as Date)}
-              </p> */}
+        {/**########################################################## */}
+        <div className='w-full relative bg-blue-950 rounded'>
+            <div onClick={()=>{setPostToggle(!PostToggle)}} className="w-full scrollbar-hide flex flex-col-reverse justify-between items-center my-1 rounded h-fit px-2 text-slate-100 shadow bg-blue-950">
+            <input value={SearchText} onChange={(e)=>{SetSearchText(e.target.value);setPostToggle(true)}} type="search" name="" id="" className='m-2 px-2 z-40 outline-none rounded bg-blue-900 text-white w-full self-center' placeholder=' بحث عن مقالة ....' />
+            <div  className="flex relative justify-start items-start w-full" dir='rtl'>
+                <span className='flex justify-between items-center w-full'>
+                <span className="text-lg cursor-pointer font-bold text-slate-100">{Post?.title || 'اختر المقالة'}</span>
+                <icon.MdKeyboardDoubleArrowDown />
+                </span>
+                {PostToggle && 
+                <div className='bg-slate-600 absolute rounded left-0 top-[140%] w-[80%] z-40 h-[400px] scrollbar-hide overflow-y-scroll text-red-500 flex justify-start items-start flex-col'>
+                {
+                    AllHadith?.Hadith?.length > 0 
+                    &&
+                      SearchText === '' ?
+                    (
+                        <>
+                        {
+                          AllHadith?.Hadith?.map((post,index)=>{
+                            return <span key={index} onClick={()=>{setPost(post as CreateHadithInterface);setPostToggle(false)}} className='hover:bg-blue-500 hover:text-white px-2 py-1 line-clamp-1 text-white  cursor-pointer rounded'  title={post?.title ?? ''}>{post?.title}</span>                    
+                          })
+                        }
+                        </>
+                )
+                  :(AllHadith?.Hadith?.filter(el=>el?.title?.includes(SearchText))).map((post,index)=>
+                    <span onClick={()=>{setPost(post as CreateHadithInterface);SetSearchText('')}} className='hover:bg-blue-500 hover:text-white px-2 py-1 cursor-pointer rounded' key={index} title={post?.title ?? ''}>{post?.title}</span>)
+                }
+                </div>
+                } 
             </div>
-          )
-        )}
+            </div>
+    </div>
+    {/**Show Post */}
+      {Post &&
+            (<div>
+              <h1 className="text-2xl w-full my-3 text-orange-600 text-center flex justify-center items-center">
+                {Post?.title}
+              </h1>
+              <p style={{lineHeight:'2'}} className={`text-justify max-h-[350px] overflow-y-scroll scrollbar-hide`}>
+                {Post?.content}
+              </p>
+              <p className="text-gray-500 mt-5 text-sm">
+                الناشر / {Post?.author?.name as unknown as string}
+              </p><br/>
+            </div>)
+            }
     </div>
   );
 }
