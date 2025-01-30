@@ -4,10 +4,10 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks"
 import React, { useEffect, useState } from "react"
 import * as icon from '@/Components/Icons/icons'
 import { toast } from "react-toastify"
-import { Amiri_Quran } from "next/font/google";
 import Swal from "sweetalert2"
 import DateConvert from "@/Utils/Date"
-const amiri = Amiri_Quran({
+import { Amiri } from "next/font/google";
+const amiri = Amiri({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-amiri_quran",
@@ -55,6 +55,7 @@ export default function LeftSidbar() {
       setHadithIndex(0)
     }
   }, 1000 * 60 * 2)
+  //Delete Hadith
   const DeleteHadithHandeller = (e: string) => {
      Swal.fire({
                 title: 'هل ستقوم بحذف هذا الموضوع/الحديث؟',
@@ -168,7 +169,7 @@ export default function LeftSidbar() {
               <h1 className="text-2xl w-full my-3 text-orange-600 flex justify-center items-center">
                 {hadith?.title}
               </h1>
-              <p className={`${amiri.className} text-justify`}>
+              <p style={{lineHeight:'2'}} className={`${amiri.className} text-justify`}>
                 {hadith?.content}
               </p>
               <p className="text-gray-500 mt-5">
