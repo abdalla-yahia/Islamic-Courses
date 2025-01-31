@@ -104,7 +104,7 @@ export default function LoginForm({userFromToken,setToggle,toggle}:{userFromToke
               </>
               ):
               (<button onClick={()=>setToggle(!toggle)} className="p-2 rounded ">
-                <Link className="p-2 rounded hover:bg-fuchsia-900 bg-fuchsia-600"  href="/login"> تسجيل الدخول</Link>
+                <Link className="p-2 rounded hover:bg-[#895605] bg-[#9f6301]"  href="/login"> تسجيل الدخول</Link>
                 </button>)}
               </div>
   )

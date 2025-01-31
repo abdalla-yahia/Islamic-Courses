@@ -241,8 +241,8 @@ export default function ProfilePage() {
         </div>
     </div>
     {/*Total Data Box */}
-    <div className="card-footer rounded border-2 border-emerald-50 shadow p-2 w-full text-2xl bg-blue-950 flex justify-center items-center">
-        <p className="bg-blue-950">إجمالي كل الدرجات : {(user?.user?.ExamResult?.length && user?.user?.ExamResult?.map(e=>+e?.score)?.reduce((e,el)=>e+el)) + (user?.user?.AssinmentResult?.length && +user?.user?.AssinmentResult?.map(e=>+e?.score)?.reduce((e,el)=>e+el)) } درجة</p>
+    <div className="card-footer rounded border-2 border-emerald-50 shadow p-2 w-full text-2xl bg-[#5b3f11] flex justify-center items-center">
+        <p className="bg-[#5b3f11]">إجمالي كل الدرجات : {(user?.user?.ExamResult?.length && user?.user?.ExamResult?.map(e=>+e?.score)?.reduce((e,el)=>e+el)) + (user?.user?.AssinmentResult?.length && +user?.user?.AssinmentResult?.map(e=>+e?.score)?.reduce((e,el)=>e+el)) } درجة</p>
     </div>
     </>
   )

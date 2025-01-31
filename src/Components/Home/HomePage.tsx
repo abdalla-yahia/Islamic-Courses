@@ -16,7 +16,7 @@ export default function HomePage() {
         </div>
       </div>
       <div className="row w-full">
-      <div className="hidden  min-h-full md:flex lg:flex w-[0%] md:w-[15%] lg:w-[15%] flex-col justify-start my-2  items-center bg-blue-950 rounded ">
+      <div className="hidden  min-h-full md:flex lg:flex w-[0%] md:w-[15%] lg:w-[15%] flex-col justify-start my-2  items-center bg-[#5b3f11] rounded ">
         <PrayerTimes />
         </div>
         <div className="w-[100%] overflow-y-auto scrollbar-hide max-h-screen md:w-[70%] lg:w-[70%] flex flex-col justify-start items-center  rounded ">
@@ -26,7 +26,7 @@ export default function HomePage() {
             <ArticlesHomePage />
           </div>
         </div>
-        <div className={`shadow hidden min-h-full md:flex lg:flex w-[0%] md:w-[15%] lg:w-[15%] flex-col justify-start py-2 rounded text-white my-2 items-center  bg-blue-950`}>
+        <div className={`shadow hidden min-h-full md:flex lg:flex w-[0%] md:w-[15%] lg:w-[15%] flex-col justify-start py-2 rounded text-white my-2 items-center  bg-[#5b3f11]`}>
         <LeftSidbar />
         </div>
     </div>

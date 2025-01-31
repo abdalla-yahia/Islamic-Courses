@@ -146,7 +146,7 @@ export default function LeftSidbar() {
 
           <button
             onClick={() => CreatePostHandeller()}
-            className="p-2 rounded text-white hover:bg-blue-700 bg-blue-500 cursor-pointer"
+            className="p-2 rounded text-white hover:bg-blue-700 hover:bg-[#9f6301] cursor-pointer"
           >
             إنشاء الموضوع
           </button>
@@ -155,16 +155,16 @@ export default function LeftSidbar() {
      
 
         {/**########################################################## */}
-        <div className='w-full relative bg-blue-950 rounded'>
-            <div onClick={()=>{setPostToggle(!PostToggle)}} className="w-full scrollbar-hide flex flex-col-reverse justify-between items-center my-1 rounded h-fit px-2 text-slate-100 shadow bg-blue-950">
-            <input value={SearchText} onChange={(e)=>{SetSearchText(e.target.value);setPostToggle(true)}} type="search" name="" id="" className='m-2 px-2 z-40 outline-none rounded bg-blue-900 text-white w-full self-center' placeholder=' بحث عن مقالة ....' />
+        <div className='w-full relative bg-[#5b3f11] rounded'>
+            <div onClick={()=>{setPostToggle(!PostToggle)}} className="w-full scrollbar-hide flex flex-col-reverse justify-between items-center my-1 rounded h-fit px-2 text-slate-100 shadow bg-[#5b3f11]">
+            <input value={SearchText} onChange={(e)=>{SetSearchText(e.target.value);setPostToggle(true)}} type="search" name="" id="" className='m-2 px-2 z-40 outline-none rounded bg-[#5b3f11] text-white w-full self-center' placeholder=' بحث عن مقالة ....' />
             <div  className="flex relative justify-start items-start w-full" dir='rtl'>
                 <span className='flex justify-between items-center w-full'>
                 <span className="text-lg cursor-pointer font-bold text-slate-100">{Post?.title || 'اختر المقالة'}</span>
                 <icon.MdKeyboardDoubleArrowDown />
                 </span>
                 {PostToggle && 
-                <div className='bg-slate-600 absolute rounded left-0 top-[140%] w-[80%] z-40 h-[400px] scrollbar-hide overflow-y-scroll text-red-500 flex justify-start items-start flex-col'>
+                <div className='bg-[#eea127] absolute rounded left-0 top-[140%] w-[80%] z-40 h-[400px] scrollbar-hide overflow-y-scroll text-white flex justify-start items-start flex-col'>
                 {
                     AllHadith?.Hadith?.length > 0 
                     &&
@@ -173,13 +173,13 @@ export default function LeftSidbar() {
                         <>
                         {
                           AllHadith?.Hadith?.map((post,index)=>{
-                            return <span key={index} onClick={()=>{setPost(post as CreateHadithInterface);setPostToggle(false)}} className='hover:bg-blue-500 hover:text-white px-2 py-1 line-clamp-1 text-white  cursor-pointer rounded'  title={post?.title ?? ''}>{post?.title}</span>                    
+                            return <span key={index} onClick={()=>{setPost(post as CreateHadithInterface);setPostToggle(false)}} className='hover:hover:bg-[#9f6301] hover:text-white px-2 py-1 line-clamp-1 text-white  cursor-pointer rounded'  title={post?.title ?? ''}>{post?.title}</span>                    
                           })
                         }
                         </>
                 )
                   :(AllHadith?.Hadith?.filter(el=>el?.title?.includes(SearchText))).map((post,index)=>
-                    <span onClick={()=>{setPost(post as CreateHadithInterface);SetSearchText('')}} className='hover:bg-blue-500 hover:text-white px-2 py-1 cursor-pointer rounded' key={index} title={post?.title ?? ''}>{post?.title}</span>)
+                    <span onClick={()=>{setPost(post as CreateHadithInterface);SetSearchText('')}} className='hover:hover:bg-[#9f6301] hover:text-white px-2 py-1 cursor-pointer rounded' key={index} title={post?.title ?? ''}>{post?.title}</span>)
                 }
                 </div>
                 } 
