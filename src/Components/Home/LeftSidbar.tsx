@@ -146,7 +146,7 @@ export default function LeftSidbar() {
 
           <button
             onClick={() => CreatePostHandeller()}
-            className="p-2 rounded text-white hover:bg-blue-700 hover:bg-[#9f6301] cursor-pointer"
+            className="p-2 rounded text-white  hover:bg-[#9f6301] cursor-pointer"
           >
             إنشاء الموضوع
           </button>

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import { LegacyRef, useEffect, useRef, useState } from "react";
 import NavMoshaf from "./NavMoshaf";
@@ -88,7 +89,6 @@ const AudioTwoEnded = ()=>{
     }
 }
 useEffect(()=>{
-    
     if (audioRef1.current) {
         audioRef1.current.src = SoursAudioQarea(AyaNumber-1, SoraNumber, ShaikhSound);
         audioRef2.current.src = SoursAudioQarea(AyaNumber, SoraNumber, ShaikhSound);
@@ -97,7 +97,6 @@ useEffect(()=>{
     audioRef1?.current?.play();
     setAyaClicked(false)
 },[AyaClicked])
-console.log(AyaNumber)
   return (
     <>
     <div className="container">
