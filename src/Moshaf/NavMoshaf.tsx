@@ -9,14 +9,15 @@ import Type from './Data/Quran.json';
 import VolumeSpans from "./VolumeSpans";
 import { Datainterface } from "@/Interfaces/InterFaces";
 
-export default function NafMoshaf({NameSoras,SoraNumber,setSoraNumber,setShaikhSound,setAyaNumber,audioRef,soraData}:
+export default function NafMoshaf({NameSoras,SoraNumber,setSoraNumber,setShaikhSound,setAyaNumber,audioRef1,audioRef2,soraData}:
     {
         NameSoras: string[],
         SoraNumber:number,
         setSoraNumber: React.Dispatch<React.SetStateAction<number>>,
         setShaikhSound: React.Dispatch<React.SetStateAction<string>>,
         setAyaNumber: React.Dispatch<React.SetStateAction<number>>,
-        audioRef: { current: {muted:boolean|undefined,paused?:boolean|undefined,volume:number,play:()=>void,pause:()=>void} },
+        audioRef1: { current: {muted:boolean|undefined,paused?:boolean|undefined,volume:number,play:()=>void,pause:()=>void} },
+        audioRef2: { current: {muted:boolean|undefined,paused?:boolean|undefined,volume:number,play:()=>void,pause:()=>void} },
         soraData: [{sura_name_ar:string}]
     }
 ) {
@@ -34,12 +35,13 @@ export default function NafMoshaf({NameSoras,SoraNumber,setSoraNumber,setShaikhS
     const [Equalizer, setEqualizer] = useState<JSX.Element[]>([]);
 
     const PlayAudioHandeller = () => {
-        if(!audioRef?.current.paused){
-            audioRef?.current.pause()
+        if(!audioRef1?.current.paused || !audioRef2?.current.paused) {
+            audioRef1?.current.pause()
+            audioRef2?.current.pause()
             setPlay(false)
             setMute(false)
         }else{
-            audioRef?.current.play()
+            audioRef1?.current.play()
             setPlay(true)
             setMute(true)
         } 
@@ -54,14 +56,16 @@ if(search.length > 0)
 },[search])
 
 const MuteHandeller =()=>{
-    if (audioRef.current.muted !== undefined) {
-        audioRef.current.muted = true;
+    if (audioRef1.current.muted !== undefined && audioRef1.current.muted !== false) {
+        audioRef1.current.muted = true;
+        audioRef2.current.muted = true;
     }
     setMute(!mute)
 }
 const UnMuteHandeller =()=>{
-    if (audioRef.current.muted === true) {
-        audioRef.current.muted = false;
+    if (audioRef1.current.muted === true && audioRef2.current.muted === true) {
+        audioRef1.current.muted = false; 
+        audioRef2.current.muted = false; 
     }
     setMute(!mute)
   }
@@ -225,7 +229,8 @@ useEffect(() => {
             setMute={setMute}
             MuteHandeller={MuteHandeller}
             UnMuteHandeller={UnMuteHandeller}
-            audioRef={audioRef}
+            audioRef1={audioRef1}
+            audioRef2={audioRef2}
           />
         </div>
         {/*Select Sora*/}

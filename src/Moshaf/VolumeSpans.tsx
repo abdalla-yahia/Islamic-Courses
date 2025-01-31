@@ -7,13 +7,23 @@ export default function VolumeSpans({
   setMute,
   MuteHandeller,
   UnMuteHandeller,
-  audioRef,
+  audioRef1,
+  audioRef2,
 }: {
   mute: boolean;
   setMute: React.Dispatch<React.SetStateAction<boolean>>;
   MuteHandeller: () => void;
   UnMuteHandeller: () => void;
-  audioRef: {
+  audioRef1: {
+    current: {
+      muted: boolean | undefined;
+      paused?: boolean | undefined;
+      volume: number;
+      play: () => void;
+      pause: () => void;
+    };
+  };
+  audioRef2: {
     current: {
       muted: boolean | undefined;
       paused?: boolean | undefined;
@@ -28,8 +38,11 @@ export default function VolumeSpans({
     Elements.forEach((el, i) => {
       el.addEventListener("mouseenter", async () => {
         //Change Volume Audio
-        if (audioRef.current.volume !== undefined) {
-          audioRef.current.volume = parseInt(i as unknown as string) / 10;
+        if (audioRef1.current.volume !== undefined) {
+          audioRef1.current.volume = parseInt(i as unknown as string) / 10;
+        }
+        if (audioRef2.current.volume !== undefined) {
+          audioRef2.current.volume = parseInt(i as unknown as string) / 10;
         }
         Elements.forEach((el2) => {
           el2.classList.remove(style.active);
@@ -39,7 +52,7 @@ export default function VolumeSpans({
         }
       });
     });
-  }, [audioRef]);
+  }, [audioRef1, audioRef2]);
   return (
     <>
       <div className="w-full flex justify-center gap-2 items-end">
