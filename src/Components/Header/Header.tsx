@@ -44,13 +44,14 @@ const Decoade = Jwt.verify(token, process.env.JWT_SECRET_KEY as string) as UserP
       <nav  className={`${amiri.className} relative w-full z-50 bg-[#5b3f11]`}>
         <div className="container  w-full p-2 flex justify-around items-center">
           <Link  href="/" className={'flex justify-center  items-center font-bold text-fuchsia-700'}>
-          <Image className="rounded-lg ml-2" alt="logo" width={50} height={80} src={'/Salaf_Logo.png'}/>
-          <div className="flex flex-col justify-center items-center">
+          <Image className="rounded-lg ml-2" alt="logo" width={280} height={320} src={'/images/Title_Logo.png'}/>
+          {/* <div className="flex flex-col justify-center items-center">
             <h1 className="text-xl font-bold text-gray-200 hover:text-white">الدورات العلمية</h1>
             <h4 className="text-[12px] text-gray-400">للشيخ خالد منصور</h4>
-          </div>
+          </div> */}
           </Link>
             <NavLinks user={Decoade}/>
+            <Image className="rounded-lg ml-2" alt="logo" width={150} height={120} src={'/Salaf_Logo.png'}/>
         </div>
       </nav>
     </>
