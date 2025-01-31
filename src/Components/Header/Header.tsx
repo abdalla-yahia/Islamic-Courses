@@ -26,7 +26,7 @@ export default async function Header() {
           <div className="flex flex-col justify-center items-center">
             
             {/* <h1 className="text-xl font-bold text-fuchsia-700 hover:text-white">الدورات العلمية</h1>
-            <h4 className="text-[12px] text-gray-400">للدعوة السلفية</h4> */}
+            <h4 className="text-[12px] text-gray-400">للشيخ خالد منصور</h4> */}
           </div>
           </Link>
             <NavLinks user={null}/>
@@ -47,7 +47,7 @@ const Decoade = Jwt.verify(token, process.env.JWT_SECRET_KEY as string) as UserP
           <Image className="rounded-lg ml-2" alt="logo" width={50} height={80} src={'/Salaf_Logo.png'}/>
           <div className="flex flex-col justify-center items-center">
             <h1 className="text-xl font-bold text-gray-200 hover:text-white">الدورات العلمية</h1>
-            <h4 className="text-[12px] text-gray-400">للدعوة السلفية</h4>
+            <h4 className="text-[12px] text-gray-400">للشيخ خالد منصور</h4>
           </div>
           </Link>
             <NavLinks user={Decoade}/>
