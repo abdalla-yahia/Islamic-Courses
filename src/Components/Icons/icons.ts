@@ -6,7 +6,7 @@ import { FaBookQuran,FaPeopleGroup,FaFolderTree,FaXmark,FaCloudSunRain,FaXTwitte
 import { GiNewspaper,GiTeacher } from "react-icons/gi";
 import { GrDocumentTest,GrUserAdmin } from "react-icons/gr";
 import { SiLeaderprice } from "react-icons/si";
-import { FaTasks,FaRegEdit,FaRegEye,FaEyeSlash,FaPlay,FaPause,FaCloudMoon,FaCloudMoonRain,FaFacebookF,FaTelegramPlane,FaWhatsapp,FaYoutube,FaUserGraduate } from "react-icons/fa";
+import { FaTasks,FaRegEdit,FaRegEye,FaEyeSlash,FaPlay,FaPause,FaCloudMoon,FaCloudMoonRain,FaFacebookF,FaTelegramPlane,FaWhatsapp,FaYoutube,FaUserGraduate,FaSoundcloud } from "react-icons/fa";
 import { CiTrash } from "react-icons/ci";
 import { RiApps2AddFill,RiStickyNoteAddFill,RiImageAddLine,RiFolderVideoFill } from "react-icons/ri";
 import { TbVariablePlus } from "react-icons/tb";
@@ -82,5 +82,6 @@ export {
     TbRewindForward10,
     SiAudiobookshelf,
     LuFileAudio,
-    RiFolderVideoFill
+    RiFolderVideoFill,
+    FaSoundcloud
 }

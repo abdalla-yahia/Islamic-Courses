@@ -11,7 +11,7 @@ export default function SideBar({setBook}:{setBook:(chapter:Chapter)=>void}) {
   return (
     <section className=" h-full overflow-y-scroll scrollbar-hide bg-gray-400 rounded flex justify-center p-2">
         <div className="w-full flex justify-start items-center flex-col ">
-            <ul className="text-[#472e05] font-bold w-full flex justify-center items-center flex-col">
+            <ul style={{fontSize:'bolder'}} className="text-[#211502] w-full flex justify-center items-center flex-col">
                 {
                     Books?.map((book, index) => {
                         return (
