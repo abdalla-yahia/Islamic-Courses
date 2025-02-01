@@ -47,7 +47,7 @@ export default function RadioQuran() {
     }
   return (
     <div className='w-full bg-[#9f6301] rounded'>
-    <div onClick={()=>{setToggle(!toggle)}} className="w-full scrollbar-hide flex flex-row-reverse justify-between items-center my-1 rounded h-fit px-2 text-slate-100 shadow bg-[#9f6301]">
+    <div onClick={()=>{setToggle(!toggle)}} className="w-full scrollbar-hide flex flex-row-reverse justify-between items-center my-1 rounded h-fit px-2 text-white shadow bg-[#9f6301]">
     <input value={SearchText} onChange={(e)=>{SetSearchText(e.target.value);setToggle(true)}} type="search" name="" id="" className='m-2 px-2 z-40 outline-none rounded bg-[#674d20] text-white w-[70%] self-center' placeholder=' بحث عن إذاعة ....' />
     <div  className="flex relative justify-start items-start w-full" dir='rtl'>
         <span className='flex justify-between items-center w-full'>
