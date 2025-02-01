@@ -9,10 +9,12 @@ export default function GetAllGroups() {
 
     const {AllGroups} = useAppSelector(state => state.group) as unknown as {AllGroups:{Groups:GroupsInterface[]}}
     const {Group} = useAppSelector(state=> state.group)
+    const {UpdateGroup} = useAppSelector(state=> state.group)
+    const {DeleteGroup} = useAppSelector(state=> state.group)
     const dispatch = useAppDispatch()
     useEffect(()=>{
       dispatch(fetchGroups())
-    },[Group,dispatch])
+    },[Group,UpdateGroup,DeleteGroup,dispatch])
     const Groups = AllGroups?.Groups
   return (
     <>

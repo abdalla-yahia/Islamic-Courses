@@ -6,7 +6,7 @@ export default function SubjectInfo({Subject}:{Subject:SubjectsInterface}) {
     <>
      <div>
       <h2 className="text-center flex gap-2 text-xl my-3 font-bold text-gray-900">معلومات عن المادة: 
-        <p className="font-bold text-red-500">{Subject.info} </p>
+        <p className="font-bold text-red-500">{Subject?.info} </p>
         </h2>
       <h2 className="text-center flex gap-2 text-xl my-3 font-bold text-gray-900">الطلاب المشتركين في المادة:
          <p className="font-bold text-slate-500">{Subject?.User?.length} طالب/طالبة</p>
