@@ -12,7 +12,7 @@ import Elrawd_ElMorbeaa_Mansour from './Elrawd_Elmorbea_Mansour.json';
 // import Zad_AlMostaqneaa_Shoaeear from './Zad_Al_Mostaknea_Shoaeer.json';
 // import Mokhtasr_ElKheraky from './Mokhtasar_Elkheraky.json';
 // import Elrahabia from './AlRahbia.json';
-// import Elrahabia_Mansour from './AlRahbia_Mansour.json';
+import Elrahabia_Mansour from './AlRahbia_Mansour.json';
 // import Blogh_Almaram from './Blogh_Almaram.json';
 // import AlKafy from './AlKafy.json';
 // import AlKafy_Waeaaly from './AlKafy_Waele.json';
@@ -31,7 +31,7 @@ export default function Feqh_Hanbalyan(){
             Manhaj_Elsalken_Mansour,
             // Akhsar_Mokhtasarat,
             // Elrahabia,
-            // Elrahabia_Mansour,
+            Elrahabia_Mansour,
             // Manar_Elsabil,
             Elrawd_ElMorbeaa_Mansour,
             // Elrawd_ElMorbeaa,
