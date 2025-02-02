@@ -2,7 +2,6 @@ import Kawaed_Osol_Mansour from './Kawaed_Osol_Feqh_MAnsour.json';
 import Al_Tazkera from './Al_Tazkera_Mansour.json';
 import Al_Warkat_Mansour from './Al_Warkat_Mansour.json';
 // import Alosol_Mn_Alosol from './AlOsol_Mn_Alosol.json';
-import Alosol_Mn_Alosol_Mansour from './AlOsol_Mn_Alosol_Mansour.json';
 // import Ghayat_Elsawl from './Gkayat_Elsawl.json';
 // import Elwadeh from './Elwadeh.json';
 // import Elwadeh_Nabile from './Elwadeh_Nabile.json';
@@ -19,7 +18,6 @@ export default function Osol_Books(){
             Kawaed_Osol_Mansour,
             Al_Tazkera,
             Al_Warkat_Mansour,
-            Alosol_Mn_Alosol_Mansour,
             // Alosol_Mn_Alosol,
             // Ghayat_Elsawl,
             // Elwadeh,

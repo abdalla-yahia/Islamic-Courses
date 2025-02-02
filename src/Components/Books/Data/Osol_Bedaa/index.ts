@@ -1,0 +1,12 @@
+import Meaear_Bedaa from './Meaear_El_Bedaa.json';
+
+export default function Osol_Bedaa_Books(){
+    return{
+        id:11,
+        title:"اصول البدع",
+        description:"اصول البدع",
+        books:[
+            Meaear_Bedaa
+        ]
+    }
+}

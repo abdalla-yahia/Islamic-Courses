@@ -2,6 +2,7 @@ import Sera from './Sera'
 import Feqh_Hanbaly from './FeqhHanbaly'
 import Osol_Feqh from './Osol_Feqh';
 import Osol_Tafseer from './Osol_Tafseer';
+import Osol_Bedaa from './Osol_Bedaa';
 import Aqeda from './Aqeda'
 import Kadaya_Manhagea from './Kadaya_Manhajea';
 import Keywaed_feqh from './Kawaeed_Feqhya';
@@ -14,6 +15,7 @@ export default function BooksData(){
         Sera(),
         Osol_Feqh(),
         Osol_Tafseer(),
+        Osol_Bedaa(),
         Keywaed_feqh(),
         Mostalh_Hadith(),
         Feqh_Hanbaly(),

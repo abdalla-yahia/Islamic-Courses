@@ -32,7 +32,9 @@ export default function BookSoundPage({Book}:{Book:Chapter}) {
                 <div title={`${sound.name}`} style={{backgroundColor:`${ID === sound.id ?'#523301':''}`,color:`${ID === sound.id ?'white':''}`}} onClick={()=>{setAudioUrl(`${Book?.url}/${sound.url}`);SetType(Book?.type);SetBookTitle(Book?.title);setplay(true);SetID(sound.id as number);SetSahapyName(sound.name)}} key={sound.id} className={`w-full sm:w-1/3 md:w-1/4 lg:w-1/5 cursor-pointer shadow-sm line-clamp-1  text-end text-lg p-2 hover:bg-[#895605] hover:text-white bg-[#cc9a49] rounded text-blue-950`}>
                     {   Book?.id === 3?
                         <h1  className='line-clamp-1'>{`( ${sound.id} ) - ${sound.name}`}</h1>:
-                        <h1  className='line-clamp-1'>{sound.name}</h1>
+                        <h1  className='line-clamp-1'>{sound.name}
+                        </h1>
+                        
                     }
                     </div>
                     )
