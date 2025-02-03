@@ -8,7 +8,7 @@ import Akhsar_AL_Mokhtasarat from './Akhsar_Mokhtasarat.json';
 export default function Feqh_Hanbalyan(){
     return {
         id:2,
-        title:"فقه حنبلي",
+        title:"فقه ",
         description:"فقه حنبلي",
         books:[
             Frooa_Feqh_Mansour,
