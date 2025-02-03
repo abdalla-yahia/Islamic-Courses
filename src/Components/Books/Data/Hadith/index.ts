@@ -6,12 +6,14 @@
 // import Sonan_AL_Termezy from './Sonn_Al_Termezy.json';
 // import Sonan_Abe_Daood from './Sonn_Abe_Daood.json';
 // import Motaa_Malek  from './Motaa_Malek.json';
+import AlAdab_Bokhary from './Aladab_Bokhary.json';
 export default function Hadith_Books(){
     return {
         id:8,
         title:"شروح الحديث ",
         description:"شروح الحديث ",
         books:[
+            AlAdab_Bokhary
             // Arbaeen_Nawawya,
             // Ryad_El_Salhin,
             // Motaa_Malek,
