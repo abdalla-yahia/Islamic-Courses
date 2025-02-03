@@ -1,3 +1,4 @@
+import Kawaed_Bedaa from './Kawaed_Bedaa.json'
 import Meaear_Bedaa from './Meaear_El_Bedaa.json';
 
 export default function Osol_Bedaa_Books(){
@@ -6,6 +7,7 @@ export default function Osol_Bedaa_Books(){
         title:"اصول البدع",
         description:"اصول البدع",
         books:[
+            Kawaed_Bedaa,
             Meaear_Bedaa
         ]
     }
