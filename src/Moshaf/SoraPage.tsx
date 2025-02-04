@@ -14,7 +14,7 @@ const amiri = Amiri({
   adjustFontFallback: false,
 });
 
-export default function SoraPage({setNameSoras,setSoraNumber,SoraNumber,AyaNumber,setAyaNumber,setAyatLengthOfSora,setSoraData}:
+export default function SoraPage({setNameSoras,setSoraNumber,setClickedAya,SoraNumber,AyaNumber,setAyaNumber,setAyatLengthOfSora,setSoraData}:
     {
         setNameSoras:React.Dispatch<React.SetStateAction<string>>,
         setSoraNumber:React.Dispatch<React.SetStateAction<number>>,
@@ -22,7 +22,8 @@ export default function SoraPage({setNameSoras,setSoraNumber,SoraNumber,AyaNumbe
         AyaNumber:React.Dispatch<React.SetStateAction<number>>,
         setAyaNumber:React.Dispatch<React.SetStateAction<number>>,
         setAyatLengthOfSora:React.Dispatch<React.SetStateAction<number>>,
-        setSoraData:React.Dispatch<React.SetStateAction<string>>
+        setSoraData:React.Dispatch<React.SetStateAction<string>>,
+        setClickedAya:React.Dispatch<React.SetStateAction<number>>
     }
 ) {
     const [sora, setSora] = useState<Datainterface[]>([]);
@@ -65,10 +66,9 @@ export default function SoraPage({setNameSoras,setSoraNumber,SoraNumber,AyaNumbe
     useEffect(()=>{
         const Ayat = document.querySelectorAll('.ayat')
         window.scrollTo({
-            top:((Ayat[AyaNumber as unknown as number] as unknown as HTMLElement)?.offsetTop)-250,
+            top:((Ayat[AyaNumber as unknown as number - 2] as unknown as HTMLElement)?.offsetTop)-250,
             behavior:'smooth'
         })
-
     },[AyaNumber,SoraNumber])
     
   return (
@@ -117,7 +117,7 @@ export default function SoraPage({setNameSoras,setSoraNumber,SoraNumber,AyaNumbe
                                       )?.[0]?.aya_tafseer as string)
                                     }
                                     key={index+2000+SoraNumber}
-                                    onClick={() => {setAyaNumber(el.aya_no)}}
+                                    onClick={() => {setAyaNumber(el.aya_no);setClickedAya(el.aya_no)}}
                                     className={`${( AyaNumber as unknown as number) == index+2 && style.active_Aya} ayat hover:text-blue-400  hover:drop-shadow-lg hover:text-2xl hover:font-bold cursor-pointer rounded inline text-justify `}
                                   >
                                     {" "}

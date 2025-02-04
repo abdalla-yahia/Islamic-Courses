@@ -9,24 +9,28 @@ export default function MoshafPage() {
     const [NameSoras, setNameSoras] = useState([]);
     const [SoraNumber, setSoraNumber] = useState(1);
     const [AyaNumber, setAyaNumber] = useState(1);
-    // const [FirstPlay, setFirstPlay] = useState(true);
+    // const [ClickedAya, setClickedAya] = useState(true);
     const [ShaikhSound, setShaikhSound] = useState('');
     const [soraData, setSoraData] = useState('');
     const [AyatLengthOfSora, setAyatLengthOfSora] = useState(0);
+
     //Reference to the audio Elements
-    const audioRef1 = useRef<HTMLAudioElement>() as unknown as { current: {muted:boolean|undefined,volume:number,play:()=>void,pause:()=>void,src:string} }
-    const audioRef2 = useRef<HTMLAudioElement>() as unknown as { current: {muted:boolean|undefined,volume:number,play:()=>void,pause:()=>void,src:string} }
+    const audioRef1 = useRef<HTMLAudioElement>() as unknown as { current: {muted:boolean|undefined,volume:number,play:()=>void,pause:()=>void,paused:boolean,src:string} }
+    const audioRef2 = useRef<HTMLAudioElement>() as unknown as { current: {muted:boolean|undefined,volume:number,play:()=>void,pause:()=>void,paused:boolean,src:string} }
     const audioBasmalaRef = useRef<HTMLAudioElement>() as unknown as {current: {muted: boolean | undefined;volume: number;play: () => void;pause: () => void}};
     // On The First Time Playing
     useEffect(()=>{
-        audioRef1.current.src = SoursAudioQarea(AyaNumber, SoraNumber, ShaikhSound);
+      if(AyaNumber > 1){
+        setAyaNumber(AyaNumber - 1)
+      }
+        audioRef1.current.src = SoursAudioQarea(AyaNumber - 1, SoraNumber, ShaikhSound);
         audioRef1.current.play();
     },[ShaikhSound, SoraNumber])
     // Plus One To Aya Number
     const PlusAya = ()=>{
-    if((AyaNumber < AyatLengthOfSora)){
+    if((AyaNumber < AyatLengthOfSora +1)){
         (setAyaNumber(AyaNumber + 1))
-    }else if (AyaNumber >= AyatLengthOfSora){
+    }else if (AyaNumber >= AyatLengthOfSora +1){
         if(SoraNumber !== 114){
             setSoraNumber(SoraNumber + 1)
             setAyaNumber(1)
@@ -69,8 +73,23 @@ export default function MoshafPage() {
     // On Second Audio End
     const AudioTwoEnded = ()=>{
     audioRef1?.current?.play();
-        PlusAya();
-    }
+    PlusAya();
+  }
+   // On Clicked Of Aya
+  const setClickedAya = (e:number) => {
+          audioRef1?.current.pause()
+          if (audioRef1.current) {
+            audioRef1.current.src = '';
+          }
+          audioRef2?.current.pause()
+          if (audioRef2.current) {
+            audioRef2.current.src = '';
+          }
+          setAyaNumber(e)
+          audioRef1.current.src = SoursAudioQarea(e, SoraNumber, ShaikhSound);
+          audioRef2.current.src = SoursAudioQarea(e+1, SoraNumber, ShaikhSound);
+          audioRef1?.current?.play();
+  } 
 
   return (
     <>
@@ -84,7 +103,7 @@ export default function MoshafPage() {
         </div>
         <div className="row">
             <div className="col-md-12">
-                <SoraPage setNameSoras={setNameSoras as unknown as React.Dispatch<React.SetStateAction<string>>} setSoraNumber={setSoraNumber}  SoraNumber={SoraNumber} AyaNumber={AyaNumber as unknown as React.Dispatch<React.SetStateAction<number>>} setAyaNumber={setAyaNumber} setAyatLengthOfSora={setAyatLengthOfSora} setSoraData={setSoraData}/>
+                <SoraPage setNameSoras={setNameSoras as unknown as React.Dispatch<React.SetStateAction<string>>} setSoraNumber={setSoraNumber} setClickedAya={setClickedAya as unknown as React.Dispatch<React.SetStateAction<number>>} SoraNumber={SoraNumber} AyaNumber={AyaNumber as unknown as React.Dispatch<React.SetStateAction<number>>} setAyaNumber={setAyaNumber} setAyatLengthOfSora={setAyatLengthOfSora} setSoraData={setSoraData}/>
                 <audio onEnded={()=>AudioBasmallaEnded()} className="audio_Player hidden" ref={audioBasmalaRef as unknown as LegacyRef<HTMLAudioElement>}  src={'/Audios/basmalla.mp3'} controls autoPlay >
                     متصفحك لا يدعم  هذا النوع من الصوتيات
                 </audio>
