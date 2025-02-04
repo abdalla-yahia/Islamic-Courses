@@ -116,7 +116,7 @@ export default function SoraPage({setNameSoras,setSoraNumber,setClickedAya,SoraN
                                         (ele) => ele?.sura_no === SoraNumber && ele?.aya_no === index + 1
                                       )?.[0]?.aya_tafseer as string)
                                     }
-                                    key={index+2000+SoraNumber}
+                                    key={index}
                                     onClick={() => {setAyaNumber(el.aya_no);setClickedAya(el.aya_no)}}
                                     className={`${( AyaNumber as unknown as number) == index+2 && style.active_Aya} ayat hover:text-blue-400  hover:drop-shadow-lg hover:text-2xl hover:font-bold cursor-pointer rounded inline text-justify `}
                                   >

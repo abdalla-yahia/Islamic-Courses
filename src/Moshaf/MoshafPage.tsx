@@ -17,13 +17,13 @@ export default function MoshafPage() {
     //Reference to the audio Elements
     const audioRef1 = useRef<HTMLAudioElement>() as unknown as { current: {muted:boolean|undefined,volume:number,play:()=>void,pause:()=>void,paused:boolean,src:string} }
     const audioRef2 = useRef<HTMLAudioElement>() as unknown as { current: {muted:boolean|undefined,volume:number,play:()=>void,pause:()=>void,paused:boolean,src:string} }
-    const audioBasmalaRef = useRef<HTMLAudioElement>() as unknown as {current: {muted: boolean | undefined;volume: number;play: () => void;pause: () => void}};
     // On The First Time Playing
     useEffect(()=>{
       if(AyaNumber > 1){
-        audioRef1.current.src = SoursAudioQarea(AyaNumber - 1, SoraNumber, ShaikhSound);
-      }else audioRef1.current.src = SoursAudioQarea(AyaNumber, SoraNumber, ShaikhSound);
-        audioRef1.current.play();
+        setClickedAya(AyaNumber - 1)
+      }else{
+        setClickedAya(1)
+        }
     },[ShaikhSound, SoraNumber])
     // Plus One To Aya Number
     const PlusAya = ()=>{
@@ -41,13 +41,7 @@ export default function MoshafPage() {
     localStorage.setItem('Islamic_Course_Sora_Number',SoraNumber as unknown as string)
     localStorage.setItem('Islamic_Course_Aya_Number',AyaNumber as unknown as string)
     }
-    // On Basmall Audio End
-    const AudioBasmallaEnded = () => { 
-        audioRef1?.current?.play();
-        if (audioRef1.current) {
-            audioRef1.current.play()
-        }
-    }
+
     // On First Audio Play
     const AudioOnePlay = ()=>{
       if (audioRef2.current) {
@@ -103,9 +97,6 @@ export default function MoshafPage() {
         <div className="row">
             <div className="col-md-12">
                 <SoraPage setNameSoras={setNameSoras as unknown as React.Dispatch<React.SetStateAction<string>>} setSoraNumber={setSoraNumber} setClickedAya={setClickedAya as unknown as React.Dispatch<React.SetStateAction<number>>} SoraNumber={SoraNumber} AyaNumber={AyaNumber as unknown as React.Dispatch<React.SetStateAction<number>>} setAyaNumber={setAyaNumber} setAyatLengthOfSora={setAyatLengthOfSora} setSoraData={setSoraData}/>
-                <audio onEnded={()=>AudioBasmallaEnded()} className="audio_Player hidden" ref={audioBasmalaRef as unknown as LegacyRef<HTMLAudioElement>}  src={'/Audios/basmalla.mp3'} controls autoPlay >
-                    متصفحك لا يدعم  هذا النوع من الصوتيات
-                </audio>
                 <audio onPlay={()=>AudioOnePlay()} onEnded={()=>AudioOneEnded()} className="audio_Player hidden " ref={audioRef1 as unknown as LegacyRef<HTMLAudioElement>}   controls autoPlay >
                     متصفحك لا يدعم  هذا النوع من الصوتيات
                 </audio>
