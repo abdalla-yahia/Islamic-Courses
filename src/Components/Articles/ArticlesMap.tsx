@@ -28,7 +28,7 @@ export default function ArticlesMap({ Articles }: { Articles: Articles[] }) {
               className="relative"
             >
               <Accordion.Header className="flex justify-between items-center ">
-                <span>{Article?.title} </span>
+                <span>{`(${index +1}) -- `} {Article?.title} </span>
               </Accordion.Header>
               <Accordion.Body>
                 <Link

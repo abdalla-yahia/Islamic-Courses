@@ -23,6 +23,9 @@ try {
             access:true,
             createdAt:true,
             updatedAt:true,
+        },
+        orderBy:{
+            createdAt:"desc",
         }
     });
     if(!Articles){
