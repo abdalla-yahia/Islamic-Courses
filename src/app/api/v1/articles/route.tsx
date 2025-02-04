@@ -25,13 +25,15 @@ try {
             updatedAt:true,
         }
     });
-    
-    if(Articles?.filter(e=>e.access === 'privite').length){
-        const cookie = request.cookies.get('JwtToken')
-        if(!cookie){
-           const publicArticles =  Articles?.filter(e=>e.access === 'public')
-            return NextResponse.json({message:'You Are Not Log In',data:publicArticles,length:publicArticles?.length,status:200},{status:200})
-        }
+    if(!Articles){
+        return NextResponse.json({message:'No Articles Found'}, {status:404})
+    }
+    const cookie = request.cookies.get('JwtToken')
+    if(!cookie){
+        const publicArticles =  Articles?.filter(e=>e.access === 'public')
+        return NextResponse.json({message:'You Are Not Log In',Articles:publicArticles,length:publicArticles?.length,status:200},{status:200})
+    }
+    // if(Articles?.filter(e=>e.access === 'privite').length){
         const token =  cookie?.value;
         const SecretKey = process.env.JWT_SECRET_KEY as string
         const UserFromToken = Jwt.verify(token,SecretKey) as UserPayload
@@ -39,16 +41,14 @@ try {
             return NextResponse.json({message:'User Not Found'},{status:404})
         }
         
-        if(!Articles){
-            return NextResponse.json({message:'Article Not Found'},{status:404})
-            }
-            return NextResponse.json({message:'Success To Get Article',data:Articles,length:Articles.length,status:200},{status:200})
-        }
-    if(!Articles){
-        return NextResponse.json({message:'No Articles Found'}, {status:404})
-    }
+        // if(!Articles){
+        //     return NextResponse.json({message:'Article Not Found'},{status:404})
+        //     }
+            return NextResponse.json({message:'Success To Get Article',Articles,length:Articles.length,status:200},{status:200})
+        // }
+    
 
-    return NextResponse.json({message:'Successfuly To Get All Articles',length:Articles.length,Articles,status:200},{status:200});
+    // return NextResponse.json({message:'Successfuly To Get All Articles',length:Articles.length,data:Articles,status:200},{status:200});
 } catch (error) {
     return NextResponse.json({message:error,status:400},{status:400})
 }

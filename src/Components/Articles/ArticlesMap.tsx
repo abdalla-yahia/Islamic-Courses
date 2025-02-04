@@ -39,6 +39,7 @@ export default function ArticlesMap({ Articles }: { Articles: Articles[] }) {
                   <h1 className="text-3xl mb-2 text-sh"> {Article?.title}</h1>
                   <div className="text-sm text-gray-500">
                     {Article?.access === "public" ? "عام" : "خاص"}
+                    <h2 className="text-red-500 text-xl font-bold">إضغط لقراءة المقال .....</h2>
                   </div>
                 </Link>
 
