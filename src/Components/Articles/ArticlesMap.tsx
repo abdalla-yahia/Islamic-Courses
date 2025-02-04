@@ -20,15 +20,15 @@ export default function ArticlesMap({ Articles }: { Articles: Articles[] }) {
   } = ArticleHook();
   return (
     <>
-      <Accordion defaultActiveKey="0" className="w-full h-[540px] overflow-y-scroll scrollbar-hide">
+      <Accordion defaultActiveKey="0" className="w-full h-[680px] md:h-[540px] lg:h-[540px] overflow-y-scroll scrollbar-hide">
         {Articles?.map((Article, index: number) => (
           <>
             <Accordion.Item
               eventKey={index as unknown as string}
               className="relative"
             >
-              <Accordion.Header className="flex justify-between items-center ">
-                <span>{`(${index +1}) -- `} {Article?.title} </span>
+              <Accordion.Header className="flex justify-start items-center ">
+                <span className="line-clamp-1 text-end">{`(${index +1}) -- `} {Article?.title} </span>
               </Accordion.Header>
               <Accordion.Body>
                 <Link
