@@ -1,4 +1,3 @@
-// import Alsaeedya from './Alsaeedya.json';
 import Alsaeedya_Mansour from './Alsaeedya_Mansour.json';
 
 export default function Kawaed_Books(){
@@ -7,7 +6,6 @@ export default function Kawaed_Books(){
         title:"قواعد الفقه ",
         description:"قواعد الفقه ",
         books:[
-            // Alsaeedya,
             Alsaeedya_Mansour
         ]
     }
