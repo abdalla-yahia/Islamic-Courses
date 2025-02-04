@@ -16,7 +16,7 @@ export default function NavLinks({user}:{user:UserPayload | null}) {
            <IoMdClose onClick={()=>setToggle(!toggle)} className="text-3xl lg:hidden block cursor-pointer"/>:
            <IoIosMenu onClick={()=>setToggle(!toggle)} className="text-3xl lg:hidden block cursor-pointer"/>
             }
-          <div >
+          <div className='h-fit'>
           <div className={`${style.toggleDown} `}
           style={{
             clipPath:toggle && 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' || ''
@@ -24,12 +24,12 @@ export default function NavLinks({user}:{user:UserPayload | null}) {
           >
             
             <ul className='  rounded p-2 flex flex-col lg:flex-row'>
-              <Link onClick={()=>setToggle(false)} className={'font-bold text-white my-2 mx-3 hover:text-blue-700 '} href="/">الرئيسية</Link>
-              <Link onClick={()=>setToggle(false)} className={'font-bold text-white my-2 mx-3 hover:text-blue-700 '} href="/moshaf">المصحف</Link>
-              <Link onClick={()=>setToggle(false)} className={'font-bold text-white my-2 mx-3 hover:text-blue-700 '} href="/booksound">المكتبة</Link>
-              <Link onClick={()=>setToggle(false)} className={'font-bold text-white my-2 mx-3 hover:text-blue-700 '} href="/articles">المقالات</Link>
-              <Link onClick={()=>setToggle(false)} className={'font-bold text-white my-2 mx-3 hover:text-blue-700 '} href="/about">من نحن ؟</Link>
-              <Link onClick={()=>setToggle(false)} className={'font-bold text-white my-2 mx-3 hover:text-blue-700 '} href="/contact">تواصل معنا</Link>
+              <Link onClick={()=>setToggle(false)} className={'font-bold text-white my-2 mx-3 '} href="/">الرئيسية</Link>
+              <Link onClick={()=>setToggle(false)} className={'font-bold text-white my-2 mx-3 '} href="/moshaf">المصحف</Link>
+              <Link onClick={()=>setToggle(false)} className={'font-bold text-white my-2 mx-3 '} href="/booksound">المكتبة</Link>
+              <Link onClick={()=>setToggle(false)} className={'font-bold text-white my-2 mx-3 '} href="/articles">المقالات</Link>
+              <Link onClick={()=>setToggle(false)} className={'font-bold text-white my-2 mx-3 '} href="/about">من نحن ؟</Link>
+              <Link onClick={()=>setToggle(false)} className={'font-bold text-white my-2 mx-3 '} href="/contact">تواصل معنا</Link>
               
             </ul>
 
