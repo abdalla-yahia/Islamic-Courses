@@ -14,11 +14,10 @@ const amiri = Amiri({
   adjustFontFallback: false,
 });
 
-export default function SoraPage({setNameSoras,setSoraNumber,setAyaClicked,SoraNumber,AyaNumber,setAyaNumber,setAyatLengthOfSora,setSoraData}:
+export default function SoraPage({setNameSoras,setSoraNumber,SoraNumber,AyaNumber,setAyaNumber,setAyatLengthOfSora,setSoraData}:
     {
         setNameSoras:React.Dispatch<React.SetStateAction<string>>,
         setSoraNumber:React.Dispatch<React.SetStateAction<number>>,
-        setAyaClicked:React.Dispatch<React.SetStateAction<boolean>>,
         SoraNumber:number,
         AyaNumber:React.Dispatch<React.SetStateAction<number>>,
         setAyaNumber:React.Dispatch<React.SetStateAction<number>>,
@@ -118,8 +117,8 @@ export default function SoraPage({setNameSoras,setSoraNumber,setAyaClicked,SoraN
                                       )?.[0]?.aya_tafseer as string)
                                     }
                                     key={index+2000+SoraNumber}
-                                    onClick={() => {setAyaNumber(el.aya_no);setAyaClicked(true)}}
-                                    className={`${( AyaNumber as unknown as number) == index+3 && style.active_Aya} ayat hover:text-blue-400  hover:drop-shadow-lg hover:text-2xl hover:font-bold cursor-pointer rounded inline text-justify `}
+                                    onClick={() => {setAyaNumber(el.aya_no)}}
+                                    className={`${( AyaNumber as unknown as number) == index+2 && style.active_Aya} ayat hover:text-blue-400  hover:drop-shadow-lg hover:text-2xl hover:font-bold cursor-pointer rounded inline text-justify `}
                                   >
                                     {" "}
                                     {el?.aya_text?.slice(0, -2)}
