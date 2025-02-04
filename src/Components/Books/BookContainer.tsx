@@ -1,6 +1,6 @@
 import React from "react";
 import FullTitle from "@/Utils/FullTitle";
-import * as icon from "@/Components/Icons/icons";
+// import * as icon from "@/Components/Icons/icons";
 import BookInfo from "./BookInfo";
 import { Chapter } from "@/Interfaces/InterFaces";
 import BookSoundPage from "@/Components/Books/BookSoundPage";
