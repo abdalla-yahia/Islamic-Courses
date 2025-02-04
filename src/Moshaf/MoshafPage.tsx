@@ -21,9 +21,8 @@ export default function MoshafPage() {
     // On The First Time Playing
     useEffect(()=>{
       if(AyaNumber > 1){
-        setAyaNumber(AyaNumber - 1)
-      }
         audioRef1.current.src = SoursAudioQarea(AyaNumber - 1, SoraNumber, ShaikhSound);
+      }else audioRef1.current.src = SoursAudioQarea(AyaNumber, SoraNumber, ShaikhSound);
         audioRef1.current.play();
     },[ShaikhSound, SoraNumber])
     // Plus One To Aya Number
@@ -33,9 +32,9 @@ export default function MoshafPage() {
     }else if (AyaNumber >= AyatLengthOfSora +1){
         if(SoraNumber !== 114){
             setSoraNumber(SoraNumber + 1)
-            setAyaNumber(1)
+            setClickedAya(1)
         }else if(SoraNumber === 114){
-            setAyaNumber(1)
+            setClickedAya(1)
             setSoraNumber(1)
         }
     }
