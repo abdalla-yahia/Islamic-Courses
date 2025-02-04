@@ -44,14 +44,7 @@ try {
             return NextResponse.json({message:'User Not Found'},{status:404})
         }
         
-        // if(!Articles){
-        //     return NextResponse.json({message:'Article Not Found'},{status:404})
-        //     }
-            return NextResponse.json({message:'Success To Get Article',Articles,length:Articles.length,status:200},{status:200})
-        // }
-    
-
-    // return NextResponse.json({message:'Successfuly To Get All Articles',length:Articles.length,data:Articles,status:200},{status:200});
+    return NextResponse.json({message:'Successfuly To Get All Articles',length:Articles?.length,Articles:Articles,status:200},{status:200});
 } catch (error) {
     return NextResponse.json({message:error,status:400},{status:400})
 }

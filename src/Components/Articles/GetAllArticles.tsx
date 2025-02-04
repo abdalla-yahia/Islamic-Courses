@@ -16,10 +16,10 @@ export default function GetAllArticles({SearchText}:{SearchText:string}) {
     useEffect(()=>{
       dispatch(fetchArticles())
     },[Article,dispatch,UpdateArticle,DeleteArticle])
-    const Articles =SearchText !== ''? AllArticles?.Articles?.filter(article=>article?.title?.includes(SearchText)):AllArticles?.Articles;
+    const Articles = SearchText !== ''? (AllArticles?.Articles?.filter(article=>article?.title?.includes(SearchText))):AllArticles?.Articles;
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     UserLogedData?.role === 'USER' ? Articles?.filter((e: { access: string })=>e?.access === 'public') : Articles
-  return (
+    return (
     <>
     <ArticlesMap Articles ={Articles}/>
     </>
