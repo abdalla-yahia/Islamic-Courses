@@ -20,7 +20,7 @@ export default function ArticlesMap({ Articles }: { Articles: Articles[] }) {
   } = ArticleHook();
   return (
     <>
-      <Accordion defaultActiveKey="0" className="w-full h-64">
+      <Accordion defaultActiveKey="0" className="w-full h-[540px] overflow-y-scroll scrollbar-hide">
         {Articles?.map((Article, index: number) => (
           <>
             <Accordion.Item

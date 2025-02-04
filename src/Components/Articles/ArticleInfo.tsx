@@ -22,7 +22,7 @@ export default function ArticleInfo({Article}:{Article:Articles}) {
         </p>
         </h2>
 
-      <h2 className="text-center  flex gap-2 text-sm  my-3 font-bold text-gray-900"> تاريخ إنشاء المقال: 
+      <h2 className="text-center  flex gap-2 text-sm  my-3 font-bold text-gray-900"> تاريخ نشر المقال: 
         <p className="font-bold text-fuchsia-800">{DateConvert(Article?.createdAt)} </p>
         </h2>
 

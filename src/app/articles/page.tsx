@@ -4,7 +4,7 @@ import FullTitle from "@/Utils/FullTitle";
 export default function ArticlesPage() {
   return (
     <>
-    <FullTitle F_Title={'مقالات الشيخ خالد منصور '}/>
+    <FullTitle F_Title={'مقالات الشيخ الدكتور خالد منصور '}/>
     <GetAllArticles />
     </>
   )
