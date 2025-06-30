@@ -15,7 +15,7 @@ export default function BookSoundPage({Book}:{Book:Chapter}) {
  return (
     <>
     <div className='w-full flex flex-col justify-center items-center'>
-    <div className='w-full flex justify-center items-center h-[300px] md:w-[90%] lg:w-[80%]'>
+    <div className={`w-full flex justify-center items-center ${Book?.audio_type !== 'mp3' && audioUrl !== undefined && 'h-[300px]'} md:w-[90%] lg:w-[80%]`}>
     {
         Book?.audio_type !== 'mp3' && audioUrl !== undefined && 
         <iframe  className='bottom-0 left-6 rounded-md' width='100%' height='100%' src={`${audioUrl}?autoplay=1&loop=1`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
@@ -23,7 +23,7 @@ export default function BookSoundPage({Book}:{Book:Chapter}) {
     </div>
     <input onChange={(e)=>SetSearch(e.target.value)} type="search" name="" id="" className='w-full rounded outline-none border-none my-2 p-1 text-gray-900' placeholder={`${Book?.search}....`}/>
     </div>
-    <div className={`w-full flex flex-wrap  justify-evenly items-start mt-3 gap-1 h-[200vh] overflow-y-scroll scrollbar-hide`}>
+    <div className={`w-full flex flex-wrap  justify-evenly items-start mt-1 gap-1 h-[100vh] overflow-y-scroll scrollbar-hide`}>
     {
         (Search === '' || Search === null ) ?
         
@@ -42,7 +42,7 @@ export default function BookSoundPage({Book}:{Book:Chapter}) {
                 )
                     :
                     (
-                        <>
+                        <div className='w-full flex flex-wrap  justify-start items-start'>
                         <p className=' w-full text-blue-950'>عدد نتائج البحث : <span className='text-blue-600'>{Book?.data?.filter(item=>item.name.includes(Search))?.length} </span>نتيجة</p>
                         {Book?.data?.filter(item=>item.name.includes(Search)).sort((a, b) =>a[SORT] > b[SORT] ? 1 : -1).map((sound) => {
                             return (
@@ -54,7 +54,7 @@ export default function BookSoundPage({Book}:{Book:Chapter}) {
                                     </div>
                                     )
                                 })}
-                                </>
+                                </div>
                     )
     }
     </div>
