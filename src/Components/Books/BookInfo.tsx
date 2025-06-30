@@ -8,10 +8,8 @@ export default function BookInfo({Book}:{Book:Chapter}) {
 
     useEffect(()=>{
         document.title = `شرح كتاب ${Book?.title} للشيخ خالد منصور`;
-        const metaDescription = document.querySelector('meta:[name="description"]');
-        if (metaDescription) {
-            metaDescription.setAttribute('content', `شرح كتاب ${Book?.description} للشيخ ${Book?.author} ${Book?.publisher} - عدد المواد ${Book?.audio_count} مادة`);
-        }
+        document.querySelector('meta[name="description"]')?.setAttribute('content', `شرح كتاب ${Book?.description} للشيخ ${Book?.author} ${Book?.publisher} - عدد المواد ${Book?.audio_count} مادة`);
+        
     }, [Book?.title, Book?.description, Book?.author, Book?.publisher, Book?.audio_count])
 
   return (
