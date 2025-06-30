@@ -46,6 +46,14 @@ export default function NafMoshaf({NameSoras,SoraNumber,setSoraNumber,setShaikhS
             setMute(true)
         } 
     }  
+    //Meta DAta Title And Description
+        useEffect(()=>{
+        document.title = `سورة ${nameSora} بصوت القارىء ${nameShaikh}`;
+        const metaDescription = document.querySelector('meta[name="description"]');
+        if (metaDescription) {
+            metaDescription.setAttribute('content', `سورة ${nameSora} للقارىء الشيخ ${nameShaikh}  عدد أياتها ${LengthAyat} أية - التنزيل ${TypeSora} `);
+        }
+    }, [nameSora, nameShaikh, LengthAyat,TypeSora])
 
 useEffect(()=>{
 if (search?.length > 3) {

@@ -24,12 +24,12 @@ export default function NavLinks({user}:{user:UserPayload | null}) {
           >
             
             <ul className='  rounded p-2 flex flex-col lg:flex-row'>
-              <Link onClick={()=>setToggle(false)} className={'font-bold text-white my-2 mx-3 '} href="/">الرئيسية</Link>
-              <Link onClick={()=>setToggle(false)} className={'font-bold text-white my-2 mx-3 '} href="/moshaf">المصحف</Link>
-              <Link onClick={()=>setToggle(false)} className={'font-bold text-white my-2 mx-3 '} href="/booksound">المكتبة</Link>
-              <Link onClick={()=>setToggle(false)} className={'font-bold text-white my-2 mx-3 '} href="/articles">المقالات</Link>
-              <Link onClick={()=>setToggle(false)} className={'font-bold text-white my-2 mx-3 '} href="/about">من نحن ؟</Link>
-              <Link onClick={()=>setToggle(false)} className={'font-bold text-white my-2 mx-3 '} href="/contact">تواصل معنا</Link>
+              <Link onClick={()=>setToggle(false)} className={'text-lg text-gray-50 my-2 mx-3 '} href="/">الرئيسية</Link>
+              <Link onClick={()=>setToggle(false)} className={'text-lg text-gray-50 my-2 mx-3 '} href="/moshaf">المصحف</Link>
+              <Link onClick={()=>setToggle(false)} className={'text-lg text-gray-50 my-2 mx-3 '} href="/booksound">المكتبة</Link>
+              <Link onClick={()=>setToggle(false)} className={'text-lg text-gray-50 my-2 mx-3 '} href="/articles">المقالات</Link>
+              <Link onClick={()=>setToggle(false)} className={'text-lg text-gray-50 my-2 mx-3 '} href="/about">من نحن ؟</Link>
+              <Link onClick={()=>setToggle(false)} className={'text-lg text-gray-50 my-2 mx-3 '} href="/contact">تواصل معنا</Link>
               
             </ul>
 

@@ -34,7 +34,9 @@ export default function Footer() {
             </ul>
         </div>
         <hr className="my-0 border-white  sm:mx-auto  lg:my-8" />
-        <span className="block max-w-full text-sm text-gray-200 sm:text-center">جميع الحقوق محفوظة  ©  {new Date().getFullYear()} <Link href="mailto:abdalla_y2007@yahoo.com/" className="hover:underline text-orange-600 font-bold text-lg">موقع فضيلة الشيخ خالد منصور™ </Link> </span>
+        <span className="block max-w-full text-sm text-gray-200 sm:text-center">جميع الحقوق محفوظة  ©  {new Date().getFullYear()} <Link href="mailto:abdalla_y2007@yahoo.com/" className="hover:underline text-gray-900 font-bold text-lg">موقع فضيلة الشيخ خالد منصور™ </Link> </span>
+      <br />
+        <span className="block max-w-full text-sm text-gray-200 sm:text-center">تم تصميم وتطوير الموقع بواسطة  <Link href="https://www.linkedin.com/in/abdalla-yahia/" target="_blank" className="hover:underline text-blue-700 font-bold text-lg">م / عبدالله يحيى <span className=" max-w-full text-sm text-gray-200 sm:text-center">جميع الحقوق محفوظة  ©</span></Link> </span>
     </div>
 </footer>
 

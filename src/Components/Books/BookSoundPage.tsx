@@ -15,7 +15,7 @@ export default function BookSoundPage({Book}:{Book:Chapter}) {
  return (
     <>
     <div className='w-full flex flex-col justify-center items-center'>
-    <div className='w-full flex justify-center items-center md:w-[70%] lg:w-[50%]'>
+    <div className='w-full flex justify-center items-center h-[300px] md:w-[90%] lg:w-[80%]'>
     {
         Book?.audio_type !== 'mp3' && audioUrl !== undefined && 
         <iframe  className='bottom-0 left-6 rounded-md' width='100%' height='100%' src={`${audioUrl}?autoplay=1&loop=1`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
