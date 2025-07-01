@@ -94,7 +94,7 @@ export const metadata: Metadata = {
     title: "الموقع الرسمي لفضيلة الشيخ الدكتور خالد منصور حفظه الله",
   },
   verification: {
-    google: "google-site-verification=eU56Ry874H-YcWDi7ZL_yG6G9GbPf-PKIzrXbBFAs_I",
+    google: "google-site-verification=eU56Ry874H-YcWDi7ZL_yG6G9GbPf-PKIzrXbBFA",
   }
   
 };
