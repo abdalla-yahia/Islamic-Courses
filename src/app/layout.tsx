@@ -17,8 +17,87 @@ const amiri = Amiri({
 });
 
 export const metadata: Metadata = {
-  title: "الدورات العلمية للشيخ خالد منصور",
+  title: "الموقع الرسمي لفضيلة الشيخ الدكتور خالد منصور حفظه الله",
   description: "الموقع الرسمي لفضيلة الشيخ الدكتور خالد منصور حفظه الله , يحتوي على المنهج العلمي لكل طالب علم يسعى إلى الإرتقاء في  سلم طلب العلم الشرعي وفق منهج علمي على الكتاب والسنة",
+  openGraph: {
+    title: "الموقع الرسمي لفضيلة الشيخ الدكتور خالد منصور حفظه الله",
+    description: "الموقع الرسمي لفضيلة الشيخ الدكتور خالد منصور حفظه الله , يحتوي على المنهج العلمي لكل طالب علم يسعى إلى الإرتقاء في  سلم طلب العلم الشرعي وفق منهج علمي على الكتاب والسنة",
+    images: [
+      {
+        url: "/Salaf_Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Salaf Logo",
+      },
+    ],
+    url: "https://khaled-mansour.vercel.app/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "الموقع الرسمي لفضيلة الشيخ الدكتور خالد منصور حفظه الله",
+    description: "الموقع الرسمي لفضيلة الشيخ الدكتور خالد منصور حفظه الله , يحتوي على المنهج العلمي لكل طالب علم يسعى إلى الإرتقاء في  سلم طلب العلم الشرعي وفق منهج علمي على الكتاب والسنة",
+    images: ["/images/Title_Logo.png"],
+  },
+  keywords: [
+    "الشيخ خالد منصور",
+    "المنهج العلمي",
+    "طلب العلم الشرعي",
+    "الكتاب والسنة",
+    "الدكتور خالد منصور",
+    "علوم شرعية",
+    "تعليم إسلامي",
+    "الدورات العلمية",
+    "منهج طالب العلم الشرعي"
+  ],
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+    shortcut: "/shortcut-icon.png",
+  },
+  metadataBase: new URL("https://khaled-mansour.vercel.app/"),
+  themeColor: "#ffffff",
+  manifest: "/manifest.json",
+  applicationName: "الموقع الرسمي لفضيلة الشيخ الدكتور خالد منصور حفظه الله",
+  authors: [
+    {
+      name: "م/ عبدالله يحيى",
+      url: "https://www.linkedin.com/in/abdalla-yahia",
+    },
+  ],
+  creator: "م/ عبدالله يحيى",
+  publisher: "م/ عبدالله يحيى",
+  colorScheme: "light dark",
+  formatDetection: {
+    telephone: false,
+    address: false,
+    email: false,
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
+  alternates: {
+    canonical: "https://khaled-mansour.vercel.app/",
+    languages: {
+      "ar": "/ar",
+      "en": "/en",
+    }
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "الموقع الرسمي لفضيلة الشيخ الدكتور خالد منصور حفظه الله",
+  },
+  verification: {
+    google: "google-site-verification=eU56Ry874H-YcWDi7ZL_yG6G9GbPf-PKIzrXbBFAs_I",
+  }
+  
 };
 
 export default function RootLayout({
@@ -28,6 +107,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ar" dir="rtl">
+   
       <body >
       <StoreProvider>
         <Header />
