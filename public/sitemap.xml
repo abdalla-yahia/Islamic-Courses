@@ -37,31 +37,4 @@
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
-  <!-- Uncomment the following if you want to include login-related pages -->
-  <!--
-  <url>
-    <loc>https://khaled-mansour.vercel.app/login</loc>
-    <lastmod>2025-07-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://khaled-mansour.vercel.app/forgetpassword</loc>
-    <lastmod>2025-07-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.40</priority>
-  </url>
-  <url>
-    <loc>https://khaled-mansour.vercel.app/register</loc>
-    <lastmod>2025-07-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.40</priority>
-  </url>
-  <url>
-    <loc>https://khaled-mansour.vercel.app/invite-code</loc>
-    <lastmod>2025-07-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.30</priority>
-  </url>
-  -->
 </urlset>

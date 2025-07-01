@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://khaled-mansour.vercel.app/sitemap.txt
+Sitemap: https://khaled-mansour.vercel.app/sitemap.xml
