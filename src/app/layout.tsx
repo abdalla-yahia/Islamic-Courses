@@ -33,7 +33,8 @@ export const metadata: Metadata = {
     url: "https://khaled-mansour.vercel.app",
     siteName: "الموقع الرسمي لفضيلة الشيخ الدكتور خالد منصور حفظه الله",
     type: "website",
-    locale: "ar_AR",    
+    locale: "ar_AR",
+
   },
   twitter: {
     card: "summary_large_image",
@@ -55,8 +56,8 @@ export const metadata: Metadata = {
   
   icons: {
     icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-    shortcut: "/shortcut-icon.png",
+    apple: "/icon/192-192.ico",
+    shortcut: "/public/icon/256-256.ico",
   },
   themeColor: "#ffffff",
   manifest: "/manifest.json",
@@ -87,8 +88,21 @@ export const metadata: Metadata = {
     capable: true,
     statusBarStyle: "black-translucent",
     title: "الموقع الرسمي لفضيلة الشيخ الدكتور خالد منصور حفظه الله",
-  }
-  
+  },
+  formatDetection: {
+    telephone: false,
+    address: false,
+    email: false,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    noimageindex: false,
+    noarchive: false,
+    nosnippet: false,
+  },
+
 };
 
 export default function RootLayout({

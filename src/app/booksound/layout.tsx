@@ -24,8 +24,10 @@ export const metadata: Metadata = {
       },
     ],
     url: "https://khaled-mansour.vercel.app/booksound",
-    series: "المكتبة العلمية لفضيلة الشيخ الدكتور خالد منصور حفظه الله",
-    section: "كتب صوتية",
+    siteName: "المكتبة العلمية لفضيلة الشيخ الدكتور خالد منصور حفظه الله",
+    type: "website",
+    locale: "ar_AR",
+
   },
   twitter: {
     card: "summary_large_image",
@@ -63,6 +65,38 @@ export const metadata: Metadata = {
     "مصطلح",
     "اصول فقه",
   ],
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/icon/192-192.ico",
+    shortcut: "/public/icon/256-256.ico",
+  },
+  themeColor: "#ffffff",
+  manifest: "/manifest.json",
+  applicationName: "المكتبة العلمية لفضيلة الشيخ الدكتور خالد منصور حفظه الله",
+  authors: [
+    {
+      name: "م/ عبدالله يحيى",
+      url: "https://www.linkedin.com/in/abdalla-yahia",
+    },
+  ],
+  creator: "م/ عبدالله يحيى",
+  publisher: "م/ عبدالله يحيى",
+  colorScheme: "light dark",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
+   robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    noimageindex: false,
+    noarchive: false,
+    nosnippet: false,
+  },
+
 };
 
 export default function BooksLayout({

@@ -24,8 +24,10 @@ export const metadata: Metadata = {
       },
     ],
     url: "https://khaled-mansour.vercel.app/moshaf",
-    series: "مكتبة القرآن الكريم",
-    section: "قرآن كريم",
+    siteName: "مكتبة القرآن الكريم",
+    type: "website",
+    locale: "ar_AR",
+    
   },
   twitter: {
     card: "summary_large_image",
@@ -56,6 +58,37 @@ export const metadata: Metadata = {
    "المصحف الشريف",
    "القرأن مسموع",
   ],
+    icons: {
+    icon: "/favicon.ico",
+    apple: "/icon/192-192.ico",
+    shortcut: "/public/icon/256-256.ico",
+  },
+  themeColor: "#ffffff",
+  manifest: "/manifest.json",
+  applicationName: "مكتبة القرآن الكريم",
+  authors: [
+    {
+      name: "م/ عبدالله يحيى",
+      url: "https://www.linkedin.com/in/abdalla-yahia",
+    },
+  ],
+  creator: "م/ عبدالله يحيى",
+  publisher: "م/ عبدالله يحيى",
+  colorScheme: "light dark",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
+   robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    noimageindex: false,
+    noarchive: false,
+    nosnippet: false,
+  },
 };
 
 export default function MoshafLayout({
