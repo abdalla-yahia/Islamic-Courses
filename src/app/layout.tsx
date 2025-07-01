@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         alt: "Salaf Logo",
       },
     ],
-    url: "https://khaled-mansour.vercel.app/",
+    url: "https://khaled-mansour.vercel.app",
   },
   twitter: {
     card: "summary_large_image",
@@ -58,7 +58,6 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
     shortcut: "/shortcut-icon.png",
   },
-  metadataBase: new URL("https://khaled-mansour.vercel.app/"),
   themeColor: "#ffffff",
   manifest: "/manifest.json",
   applicationName: "الموقع الرسمي لفضيلة الشيخ الدكتور خالد منصور حفظه الله",
@@ -83,7 +82,7 @@ export const metadata: Metadata = {
     userScalable: false,
   },
   alternates: {
-    canonical: "https://khaled-mansour.vercel.app/",
+    canonical: "https://khaled-mansour.vercel.app",
     languages: {
       "ar": "/ar",
       "en": "/en",
