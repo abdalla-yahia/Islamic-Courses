@@ -58,10 +58,30 @@ export const metadata: Metadata = {
    "المصحف الشريف",
    "القرأن مسموع",
   ],
-    icons: {
+   icons: {
     icon: "/favicon.ico",
-    apple: "/icon/192-192.ico",
-    shortcut: "/public/icon/256-256.ico",
+    apple: "/icon/apple-touch-icon.png",
+    shortcut: "/icon/favicon-16x16.png",
+    other: [
+      {
+        rel: "icon",
+        url: "/icon/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        rel: "icon",
+        url: "/icon/android-chrome-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        rel: "icon",
+        url: "/icon/android-chrome-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
   },
   themeColor: "#ffffff",
   manifest: "/manifest.json",
