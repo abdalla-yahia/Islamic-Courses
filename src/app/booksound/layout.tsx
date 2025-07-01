@@ -24,6 +24,8 @@ export const metadata: Metadata = {
       },
     ],
     url: "https://khaled-mansour.vercel.app/booksound",
+    series: "المكتبة العلمية لفضيلة الشيخ الدكتور خالد منصور حفظه الله",
+    section: "كتب صوتية",
   },
   twitter: {
     card: "summary_large_image",

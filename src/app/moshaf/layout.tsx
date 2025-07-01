@@ -24,6 +24,8 @@ export const metadata: Metadata = {
       },
     ],
     url: "https://khaled-mansour.vercel.app/moshaf",
+    series: "مكتبة القرآن الكريم",
+    section: "قرآن كريم",
   },
   twitter: {
     card: "summary_large_image",

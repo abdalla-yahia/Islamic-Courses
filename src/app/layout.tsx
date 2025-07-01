@@ -32,7 +32,8 @@ export const metadata: Metadata = {
     ],
     url: "https://khaled-mansour.vercel.app",
     siteName: "الموقع الرسمي لفضيلة الشيخ الدكتور خالد منصور حفظه الله",
-
+    type: "website",
+    locale: "ar_AR",    
   },
   twitter: {
     card: "summary_large_image",
@@ -51,10 +52,7 @@ export const metadata: Metadata = {
     "الدورات العلمية",
     "منهج طالب العلم الشرعي"
   ],
-  robots: {
-    index: true,
-    follow: true,
-  },
+  
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
@@ -72,11 +70,6 @@ export const metadata: Metadata = {
   creator: "م/ عبدالله يحيى",
   publisher: "م/ عبدالله يحيى",
   colorScheme: "light dark",
-  formatDetection: {
-    telephone: false,
-    address: false,
-    email: false,
-  },
   viewport: {
     width: "device-width",
     initialScale: 1,
@@ -94,9 +87,6 @@ export const metadata: Metadata = {
     capable: true,
     statusBarStyle: "black-translucent",
     title: "الموقع الرسمي لفضيلة الشيخ الدكتور خالد منصور حفظه الله",
-  },
-  verification: {
-    google: "google-site-verification=eU56Ry874H-YcWDi7ZL_yG6G9GbPf-PKIzrXbBFA",
   }
   
 };
