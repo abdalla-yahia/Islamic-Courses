@@ -1,6 +1,6 @@
-https://khaled-mansour.vercel.app
-https://khaled-mansour.vercel.app/moshaf
-https://khaled-mansour.vercel.app/booksound
-https://khaled-mansour.vercel.app/articles
-https://khaled-mansour.vercel.app/about
-https://khaled-mansour.vercel.app/contact
+https://khaled-mansour.vercel.app/index.html
+https://khaled-mansour.vercel.app/moshaf.html
+https://khaled-mansour.vercel.app/booksound.html
+https://khaled-mansour.vercel.app/articles.html
+https://khaled-mansour.vercel.app/about.html
+https://khaled-mansour.vercel.app/contact.html
