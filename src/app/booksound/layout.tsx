@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Container, Row } from "react-bootstrap";
 import { Amiri } from "next/font/google";
-import Header from "@/Components/Header/Header";
-import Footer from "@/Components/Footer/Footer";
 
 const amiri = Amiri({
   subsets: ["latin"],
@@ -71,19 +69,15 @@ export default function BooksLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ar" dir="rtl">
-   
-      <body >
-         <Header />
-        <Container>
-          <Row>
-          <div  className={`${amiri.className} min-h-screen  select-none`}>
-            {children}
-          </div>
-          </Row>
-        </Container>
-        <Footer />
-      </body>
-    </html>
+     <>
+             <Container>
+               <Row>
+               <div  className={`${amiri.className} min-h-screen  select-none`}>
+                 {children}
+               </div>
+               </Row>
+             </Container>
+             </>
+
   );
 }

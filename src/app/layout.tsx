@@ -31,6 +31,8 @@ export const metadata: Metadata = {
       },
     ],
     url: "https://khaled-mansour.vercel.app",
+    siteName: "الموقع الرسمي لفضيلة الشيخ الدكتور خالد منصور حفظه الله",
+
   },
   twitter: {
     card: "summary_large_image",
