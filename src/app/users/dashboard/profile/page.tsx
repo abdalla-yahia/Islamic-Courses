@@ -1,8 +1,9 @@
 'use client'
+import type { PutBlobResult } from '@vercel/blob';
 import { deleteUser, fetchUserById, updateUser } from "@/lib/Actions/UserActions"
 import { fetchAssinments } from "@/lib/Actions/AssinmentsActions";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks"
-import { ChangeEvent, useEffect, useState } from "react"
+import { ChangeEvent, useEffect, useState ,useRef } from "react"
 import { toast } from "react-toastify"
 import DateConvert from "@/Utils/Date"
 import FullTitle from "@/Utils/FullTitle"
@@ -15,6 +16,8 @@ import Swal from "sweetalert2";
 import { fetchExams } from "@/lib/Actions/ExamsActions";
 
 export default function ProfilePage() {
+    const inputFileRef = useRef<HTMLInputElement>(null);
+    const [blob, setBlob] = useState<PutBlobResult | null>(null);
     const {AllAssinments} = useAppSelector(state=>state.assinment) as unknown as {AllAssinments:Assinments[]}
     const {AllExams} = useAppSelector(state=>state.exam) as unknown as {AllExams:Exam[]}
     const {UserLogedData}  = useAppSelector(state=>state.user) as unknown as {UserLogedData:LogedUserInterface}
@@ -45,19 +48,28 @@ export default function ProfilePage() {
             const upload = URL.createObjectURL(e.target.files[0])
             setImage(upload)
         setPath(e.target.files[0])
-        const formData = new FormData();
-        Object.values(e.target.files).forEach((file) => {
-          formData.append("file", file);
-        });
-        const response = await fetch("/api/v1/upload", {
-          method: "POST",
-          body: formData,
-        });
-        const result = await response.json();
-        if (result.success) {
-        }
-      }
-    }
+        // const formData = new FormData();
+        // if (inputFileRef.current && inputFileRef.current.files) {
+        //   Object.values(inputFileRef.current.files).forEach((file) => {
+        //     formData.append("file", file);
+        //   });
+        if (!inputFileRef.current?.files) {
+            throw new Error("No file selected");
+          }
+          const file = inputFileRef.current.files[0];
+          const response = await fetch(`/api/v1/upload?filename=${file.name}`, {
+            method: "POST",
+            body: file,
+          });
+
+              const newBlob = (await response.json()) as PutBlobResult;
+    
+              setBlob(newBlob);
+            }
+          }
+
+    //   }
+
     //Update User Data  Handeller
     const UpdateUserHAndeller = ()=>{
     if(name !=='' && email !=='' && phone !=='' && password.length >= 8){
@@ -199,13 +211,19 @@ export default function ProfilePage() {
         <div className="card-image">
             <label htmlFor="uploadPersonalImage" className="cursor-pointer">
             <Image width={150} height={150} src={image || img.male_admin} alt="profile" />
-            <input onChange={(e)=>uploadFilesHandeller(e)} type="file" name="" id="uploadPersonalImage" className="hidden"/>
+            {/* <input onChange={(e)=>uploadFilesHandeller(e)} type="file" name="" id="uploadPersonalImage" className="hidden"/> */}
+                    <input onChange={(e)=>uploadFilesHandeller(e)} name="file" ref={inputFileRef} type="file" accept="image/jpeg, image/png, image/webp" id="uploadPersonalImage" className="hidden" required />
             <icon.RiImageAddLine className="w-full"/>
             </label>
         </div>
         </div>
         <button onClick={()=>UpdateUserHAndeller()} className="w-full p-2 bg-orange-500 text-white">حفظ البيانات</button>
         </div>}
+          {blob && (
+        <div>
+          Blob url: <a href={blob.url}>{blob.url}</a>
+        </div>
+      )}
     {/* Button On Click It Show Card Edit Or Delete User Account*/}
         <icon.FaRegEdit title="تعديل البيانات" onClick={()=>{ShowBoxEditHandeller()}} className=" absolute top-1 right-2 text-xl text-green-500 p-0 cursor-pointer" />
         <icon.CiTrash title="حذف حسابك نهائياً" onClick={()=>{DeleteUserHandeller()}} className=" absolute top-1 left-2 text-xl text-red-500 p-0 cursor-pointer" />
