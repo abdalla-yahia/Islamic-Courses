@@ -4,14 +4,23 @@ import Data from './Data/Quran-hafs.json';
 import Type from "./Data/Quran.json";
 import Tafseer from './Data/tafseerMouaser.json'
 import style from './style.module.css';
-import { Amiri } from 'next/font/google';
+import  Amiri  from "next/font/local";
 import * as icon from '@/Components/Icons/icons'
 import { Datainterface, TafseerInterface } from '@/Interfaces/InterFaces';
 const amiri = Amiri({
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-  adjustFontFallback: false,
+   src: [
+    {
+      path: '../../public/fonts/Amiri-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/Amiri-Bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
 });
 
 export default function SoraPage({setNameSoras,setSoraNumber,setClickedAya,SoraNumber,AyaNumber,setAyaNumber,setAyatLengthOfSora,setSoraData}:

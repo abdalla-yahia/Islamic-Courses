@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Amiri } from 'next/font/google'
+import  Amiri  from 'next/font/local'
 import NavLinks from "./NavLinks";
 import { cookies } from "next/headers";
 import  Jwt  from "jsonwebtoken";
@@ -8,11 +8,19 @@ import { UserPayload } from "@/Interfaces/InterFaces";
 import style from './Header.module.css'
 
 const amiri = Amiri({
-  weight: "700",
-  subsets: ["latin"],
-  variable: "--font-amiri",
-  display: "swap",
-  adjustFontFallback: false,
+   src: [
+    {
+      path: '../../../public/fonts/Amiri-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/Amiri-Bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
 });
 export default async function Header() {
   const token:string =(await cookies()).get('JwtToken')?.value || "";

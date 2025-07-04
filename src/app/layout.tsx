@@ -7,14 +7,23 @@ import { Container, Row } from "react-bootstrap";
 import StoreProvider from "./StoreProvider";
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-import { Amiri } from "next/font/google";
+import  Amiri  from "next/font/local";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const amiri = Amiri({
-  subsets: ["latin"],
-  weight: "700",
-  display: "swap",
-  adjustFontFallback: false,
+   src: [
+    {
+      path: '../../public/fonts/Amiri-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/Amiri-Bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
