@@ -5,11 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "vercel-build": "prisma generate && prisma migrate deploy && next build",
     "netlify-build": "npm install --force && prisma generate && prisma migrate deploy && next build",
-    "lint": "next lint",
-    "postbuild": "next-sitemap"
+    "lint": "next lint"
   },
   "dependencies": {
     "@prisma/client": "^6.1.0",
