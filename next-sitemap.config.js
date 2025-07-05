@@ -2,6 +2,7 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: 'https://khaled-mansour.vercel.app',
+  generateIndexSitemap: true, // دي ضرورية
   generateRobotsTxt: true,
   outDir: 'public',
   sitemapSize: 7000,
@@ -9,12 +10,16 @@ module.exports = {
   sitemapBaseFileName: 'sitemap',
   // تحديد مسار ملف الخريطة
   sitemapPath: '/sitemap.xml',
-  siteUrl: 'https://khaled-mansour.vercel.app',
-  generateIndexSitemap:true,
-  // تحديد مسار ملف الخريطة
-  sitemapFileName: 'sitemap-0.xml',
-  generateRobotsTxt:true,
 
+  sitemapFileName: 'sitemap-0.xml',
+  autoLastmod: true,
+  // دي اللي هنضيفها عشان lastmod يظهر في ملف index
+  additionalSitemaps: [
+    {
+      loc: 'https://khaled-mansour.vercel.app/sitemap-0.xml',
+      lastmod: new Date().toISOString().split('T')[0],
+    },
+  ],
   // تحديد مسار ملف الروبوتس
   robotsTxtOptions: {
     policies: [
@@ -44,7 +49,7 @@ module.exports = {
       '/contact', 
       '/moshaf', 
       '/booksound',
-/*
+
       // Users Dashboard
       '/users/dashboard/articles',
       '/users/dashboard/sections',
@@ -140,7 +145,6 @@ module.exports = {
       '/owner/dashboard/codes',
       '/owner/dashboard/managers',
       '/owner/dashboard/news',
-      */
     ];
 
     return urls.map((url) => ({
@@ -148,13 +152,7 @@ module.exports = {
       lastmod: new Date().toISOString(),
       changefreq: url === '/' ? 'daily' : 'weekly',
       priority: url === '/' ? 1.0 : url === '/about' || url === '/contact' ? 0.6 : 0.5,
-      images:url === '/' && [
-  {
-    loc: '/Salaf_Logo.png',
-    title: 'الشيخ خالد منصور',
-    caption: 'الشيخ خالد منصور',
-  }
-]
+   
     }));
   },
 };
