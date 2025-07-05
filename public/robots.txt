@@ -19,4 +19,3 @@ Host: https://khaled-mansour.vercel.app
 
 # Sitemaps
 Sitemap: https://khaled-mansour.vercel.app/sitemap.xml
-Sitemap: https://khaled-mansour.vercel.app/sitemap-0.xml

@@ -26,9 +26,6 @@ module.exports = {
         allow: '/',
       },
     ],
-    additionalSitemaps: [
-      'https://khaled-mansour.vercel.app/sitemap-0.xml',
-    ],
   },
   // توليد كل الروابط يدوي
   additionalPaths: async () => {
