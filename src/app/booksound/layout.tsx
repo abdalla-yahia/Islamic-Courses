@@ -134,9 +134,12 @@ export default function BooksLayout({
 }>) {
   return (
      <>
-    <div  className={`${amiri.className} min-h-screen  select-none`}>
-      {children}
-    </div>
-  </>
+
+               <div  className={`${amiri.className} min-h-screen  select-none`}>
+                 {children}
+               </div>
+
+             </>
+
   );
 }

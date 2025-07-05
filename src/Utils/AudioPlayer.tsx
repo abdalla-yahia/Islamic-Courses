@@ -202,9 +202,9 @@ export default function AudioPlayer({Book, audioUrl, BookTitle, setAudioUrl, pla
         
         <div className='flex justify-between items-center gap-2'>
         <p>{audioUrl !== '' && (duration == "NaN:NaN" || duration == "00:00") ? 
-            <div className={styleProgress.spinner_border} role="status">
-          </div>       
-           :duration}</p>
+            <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>        :duration}</p>
         </div>
         </div>
     </div>
