@@ -6,6 +6,15 @@ module.exports = {
   outDir: 'public',
   sitemapSize: 7000,
   sitemapIndexLastmod: true,
+  sitemapBaseFileName: 'sitemap',
+  // تحديد مسار ملف الخريطة
+  sitemapPath: '/sitemap.xml',
+  siteUrl: 'https://khaled-mansour.vercel.app',
+  generateIndexSitemap:true,
+  // تحديد مسار ملف الخريطة
+  sitemapFileName: 'sitemap-0.xml',
+  generateRobotsTxt:true,
+
   // تحديد مسار ملف الروبوتس
   robotsTxtOptions: {
     policies: [
@@ -35,7 +44,7 @@ module.exports = {
       '/contact', 
       '/moshaf', 
       '/booksound',
-
+/*
       // Users Dashboard
       '/users/dashboard/articles',
       '/users/dashboard/sections',
@@ -131,6 +140,7 @@ module.exports = {
       '/owner/dashboard/codes',
       '/owner/dashboard/managers',
       '/owner/dashboard/news',
+      */
     ];
 
     return urls.map((url) => ({
