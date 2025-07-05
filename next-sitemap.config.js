@@ -1,10 +1,14 @@
+// next-sitemap.config.js
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: 'https://khaled-mansour.vercel.app',
   generateRobotsTxt: true,
+  outDir: 'public',
   sitemapSize: 7000,
+
+  // توليد كل الروابط يدوي
   additionalPaths: async () => {
-    const staticUrls = [
+    const urls = [
       '/', 
       '/about', 
       '/contact', 
@@ -108,28 +112,11 @@ module.exports = {
       '/owner/dashboard/news',
     ];
 
-    return staticUrls.map((url) => {
-      // تحديد الأولوية حسب الصفحة
-      let priority = 0.7;
-      let changefreq = 'weekly';
-
-      if (url === '/') {
-        priority = 1.0; // الصفحة الرئيسية أعلى أولوية
-        changefreq = 'daily';
-      } else if (url === '/about' || url === '/contact') {
-        priority = 0.6;
-        changefreq = 'monthly';
-      } else if (url.startsWith('/users/dashboard') || url.startsWith('/admins/dashboard') || url.startsWith('/teachers/dashboard') || url.startsWith('/admin-teacher/dashboard') || url.startsWith('/managers/dashboard') || url.startsWith('/owner/dashboard')) {
-        priority = 0.5;
-        changefreq = 'weekly';
-      }
-
-      return {
-        loc: url,
-        lastmod: new Date().toISOString(),
-        changefreq,
-        priority,
-      };
-    });
+    return urls.map((url) => ({
+      loc: url,
+      lastmod: new Date().toISOString(),
+      changefreq: url === '/' ? 'daily' : 'weekly',
+      priority: url === '/' ? 1.0 : url === '/about' || url === '/contact' ? 0.6 : 0.5,
+    }));
   },
 };
