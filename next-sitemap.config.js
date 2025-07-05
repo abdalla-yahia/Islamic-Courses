@@ -5,7 +5,31 @@ module.exports = {
   generateRobotsTxt: true,
   outDir: 'public',
   sitemapSize: 7000,
-
+  sitemapIndexLastmod: true,
+  // تحديد مسار ملف الروبوتس
+  robotsTxtOptions: {
+    policies: [
+      {
+        userAgent: '*',
+        allow: '/',
+      },
+      {
+        userAgent: 'Googlebot',
+        allow: '/',
+      },
+      {
+        userAgent: 'Bingbot',
+        allow: '/',
+      },
+      {
+        userAgent: 'Slurp',
+        allow: '/',
+      },
+    ],
+    additionalSitemaps: [
+      'https://khaled-mansour.vercel.app/sitemap-0.xml',
+    ],
+  },
   // توليد كل الروابط يدوي
   additionalPaths: async () => {
     const urls = [
@@ -117,6 +141,13 @@ module.exports = {
       lastmod: new Date().toISOString(),
       changefreq: url === '/' ? 'daily' : 'weekly',
       priority: url === '/' ? 1.0 : url === '/about' || url === '/contact' ? 0.6 : 0.5,
+      images:url === '/' && [
+  {
+    loc: '/Salaf_Logo.png',
+    title: 'الشيخ خالد منصور',
+    caption: 'الشيخ خالد منصور',
+  }
+]
     }));
   },
 };
