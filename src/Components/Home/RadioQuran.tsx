@@ -93,7 +93,7 @@ export default function RadioQuran() {
                                             </>
                                     )
                                     
-                                 : (Radios?.filter(el => el.name.includes(SearchText))).map((radio, index) =>
+                                : (Radios?.filter(el => el.name.includes(SearchText))).map((radio, index) =>
                                     <span onClick={() => { seturlRadio(radio?.url); setToggle(false); setRadioName(radio?.name); setplay(true); SetSearchText('') }} className='hover:bg-background_color text-text_color hover:text-text_color px-2 py-1 cursor-pointer rounded' key={index} title={radio?.name}>{radio?.name}</span>)
                         }
                     </div>}
