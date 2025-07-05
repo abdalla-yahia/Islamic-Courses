@@ -64,10 +64,10 @@ export default function RadioQuran() {
     <input value={SearchText} onChange={(e)=>{SetSearchText(e.target.value);setToggle(true)}} type="search" name="" id="" className='m-2 px-2 z-40 outline-none rounded bg-[#674d20] text-white w-[70%] self-center' placeholder=' بحث عن إذاعة ....' />
       <div className="flex relative justify-start items-start w-full" dir='rtl'>
                     <span className='flex justify-between items-center w-full'>
-                        <span className="text-lg cursor-pointer font-bold text-primary_color">{RadioName || 'اختر الإذاعة'}</span>
+                        <span className="text-sm cursor-pointer font-bold text-primary_color">{RadioName || 'اختر الإذاعة'}</span>
                         <icon.MdKeyboardDoubleArrowDown />
                     </span>
-                    {toggle && <div className='bg-[#5b3f12] rounded-md absolute left-0 top-[100%] w-[80%] z-40 max-h-[400px] scrollbar-hide overflow-y-scroll text-accent_color flex justify-start items-start flex-col'>
+                    {toggle && <div className='bg-[#5b3f12] rounded-md absolute left-0 top-[100%] w-[80%] z-40 h-[400px] scrollbar-hide overflow-y-scroll text-accent_color flex justify-start items-start flex-col'>
                         {
                             Radios?.length > 0 && SearchText === '' ?
                                         (

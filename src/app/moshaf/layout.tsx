@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Container, Row } from "react-bootstrap";
 import  Amiri  from "next/font/local";
 
 const amiri = Amiri({
@@ -127,13 +126,9 @@ export default function MoshafLayout({
 }>) {
   return (
    <>
-        <Container>
-          <Row>
           <div  className={`${amiri.className} min-h-screen  select-none`}>
             {children}
           </div>
-          </Row>
-        </Container>
         </>
   );
 }

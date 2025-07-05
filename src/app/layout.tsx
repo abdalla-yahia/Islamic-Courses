@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import "./globals.css";
 import Header from "@/Components/Header/Header";
 import Footer from "@/Components/Footer/Footer";
-import { Container, Row } from "react-bootstrap";
 import StoreProvider from "./StoreProvider";
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
@@ -146,13 +144,9 @@ export default function RootLayout({
       <body >
       <StoreProvider>
         <Header />
-        <Container>
-          <Row>
           <div  className={`${amiri.className} min-h-screen  select-none`}>
             {children}
           </div>
-          </Row>
-        </Container>
         <Footer />
      </StoreProvider>
         <ToastContainer  />
