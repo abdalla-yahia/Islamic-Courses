@@ -1,34 +1,52 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
+'use client'
+
 import * as icon from '@/Components/Icons/icons'
 import { LegacyRef, useEffect, useMemo, useRef, useState } from 'react';
 import Stations from './Radio_Station';
+import { useRouter, useSearchParams } from 'next/navigation'
 
 export default function RadioQuran() {
-    const [Radios, setRadios] = useState<Array<{ id?: string, url: string, name: string, category?: string }>>([{ url: '', name: '', category: '', id: '' }])
-    const [selectedOption, setSelectedOption] = useState(Radios[0]);
-    const [urlRadio, seturlRadio] = useState('')
-    const [play, setplay] = useState(false)
-    const [mute, SetMute] = useState(false)
-    const [toggle, setToggle] = useState(false)
-    const [RadioName, setRadioName] = useState('')
-    const [SearchText, SetSearchText] = useState('')
-    const categories = [...new Set(Stations.map((el) => el.category))].sort((a, b) => a > b ? 1 : -1)
-    const refAudio = useRef<HTMLAudioElement>() as unknown as { current: { muted: boolean | undefined, volume: number, play: () => void, pause: () => void } }
+    const [Radios, setRadios] = useState<Array<{ id?: string, url: string, name: string, category?: string }>>([]);
+    const [selectedOption, setSelectedOption] = useState<{ id?: string, url: string, name: string, category?: string } | null>(null);
+    const [urlRadio, seturlRadio] = useState('');
+    const [play, setplay] = useState(false);
+    const [mute, SetMute] = useState(false);
+    const [toggle, setToggle] = useState(false);
+    const [RadioName, setRadioName] = useState('');
+    const [SearchText, SetSearchText] = useState('');
+    const categories = [...new Set(Stations.map((el) => el.category))].sort((a, b) => a > b ? 1 : -1);
+    const refAudio = useRef<HTMLAudioElement>() as unknown as { current: { muted: boolean | undefined, volume: number, play: () => void, pause: () => void } };
     const buttonRef = useRef<HTMLDivElement>(null);
     const listRef = useRef<HTMLDivElement>(null);
+    const router = useRouter();
+    const searchParams = useSearchParams();
 
     // Fetch Radios
     const fetchRadios = async () => {
         try {
-            setRadios(Stations as unknown as [{ id: string, url: string, name: string, category: string }])
+            setRadios(Stations as unknown as [{ id: string, url: string, name: string, category: string }]);
         } catch (error) {
             throw new Error(error as unknown as string)
         }
     }
 
     useEffect(() => {
-        fetchRadios()
+        fetchRadios();
     }, [])
+
+    // تشغيل الراديو بناء على URL
+    useEffect(() => {
+        const radioQuery = searchParams.get('radio');
+        if (radioQuery && Radios.length > 0) {
+            const foundRadio = Radios.find(r => r.name === decodeURIComponent(radioQuery));
+            if (foundRadio) {
+                setSelectedOption(foundRadio);
+                seturlRadio(foundRadio.url);
+                setRadioName(foundRadio.name);
+                setplay(true);
+            }
+        }
+    }, [searchParams, Radios])
 
     useMemo(() => {
         if (RadioName) {
@@ -37,29 +55,39 @@ export default function RadioQuran() {
         }
     }, [RadioName])
 
+    const changeUrlWithoutReload = (radioName: string) => {
+        router.replace(`?radio=${encodeURIComponent(radioName)}`);
+    }
+
     const selectNext = () => {
+        if (!selectedOption) return;
         const currentIndex = Radios.indexOf(selectedOption);
+        if (currentIndex === -1) return;
         const nextIndex = (currentIndex + 1) % Radios.length;
-        setSelectedOption(Radios[nextIndex]);
-        seturlRadio(Radios[nextIndex]?.url)
-        setRadioName(Radios[nextIndex]?.name)
+        const nextRadio = Radios[nextIndex];
+        changeUrlWithoutReload(nextRadio.name);
     };
 
     const selectPrev = () => {
+        if (!selectedOption) return;
         const currentIndex = Radios.indexOf(selectedOption);
+        if (currentIndex === -1) return;
         const prevIndex = (currentIndex - 1 + Radios.length) % Radios.length;
-        setSelectedOption(Radios[prevIndex]);
-        seturlRadio(Radios[prevIndex]?.url)
-        setRadioName(Radios[prevIndex]?.name)
+        const prevRadio = Radios[prevIndex];
+        changeUrlWithoutReload(prevRadio.name);
     };
 
     const selectMute = () => {
-        refAudio.current.muted !== undefined && (refAudio.current.muted = true)
+        if (refAudio.current.muted !== undefined) {
+            refAudio.current.muted = true;
+        }
         SetMute(!mute)
     }
 
     const selectUnMute = () => {
-        refAudio.current.muted === true && (refAudio.current.muted = false)
+        if (refAudio.current.muted === true) {
+            refAudio.current.muted = false;
+        }
         SetMute(!mute)
     }
 
@@ -89,10 +117,17 @@ export default function RadioQuran() {
         };
     }, [toggle]);
 
+    const handleSelectRadio = (radio: { id?: string, url: string, name: string, category?: string }) => {
+        changeUrlWithoutReload(radio.name);
+        setToggle(false);
+        setplay(true);
+        SetSearchText('');
+    }
+
     return (
         <div className='w-full bg-[#9f6301] rounded'>
             <div ref={buttonRef} onClick={() => { setToggle(!toggle) }} className="w-full scrollbar-hide flex flex-row-reverse justify-between items-center my-1 rounded h-fit px-2 text-white shadow bg-[#9f6301]">
-                <input value={SearchText} onChange={(e) => { SetSearchText(e.target.value); setToggle(true) }} type="search" name="" id="" className='m-2 px-2 z-40 outline-none rounded bg-[#674d20] text-white w-[70%] self-center' placeholder=' بحث عن إذاعة ....' />
+                <input value={SearchText} onChange={(e) => { SetSearchText(e.target.value); setToggle(true) }} type="search" className='m-2 px-2 z-40 outline-none rounded bg-[#674d20] text-white w-[70%] self-center' placeholder=' بحث عن إذاعة ....' />
                 <div className="flex relative justify-start items-start w-full" dir='rtl'>
                     <span className='flex justify-between items-center w-full'>
                         <span className="text-lg cursor-pointer font-bold text-primary_color">{RadioName || 'اختر الإذاعة'}</span>
@@ -104,24 +139,23 @@ export default function RadioQuran() {
                                 (
                                     <>
                                         {
-                                            categories && categories.map((category, index) => {
-                                                return <div key={index} className='text-2xl flex flex-col w-full justify-start items-start font-bold text-text_color border-b-2 border-red-600'>
+                                            categories.map((category, index) => (
+                                                <div key={index} className='text-2xl flex flex-col w-full justify-start items-start font-bold text-text_color border-b-2 border-red-600'>
                                                     <h1 className='bg-slate-400 w-full flex flex-col  justify-start items-start rounded-md px-2'>
                                                         {category}
                                                     </h1>
                                                     <div className='flex flex-col justify-start items-start'>
                                                         {Radios?.filter(el => el?.category === category).map((radio) =>
-                                                            <span onClick={() => { seturlRadio(radio?.url); setToggle(false); setRadioName(radio?.name); setplay(true) }} className='hover:bg-background_color line-clamp-1 text-sm  text-text_color hover:text-text_color px-2 py-1 cursor-pointer rounded' key={radio?.id} title={radio?.name}>{radio?.name}</span>)
+                                                            <span onClick={() => handleSelectRadio(radio)} className='hover:bg-background_color line-clamp-1 text-sm text-text_color hover:text-text_color px-2 py-1 cursor-pointer rounded' key={radio?.id} title={radio?.name}>{radio?.name}</span>)
                                                         }
                                                     </div>
                                                 </div>
-                                            })
+                                            ))
                                         }
                                     </>
                                 )
-
                                 : (Radios?.filter(el => el.name.includes(SearchText))).map((radio, index) =>
-                                    <span onClick={() => { seturlRadio(radio?.url); setToggle(false); setRadioName(radio?.name); setplay(true); SetSearchText('') }} className='hover:bg-background_color text-text_color hover:text-text_color px-2 py-1 cursor-pointer rounded' key={index} title={radio?.name}>{radio?.name}</span>)
+                                    <span onClick={() => handleSelectRadio(radio)} className='hover:bg-background_color text-text_color hover:text-text_color px-2 py-1 cursor-pointer rounded' key={index} title={radio?.name}>{radio?.name}</span>)
                         }
                     </div>}
                 </div>
@@ -135,7 +169,16 @@ export default function RadioQuran() {
                 <icon.FaPlay onClick={() => { refAudio?.current?.play(); setplay(true); setToggle(false) }} className={`${play && 'text-blue-600'} cursor-pointer hover:text-blue-600 shadow `} />
                 <icon.TbPlayerTrackPrevFilled onClick={() => { selectPrev(); setplay(true); setToggle(false) }} className='cursor-pointer hover:text-blue-600 shadow ' />
             </div>
-            <input defaultValue={100} onChange={(e) => { refAudio.current.volume !== undefined && (refAudio.current.volume = parseInt(e.target.value) / 100) }} type="range" name="" id="" className='rotate-180 w-full h-1 shadow cursor-grabbing ' />
+            <input
+                defaultValue={100}
+                onChange={(e) => {
+                    if (refAudio.current.volume !== undefined) {
+                        refAudio.current.volume = parseInt(e.target.value) / 100;
+                    }
+                }}
+                type="range"
+                className='rotate-180 w-full h-1 shadow cursor-grabbing '
+            />
             <audio ref={refAudio as unknown as LegacyRef<HTMLAudioElement>} src={urlRadio} controls autoPlay className='hidden' />
         </div>
     )

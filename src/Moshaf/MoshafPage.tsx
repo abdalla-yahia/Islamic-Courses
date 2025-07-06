@@ -1,15 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
-import { LegacyRef, useEffect, useRef, useState } from "react";
+import React, { LegacyRef, useEffect, useRef, useState } from "react";
 import NavMoshaf from "./NavMoshaf";
 import SoraPage from "./SoraPage";
 import SoursAudioQarea from "./SoursAudioQarea";
 
-export default function MoshafPage() {
+ function MoshafPage() {
     const [NameSoras, setNameSoras] = useState([]);
     const [SoraNumber, setSoraNumber] = useState(1);
     const [AyaNumber, setAyaNumber] = useState(1);
-    // const [ClickedAya, setClickedAya] = useState(true);
     const [ShaikhSound, setShaikhSound] = useState('');
     const [soraData, setSoraData] = useState('');
     const [AyatLengthOfSora, setAyatLengthOfSora] = useState(0);
@@ -38,8 +37,6 @@ export default function MoshafPage() {
             setSoraNumber(1)
         }
     }
-    localStorage.setItem('Islamic_Course_Sora_Number',SoraNumber as unknown as string)
-    localStorage.setItem('Islamic_Course_Aya_Number',AyaNumber as unknown as string)
     }
 
     // On First Audio Play
@@ -83,7 +80,6 @@ export default function MoshafPage() {
           audioRef2.current.src = SoursAudioQarea(e+1, SoraNumber, ShaikhSound);
           audioRef1?.current?.play();
   } 
-
   return (
     <>
     <div className="container">
@@ -109,3 +105,5 @@ export default function MoshafPage() {
     </>
   )
 }
+
+export default React.memo(MoshafPage);

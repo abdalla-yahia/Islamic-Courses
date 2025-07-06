@@ -2,18 +2,6 @@
 User-agent: *
 Allow: /
 
-# Googlebot
-User-agent: Googlebot
-Allow: /
-
-# Bingbot
-User-agent: Bingbot
-Allow: /
-
-# Slurp
-User-agent: Slurp
-Allow: /
-
 # Host
 Host: https://khaled-mansour.vercel.app
 

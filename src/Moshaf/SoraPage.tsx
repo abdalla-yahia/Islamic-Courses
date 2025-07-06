@@ -7,6 +7,8 @@ import style from './style.module.css';
 import  Amiri  from "next/font/local";
 import * as icon from '@/Components/Icons/icons'
 import { Datainterface, TafseerInterface } from '@/Interfaces/InterFaces';
+
+
 const amiri = Amiri({
    src: [
     {
@@ -38,6 +40,7 @@ export default function SoraPage({setNameSoras,setSoraNumber,setClickedAya,SoraN
     const [sora, setSora] = useState<Datainterface[]>([]);
     const [TypeSora, setTypeSora] = useState("");
 
+      
     useEffect(()=>{
         if (localStorage.getItem('Islamic_Course_Sora_Number')) {
             setSoraNumber(parseInt(localStorage.getItem('Islamic_Course_Sora_Number') as unknown as string) as unknown as SetStateAction<number>);
@@ -85,11 +88,13 @@ export default function SoraPage({setNameSoras,setSoraNumber,setClickedAya,SoraN
     <div className={`${amiri.className} container w-full `}>
         <div className="row">
             <div className="col-md-12 relative">
+              {/*Prev Sora And Next Sora */}
                 <div  className={style.next_prev_sora}>
                     <icon.MdKeyboardDoubleArrowRight title='السورة السابقة' onClick={()=>{
                       if (SoraNumber as unknown as number !== 1) {
                         setSoraNumber(--SoraNumber as number);
                         setAyaNumber(1);
+      
                       }
                     }} className={`${style.next_prev} ${SoraNumber   as unknown as number <= 1 ? style.visability_hidden:'visible'}`}/>
                     <icon.MdOutlineKeyboardDoubleArrowLeft title='السورة التالية' onClick={()=>{
