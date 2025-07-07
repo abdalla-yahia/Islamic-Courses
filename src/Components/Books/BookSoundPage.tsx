@@ -9,10 +9,9 @@ export default function BookSoundPage({Book}:{Book:Chapter}) {
       const searchParams = useSearchParams();
     
       const changeUrlWithoutReload = (book: {title:string,publisher:string,author:string,section:string},sound:{name:string}) => {
-        router.replace(`?الدرس=${encodeURIComponent(sound.name)}&كتاب=${encodeURIComponent(book.title)}&المؤلف=${encodeURIComponent(book.author)}&بشرح=${encodeURIComponent(book.publisher)}&القسم=${encodeURIComponent(book.section)}`);
+        router.replace(`?كتاب=${encodeURIComponent(book.title)}&المؤلف=${encodeURIComponent(book.author)}&بشرح=${encodeURIComponent(book.publisher)}&القسم=${encodeURIComponent(book.section)}`);
       }
       const bookTitle = searchParams.get("كتاب");
-      const LessonName = searchParams.get("الدرس");
       const AuthorName = searchParams.get("المؤلف");
       const SheikhName = searchParams.get("بشرح");
 
@@ -31,9 +30,7 @@ export default function BookSoundPage({Book}:{Book:Chapter}) {
             if (decodeURIComponent(bookTitle as string) !== null && decodeURIComponent(bookTitle as string) !== undefined) {
         SetBookTitle(decodeURIComponent(bookTitle as string));
     }
-    if (decodeURIComponent(LessonName as string) !== null && decodeURIComponent(LessonName as string) !== undefined) {
-        SetSahapyName(decodeURIComponent(LessonName as string));
-    }
+
     if (decodeURIComponent(AuthorName as string ) !== null && decodeURIComponent(AuthorName as string ) !== undefined) {
         SetType(decodeURIComponent(AuthorName as string ));
     }
@@ -49,7 +46,7 @@ export default function BookSoundPage({Book}:{Book:Chapter}) {
         SetSahapyName(Book?.data[0].name);
         changeUrlWithoutReload(Book , Book.data[0]);
     }
-      },[bookTitle,LessonName,AuthorName,SheikhName, searchParams]);
+      },[bookTitle,AuthorName,SheikhName, searchParams]);
 
  return (
     <>

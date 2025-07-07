@@ -1,5 +1,4 @@
 'use client'
-import { Container, Row } from "react-bootstrap";
 import SideBar from "@/Components/Books/SideBar";
 import BookContainer from "@/Components/Books/BookContainer";
 import { useEffect, useState } from "react";
@@ -16,16 +15,15 @@ export default function UserDAshboardLayout() {
 
     useEffect(() => {
       const bookTitle = searchParams.get("كتاب");
-      const LessonName = searchParams.get("الدرس");
       const AuthorName = searchParams.get("المؤلف");
       const SheikhName = searchParams.get("بشرح");
       const section = searchParams.get("القسم");
 
       const Books = BooksData();
-      if (bookTitle && LessonName && AuthorName && SheikhName) {
-        const selectedBook = Books.find(book => book.title.trim() === decodeURIComponent(section as string)?.trim());
+      if (bookTitle && AuthorName && SheikhName) {
+        const selectedBook = Books.find(book => book.title.trim() == decodeURIComponent(section as string)?.trim());
         if (selectedBook) {
-          const selectedChapter = selectedBook.books.find(chapter => chapter.title === bookTitle && chapter.author === AuthorName && chapter.publisher === SheikhName );
+          const selectedChapter = selectedBook.books.find(chapter => chapter.title.trim() == decodeURIComponent(bookTitle as string).trim() && chapter.author.trim() == decodeURIComponent(AuthorName as string).trim() && chapter.publisher.trim() == decodeURIComponent(SheikhName as string).trim()) 
           if (selectedChapter) {
             setBook(selectedChapter as Chapter);
           } else {
@@ -40,8 +38,7 @@ export default function UserDAshboardLayout() {
     
 
   return (
-    <Container>
-      <Row>
+
     <section className="flex  justify-start items-start gap-1">
       <div className="h-full w-2/6 md:w-1/6 lg:w-1/6">
       <SideBar setBook={setBook as (chapter:Chapter) => void}/>
@@ -50,7 +47,5 @@ export default function UserDAshboardLayout() {
       <BookContainer Book={Book as Chapter}/>
       </div>
     </section>
-      </Row>
-    </Container>
   );
 }

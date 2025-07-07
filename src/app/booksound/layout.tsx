@@ -31,7 +31,7 @@ export const metadata: Metadata = {
         alt: "Salaf Logo",
       },
     ],
-    url: "https://khaled-mansour.vercel.app/booksound",
+    url: "https://khaled-mansour.vercel.app/booksound?",
     siteName: "المكتبة العلمية لفضيلة الشيخ الدكتور خالد منصور حفظه الله",
     type: "website",
     locale: "ar_AR",
