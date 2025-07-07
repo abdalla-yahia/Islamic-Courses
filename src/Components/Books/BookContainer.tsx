@@ -5,8 +5,9 @@ import BookInfo from "./BookInfo";
 import { Chapter } from "@/Interfaces/InterFaces";
 import BookSoundPage from "@/Components/Books/BookSoundPage";
 
-
 export default function BookContainer({Book}:{Book:Chapter}) {
+
+
   return (
     <>
     <div  className="w-full h-full">

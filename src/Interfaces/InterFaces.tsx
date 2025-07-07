@@ -629,19 +629,20 @@ export interface TafseerInterface {
 }
 
 export interface Chapter {
-  id:number,
-  title:string,
-  description:string,
-  search:string,
-  author:string,
-  publisher:string,
-  year:number,
-  audio_count:number,
-  audio_type:string,
-  url:string,
-  image:string,
-  sort:string,
-  type:string,
-  download:string,
-  data: {id:number, name:string, url:string,sort:string}[]
+  id?:number,
+  title?:string,
+  description?:string,
+  search?:string,
+  author?:string,
+  publisher?:string,
+  year?:number,
+  audio_count?:number,
+  audio_type?:string,
+  url?:string,
+  image?:string,
+  sort?:string,
+  type?:string,
+  download?:string,
+  data: {id:number, name:string, url:string,sort:string}[],
+  section?:string
 }

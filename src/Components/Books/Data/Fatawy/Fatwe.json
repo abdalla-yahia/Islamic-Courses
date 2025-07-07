@@ -1,11 +1,12 @@
 {
     "id":1,
-    "title":"فتاوي   ",
+    "title":"فتاوي",
     "description":"فتاوي للشيخ الدكتور خالد منصور   ",
     "search":" بحث عن موضوع في كتاب فتاوي  ",
     "type":"الفتوى",
     "author":" ",
     "publisher":"بشرح الشيخ د. خالد منصور",
+    "section":"فتاوي",
     "year":1984,
     "audio_count":96,
     "audio_type":"mp4",

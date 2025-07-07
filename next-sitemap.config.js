@@ -236,7 +236,404 @@ const radios = [
 "عشر ذي الحجة",
     ];
 
+const khotap = {
+    "عقيدة": [
+        {
+            "title": "سُلم الوصول",
+            "author": " الشيخ حافظ بن أحمد حكمي",
+            "publisher": "بشرح الشيخ د . خالد منصور",
+            "section": "عقيدة",
+            "audio_count": 14,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "الإبانة الصغري",
+            "author": " إبن بطه",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "عقيدة",
+            "audio_count": 20,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "المنظومة الحائية",
+            "author": " أبي يكر بن أبي داوود",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "عقيدة",
+            "audio_count": 13,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "القواعد الكلية    ",
+            "author": "  الشيخ إبراهيم بن محمد البريكان",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "عقيدة",
+            "audio_count": 12,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "فتح المجيد ",
+            "author": "  عبدالرحمن بن حسن آل الشيخ",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "عقيدة",
+            "audio_count": 98,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "القواعد المثلي   ",
+            "author": "  الشيخ محمد بن صالح العثيمين",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "عقيدة",
+            "audio_count": 14,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "معارج الجنة    ",
+            "author": "أبو عبدالله محمد بن عبدالسلام بن علي",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "عقيدة",
+            "audio_count": 58,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "مسألة الإيمان ",
+            "author": "  شمس الدين الذهبي",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "عقيدة",
+            "audio_count": 33,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "مقدمة بن أبي زيد القيرواني   ",
+            "author": "  بن أبي زيد القيرواني",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "عقيدة",
+            "audio_count": 9,
+            "audio_type": "mp4"
+        }
+    ],
+    "فتاوي": [
+        {
+            "title": "فتاوي",
+            "author": " ",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "فتاوي",
+            "audio_count": 96,
+            "audio_type": "mp4"
+        }
+    ],
+    "فقه": [
+        {
+            "title": "أخصر المختصرات",
+            "author": "محمد بن بدر الدين بن بلبان الدمشقي الحنبلي",
+            "publisher": " بشرح / الشيخ د. خالد منصور",
+            "section": "فقه",
+            "audio_count": 70,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "متن الرحبية",
+            "author": "الرحبي",
+            "publisher": " بشرح / الشيخ د. خالد منصور",
+            "section": "فقه",
+            "audio_count": 8,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "الروضة الندية",
+            "author": "الشيخ صديق حسن خان",
+            "publisher": " بشرح / الشيخ د. خالد منصور",
+            "section": "فقه",
+            "audio_count": 154,
+            "audio_type": "mp3"
+        },
+        {
+            "title": "الروض المربع",
+            "author": "منصور بن يوسف البهوتي الحنبلي",
+            "publisher": " بشرح / الشيخ د . خالد منصور",
+            "section": "فقه",
+            "audio_count": 232,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "فروع الفقه لإبن المبرد",
+            "author": "إبن المبرد",
+            "publisher": " بشرح / الشيخ د. خالد منصور",
+            "section": "فقه",
+            "audio_count": 24,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "منهج السالكين",
+            "author": "عبدالرحمن بن ناصر السعدي",
+            "publisher": " بشرح / الشيخ د. خالد منصور",
+            "section": "فقه",
+            "audio_count": 33,
+            "audio_type": "mp3"
+        },
+        {
+            "title": "منهج السالكين",
+            "author": "عبدالرحمن بن ناصر السعدي",
+            "publisher": " بشرح / الشيخ د. خالد منصور",
+            "section": "فقه",
+            "audio_count": 48,
+            "audio_type": "mp4"
+        }
+    ],
+    "فرق ومذاهب": [
+        {
+            "title": "اصول الفرق والمذاهب",
+            "author": " الشيخ سفر الحوالي",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "فرق ومذاهب",
+            "audio_count": 9,
+            "audio_type": "mp4"
+        }
+    ],
+    "شروح الحديث": [
+        {
+            "title": "كتاب الأدب",
+            "author": "  الإمام البخاري",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "شروح الحديث",
+            "audio_count": 11,
+            "audio_type": "mp4"
+        }
+        
+    ],
+    "قضايا فكرية": [
 
+        {
+            "title": "دراسات في النصرانية",
+            "author": "  د. محمود مزروعة",
+            "publisher": "بشرح  الشيخ خالد منصور",
+            "section": "قضايا فكرية",
+            "audio_count": 13,
+            "audio_type": "mp3"
+        },
+        {
+            "title": "العمل الجماعي",
+            "author": "  الشيخ ياسر برهامي",
+            "publisher": "بشرح  د . خالد منصور",
+            "section": "قضايا فكرية",
+            "audio_count": 4,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "الإيمان والكفر",
+            "author": "  الشيخ ياسر برهامي",
+            "publisher": "بشرح الشيخ الدكتور خالد منصور",
+            "section": "قضايا فكرية",
+            "audio_count": 15,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "القضاء والقدر",
+            "author": "  الشيخ ياسر برهامي",
+            "publisher": "بشرح الشيخ د . خالد منصور",
+            "section": "قضايا فكرية",
+            "audio_count": 4,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "ملامح رئيسية للمنهج السلفي",
+            "author": "  الشيخ ياسر برهامي",
+            "publisher": "بشرح  د . حالد منصور",
+            "section": "قضايا فكرية",
+            "audio_count": 24,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "مناهج الإستدلال عند أهل السنة",
+            "author": "  الدكتور مفرح بن سليمان القوسي",
+            "publisher": "بشرح الشيخ الدكتور خالد منصور",
+            "section": "قضايا فكرية",
+            "audio_count": 41,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "الولاء والبراء",
+            "author": "  الشيخ ياسر برهامي",
+            "publisher": "بشرح الشيخ د . خالد منصور",
+            "section": "قضايا فكرية",
+            "audio_count": 4,
+            "audio_type": "mp4"
+        }
+    ],
+    "قواعد الفقه": [
+     
+        {
+            "title": "المنظومة السعدية",
+            "author": "  سعد بن ناصر بن عبدالعزيز",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "قواعد الفقه",
+            "audio_count": 15,
+            "audio_type": "mp4"
+        }
+    ],
+    "اللغة العربية": [
+        {
+            "title": "الأجرومية",
+            "author": " أبي عبدالله بن عثمان الصنهاجي",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "اللغة العربية",
+            "audio_count": 6,
+            "audio_type": "mp4"
+        }
+    ],
+
+    "اصول البدع": [
+        {
+            "title": "قواعد معرفة البدع",
+            "author": " محمد بن حسين الجيزاني",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "اصول البدع",
+            "audio_count": 18,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "مناهج الاستدلال عند المبتدعة",
+            "author": " مجموعة كتب",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "اصول البدع",
+            "audio_count": 82,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "معيار البدعة",
+            "author": " محمد بن حسين الجيزاني",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "اصول البدع",
+            "audio_count": 22,
+            "audio_type": "mp3"
+        }
+    ],
+    "أصول فقه": [
+       
+        {
+            "title": "التذكرة",
+            "author": " الإمام الحسن بن بدر الدين بن عبدالغني المقدسي الحنبلي.",
+            "publisher": "بشرح الشيخ د . خالد منصور",
+            "section": "أصول فقه",
+            "audio_count": 16,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "الورقات",
+            "author": " الإمام الجويني",
+            "publisher": "بشرح الشيخ د . خالد منصور",
+            "section": "أصول فقه",
+            "audio_count": 22,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "قواعد أصول الفقه ",
+            "author": " بن عبدالهادي الحنبلي",
+            "publisher": "بشرح الشيخ د . خالد منصور",
+            "section": "أصول فقه",
+            "audio_count": 10,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "قواعد الأصول ",
+            "author": "صفي الدين عبدالمؤمن البغدادي",
+            "publisher": "بشرح الشيخ د . خالد منصور",
+            "section": "أصول فقه",
+            "audio_count": 16,
+            "audio_type": "mp4"
+        }
+    ],
+    "أصول تفسير": [
+        {
+            "title": "مقدمة في أصول التفسير",
+            "author": "د. مساعد الطيار",
+            "publisher": "الشيخ د / خالد منصور",
+            "section": "أصول تفسير",
+            "audio_count": 16,
+            "audio_type": "mp4"
+        }
+    ],
+    "سيرة": [
+      
+        {
+            "title": "الأرجوزة الميئية",
+            "author": "إبن أبي العز الحنفي",
+            "publisher": "الشيخ د . خالد منصور",
+            "section": "سيرة",
+            "audio_count": 10,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "الشمائل المحمدية",
+            "author": "الإمام الترمذي",
+            "publisher": "الشيخ د . خالد منصور",
+            "section": "سيرة",
+            "audio_count": 4,
+            "audio_type": "mp4"
+        }
+        
+    ],
+    "تفسير": [
+
+        {
+            "title": "تفسير السعدي",
+            "author": "الشيخ عبدالرحمن بن ناصر السعدي",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "تفسير",
+            "audio_count": 6,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "تفسير جزء عم",
+            "author": "ابن كثير",
+            "publisher": "بشرح الشيخ  د . خالد منصور",
+            "section": "تفسير",
+            "audio_count": 39,
+            "audio_type": "mp4"
+        }
+    ],
+    "تربية و تزكية": [
+        {
+            "title": "الداء والدواء",
+            "author": " إبن القيم الجوزية",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "تربية و تزكية",
+            "audio_count": 10,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "مشكلات وحلول 1",
+            "author": " ",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "تربية و تزكية",
+            "audio_count": 10,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "مشكلات وحلول 2  ",
+            "author": " ",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "تربية و تزكية",
+            "audio_count": 10,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "مشكلات وحلول 3  ",
+            "author": " ",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "تربية و تزكية",
+            "audio_count": 15,
+            "audio_type": "mp4"
+        },
+        {
+            "title": "رفع الملام عن الائمة الأعلام",
+            "author": " إبن تيمية",
+            "publisher": "بشرح الشيخ د. خالد منصور",
+            "section": "تربية و تزكية",
+            "audio_count": 11,
+            "audio_type": "mp4"
+        }
+    ]
+}
 
 module.exports = {
   siteUrl: 'https://khaled-mansour.vercel.app',
@@ -383,6 +780,19 @@ module.exports = {
         priority: 0.7,
       });
     });
+
+    // روابط الخطب
+    Object.keys(khotap).forEach((section) => {
+      khotap[section].forEach((khotb) =>
+        dynamicUrls.push({
+          loc: `/booksound?القسم=${encodeURIComponent(section)}&كتاب=${encodeURIComponent(khotb.title)}&المؤلف=${encodeURIComponent(khotb.author)}&بشرح=${encodeURIComponent(khotb.publisher)}`,
+          lastmod: new Date().toISOString().split('T')[0],
+          changefreq: 'weekly',
+          priority: 0.7,
+        })
+      );
+    }
+    );
 
     return [...urls.map((url) => ({
       loc: url,

@@ -9,8 +9,8 @@ import Manahej_Istdla_Sona from './Manahej_Istdlal_Sona_Mansour.json'
 export default function Kadaya_Books(){
     return {
         id:5,
-        title:"قضايا فكرية ",
-        description:"قضايا فكرية ",
+        title:"قضايا فكرية",
+        description:"قضايا فكرية",
         books:[
             Eman_We_Kofr_Mansour,
             Walaa_We_Baeaa_Mansour,

@@ -1,8 +1,21 @@
 'use client'
-import { Chapter } from '@/Interfaces/InterFaces'
-import AudioPlayer from '@/Utils/AudioPlayer'
-import { useState } from 'react'
+import { Chapter } from '@/Interfaces/InterFaces';
+import AudioPlayer from '@/Utils/AudioPlayer';
+import { useEffect, useState } from 'react';
+import { useRouter, useSearchParams } from "next/navigation";
+
 export default function BookSoundPage({Book}:{Book:Chapter}) {
+      const router = useRouter();
+      const searchParams = useSearchParams();
+    
+      const changeUrlWithoutReload = (book: {title:string,publisher:string,author:string,section:string},sound:{name:string}) => {
+        router.replace(`?الدرس=${encodeURIComponent(sound.name)}&كتاب=${encodeURIComponent(book.title)}&المؤلف=${encodeURIComponent(book.author)}&بشرح=${encodeURIComponent(book.publisher)}&القسم=${encodeURIComponent(book.section)}`);
+      }
+      const bookTitle = searchParams.get("كتاب");
+      const LessonName = searchParams.get("الدرس");
+      const AuthorName = searchParams.get("المؤلف");
+      const SheikhName = searchParams.get("بشرح");
+
     const [SahapyName,SetSahapyName] = useState<null|string>(null)
     const [type,SetType] = useState<null|string>(null)
     const [BookTitle,SetBookTitle] = useState<null|string>(null)
@@ -12,6 +25,32 @@ export default function BookSoundPage({Book}:{Book:Chapter}) {
     const [play,setplay] = useState(false)
         
     const SORT: keyof typeof Book.data[0] = Book?.sort as keyof typeof Book.data[0]
+
+    // Set initial values based on URL parameters
+      useEffect(()=>{
+            if (decodeURIComponent(bookTitle as string) !== null && decodeURIComponent(bookTitle as string) !== undefined) {
+        SetBookTitle(decodeURIComponent(bookTitle as string));
+    }
+    if (decodeURIComponent(LessonName as string) !== null && decodeURIComponent(LessonName as string) !== undefined) {
+        SetSahapyName(decodeURIComponent(LessonName as string));
+    }
+    if (decodeURIComponent(AuthorName as string ) !== null && decodeURIComponent(AuthorName as string ) !== undefined) {
+        SetType(decodeURIComponent(AuthorName as string ));
+    }
+    if (decodeURIComponent(SheikhName as string) !== null && decodeURIComponent(SheikhName as string) !== undefined) {
+        SetSahapyName(decodeURIComponent(SheikhName as string));
+    }
+    if (Book?.audio_type === 'mp3' && Book?.data.length > 0) {
+        setAudioUrl(`${Book?.url}/${Book?.data[0].url}`);
+        SetType(Book?.type ?? '');
+        SetBookTitle(Book?.title ?? '');
+        setplay(true);
+        SetID(Book?.data[0].id as number);
+        SetSahapyName(Book?.data[0].name);
+        changeUrlWithoutReload(Book , Book.data[0]);
+    }
+      },[bookTitle,LessonName,AuthorName,SheikhName, searchParams]);
+
  return (
     <>
     <div className='w-full flex flex-col justify-center items-center'>
@@ -29,7 +68,14 @@ export default function BookSoundPage({Book}:{Book:Chapter}) {
         
         (Book?.data?.sort((a, b) =>a[SORT] > b[SORT] ? 1 : -1).map((sound) => {
             return (
-                <div title={`${sound.name}`} style={{backgroundColor:`${ID === sound.id ?'#523301':''}`,color:`${ID === sound.id ?'white':''}`}} onClick={()=>{setAudioUrl(`${Book?.url}/${sound.url}`);SetType(Book?.type);SetBookTitle(Book?.title);setplay(true);SetID(sound.id as number);SetSahapyName(sound.name)}} key={sound.id} className={`w-full sm:w-1/3 md:w-1/4 lg:w-1/5 cursor-pointer shadow-sm line-clamp-1  text-end text-lg p-2 hover:bg-[#895605] hover:text-white bg-[#cc9a49] rounded text-blue-950`}>
+                <div title={`${sound.name}`} style={{backgroundColor:`${ID === sound.id ?'#523301':''}`,color:`${ID === sound.id ?'white':''}`}} 
+                onClick={()=>{
+                    setAudioUrl(`${Book?.url}/${sound.url}`);
+                    SetType(Book?.type ??'');SetBookTitle(Book?.title ?? '');
+                    setplay(true);SetID(sound.id as number);
+                    SetSahapyName(sound.name);
+                    changeUrlWithoutReload(Book ,sound );
+                    }} key={sound.id} className={`w-full sm:w-1/3 md:w-1/4 lg:w-1/5 cursor-pointer shadow-sm line-clamp-1  text-end text-lg p-2 hover:bg-[#895605] hover:text-white bg-[#cc9a49] rounded text-blue-950`}>
                     {   Book?.id === 3?
                         <h1  className='line-clamp-1'>{`( ${sound.id} ) - ${sound.name}`}</h1>:
                         <h1  className='line-clamp-1'>{sound.name}
@@ -46,7 +92,7 @@ export default function BookSoundPage({Book}:{Book:Chapter}) {
                         <p className=' w-full text-blue-950'>عدد نتائج البحث : <span className='text-blue-600'>{Book?.data?.filter(item=>item.name.includes(Search))?.length} </span>نتيجة</p>
                         {Book?.data?.filter(item=>item.name.includes(Search)).sort((a, b) =>a[SORT] > b[SORT] ? 1 : -1).map((sound) => {
                             return (
-                                <div title={`${sound.name}`} style={{backgroundColor:`${ID === sound.id ?'#523301':''}`,color:`${ID === sound.id ?'white':''}`}} onClick={()=>{setAudioUrl(`${Book?.url}/${sound.url}`);SetType(Book?.type);setplay(true);SetID(sound.id as number);SetSahapyName(sound.name)}} key={sound.id} className={`w-full sm:w-1/3 md:w-1/4 lg:w-1/5 cursor-pointer shadow-sm line-clamp-1  text-end text-lg p-2 hover:bg-[#895605] hover:text-white bg-[#cc9a49] rounded m-2 text-blue-950`}>
+                                <div title={`${sound.name}`} style={{backgroundColor:`${ID === sound.id ?'#523301':''}`,color:`${ID === sound.id ?'white':''}`}} onClick={()=>{setAudioUrl(`${Book?.url}/${sound.url}`);SetType(Book?.type ?? '');setplay(true);SetID(sound.id as number);SetSahapyName(sound.name)}} key={sound.id} className={`w-full sm:w-1/3 md:w-1/4 lg:w-1/5 cursor-pointer shadow-sm line-clamp-1  text-end text-lg p-2 hover:bg-[#895605] hover:text-white bg-[#cc9a49] rounded m-2 text-blue-950`}>
                                     {   Book?.id === 3?
                                         <h1 className='line-clamp-1'>{`( ${sound.id} ) - ${sound.name}`}</h1>:
                                         <h1 className='line-clamp-1'>{sound.name}</h1>
