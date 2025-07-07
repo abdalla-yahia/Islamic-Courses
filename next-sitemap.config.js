@@ -241,7 +241,8 @@ const radios = [
 module.exports = {
   siteUrl: 'https://khaled-mansour.vercel.app',
   generateRobotsTxt: true,
-  generateIndexSitemap: true,
+  // generateIndexSitemap: true,
+  generateIndexSitemap: false,
   sitemapIndexLastmod: true,
   autoLastmod: true,
   outDir: 'public',
