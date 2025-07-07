@@ -250,6 +250,15 @@ module.exports = {
   sitemapBaseFileName: 'sitemap',
   sitemapPath: '/sitemap.xml',
   indexedDB: true,
+  xmlNs: {
+    news: 'http://www.google.com/schemas/sitemap-news/0.9',
+    xhtml: 'http://www.w3.org/1999/xhtml',
+    mobile: 'http://www.google.com/schemas/sitemap-mobile/1.0',
+    image: 'http://www.google.com/schemas/sitemap-image/1.1',
+    video: 'http://www.google.com/schemas/sitemap-video/1.1',
+    xsi: 'http://www.w3.org/2001/XMLSchema-instance',
+    schemaLocation: 'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd',
+  },
   additionalPaths: async () => {
     const urls = [
       '/', '/about', '/contact', '/moshaf', '/booksound',
