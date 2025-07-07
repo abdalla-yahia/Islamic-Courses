@@ -1,3 +1,5 @@
+/** @type {import('next-sitemap').IConfig} */
+
 const quraanSuras = [
   "الفاتحة", "البقرة", "آل عمران", "النساء", "المائدة", "الأنعام", "الأعراف", "الأنفال",
   "التوبة", "يونس", "هود", "يوسف", "الرعد", "إبراهيم", "الحجر", "النحل", "الإسراء", "الكهف",
@@ -234,15 +236,19 @@ const radios = [
 "عشر ذي الحجة",
     ];
 
+
+
 module.exports = {
   siteUrl: 'https://khaled-mansour.vercel.app',
   generateRobotsTxt: true,
-  sitemapSize: 7000,
   generateIndexSitemap: true,
+  sitemapIndexLastmod: true,
+  autoLastmod: true,
+  outDir: 'public',
+  sitemapSize: 7000,
   sitemapBaseFileName: 'sitemap',
   sitemapPath: '/sitemap.xml',
-  outDir: 'public',
-  autoLastmod: true,
+  indexedDB: true,
   additionalPaths: async () => {
     const urls = [
       '/', '/about', '/contact', '/moshaf', '/booksound',
@@ -351,7 +357,7 @@ module.exports = {
       quraanSuras.forEach((sora) => {
         dynamicUrls.push({
           loc: `/moshaf?القارىء=${encodeURIComponent(qaree)}&السورة=${encodeURIComponent(sora)}`,
-          lastmod: new Date().toISOString(),
+          lastmod: new Date().toISOString().split('T')[0],
           changefreq: 'weekly',
           priority: 0.7,
         });
@@ -362,7 +368,7 @@ module.exports = {
     radios.forEach((radio) => {
       dynamicUrls.push({
         loc: `/?radio=${encodeURIComponent(radio)}`,
-        lastmod: new Date().toISOString(),
+        lastmod: new Date().toISOString().split('T')[0],
         changefreq: 'weekly',
         priority: 0.7,
       });
@@ -370,7 +376,7 @@ module.exports = {
 
     return [...urls.map((url) => ({
       loc: url,
-      lastmod: new Date().toISOString(),
+      lastmod: new Date().toISOString().split('T')[0],
       changefreq: url === '/' ? 'daily' : 'weekly',
       priority: url === '/' ? 1.0 : 0.7,
     })), ...dynamicUrls];

@@ -18,6 +18,7 @@ export default function RadioQuran() {
     const refAudio = useRef<HTMLAudioElement>() as unknown as { current: { muted: boolean | undefined, volume: number, play: () => void, pause: () => void } };
     const buttonRef = useRef<HTMLDivElement>(null);
     const listRef = useRef<HTMLDivElement>(null);
+
     const router = useRouter();
     const searchParams = useSearchParams();
 
@@ -43,8 +44,10 @@ export default function RadioQuran() {
                 setSelectedOption(foundRadio);
                 seturlRadio(foundRadio.url);
                 setRadioName(foundRadio.name);
-                setplay(true);
             }
+            setTimeout(() => {
+                setplay(true);
+            }, 5000);
         }
     }, [searchParams, Radios])
 

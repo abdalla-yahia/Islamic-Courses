@@ -54,7 +54,9 @@ export default function NafMoshaf({ NameSoras, SoraNumber, setSoraNumber, setSha
       if(shaikhFound) {
         setShaikhSound(shaikhFound.title);
       }
-      setPlay(true);
+      setTimeout(() => {
+        setPlay(true);
+      }, 5000);
     }
     if (soraFromUrl) {
       const soraIndex = NameSoras.indexOf(decodeURIComponent(soraFromUrl));
