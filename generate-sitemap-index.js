@@ -13,6 +13,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   <sitemap>
     <loc>https://khaled-mansour.vercel.app/sitemap-0.xml</loc>
     <lastmod>${date}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
   </sitemap>
 </sitemapindex>`;
 
