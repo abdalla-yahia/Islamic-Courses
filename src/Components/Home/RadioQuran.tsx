@@ -44,10 +44,8 @@ export default function RadioQuran() {
                 setSelectedOption(foundRadio);
                 seturlRadio(foundRadio.url);
                 setRadioName(foundRadio.name);
-            }
-            setTimeout(() => {
                 setplay(true);
-            }, 5000);
+            }
         }
     }, [searchParams, Radios])
 
@@ -136,7 +134,7 @@ export default function RadioQuran() {
                         <span className="text-lg cursor-pointer font-bold text-primary_color">{RadioName || 'اختر الإذاعة'}</span>
                         <icon.MdKeyboardDoubleArrowDown />
                     </span>
-                    {toggle && <div ref={listRef} className='bg-[#5b3f12] radiolist rounded-md absolute left-0 top-[100%] w-[80%] z-40 max-h-[400px] scrollbar-hide overflow-y-scroll text-accent_color flex justify-start items-start flex-col'>
+                    {toggle && <div ref={listRef} className='bg-[#5b3f12] radiolist rounded-md absolute left-0 top-[100%] w-[100%] z-40 max-h-[400px] scrollbar-hide overflow-y-scroll text-accent_color flex justify-start items-start flex-col'>
                         {
                             Radios?.length > 0 && SearchText === '' ?
                                 (

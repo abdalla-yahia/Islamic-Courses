@@ -1,16 +1,16 @@
 import HomePage from "@/Components/Home/HomePage";
-import { Col, Container, Row } from "react-bootstrap";
+// import { Col, Container, Row } from "react-bootstrap";
 
 export default function Home() {
   return (
     <>
-    <Container  className="p-0 mt-2">
+    {/* <Container  className="p-0 mt-2">
       <Row>
-        <Col>
+        <Col> */}
         <HomePage />
-        </Col>
+        {/* </Col>
       </Row>
-    </Container>
+    </Container> */}
     </>
   );
 }
