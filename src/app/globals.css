@@ -10,12 +10,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary-color: #2E7D32; 
+  --primary-color: #063509; 
   --secondary-color: #FFFFFF; 
   --accent-color: #173395;
-  --background-color: #F5F5F5;
-  --second-background-color: #dedede;
-  --text-color: #795548;
+  --background-color: #989797;
+  --second-background-color: #a3a1a1;
+  --text-color: #efeded;
   
 }
 
