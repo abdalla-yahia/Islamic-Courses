@@ -19,6 +19,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
 </sitemapindex>`;
 
 // حفظ الملف في public
-fs.writeFileSync(path.join(__dirname, 'public', 'sitemap.xml'), sitemapIndex);
+fs.writeFileSync(path.join(__dirname, 'public', 'sitemap-index.xml'), sitemapIndex);
 
 // console.log('✅ تم إنشاء ملف sitemap.xml بنجاح مع lastmod');
