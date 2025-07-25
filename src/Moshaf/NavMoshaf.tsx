@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import * as icon from '@/Components/Icons/icons'
 import Image from "next/image";
 import style from './style.module.css'
@@ -41,22 +41,21 @@ export default function NafMoshaf({ NameSoras, SoraNumber, setSoraNumber, setSha
   const searchParams = useSearchParams();
   // Set Url params 
   const ChangeUrlWithoutReload =(qaree:string, sora:string)=>{
-    router.replace(`/moshaf?sora=${encodeURIComponent(sora)}&qaree=${encodeURIComponent(qaree)}`);
+    router.replace(`/moshaf?السورة=${encodeURIComponent(sora)}&القارىء=${encodeURIComponent(qaree)}`);
   }
   
   // Set Sora Number From Params
-  useEffect(() => {
-    const qareeFromUrl = searchParams.get('qaree');
-    const soraFromUrl = searchParams.get('sora');
+  useMemo(() => {
+    const qareeFromUrl = searchParams.get('القارىء');
+    const soraFromUrl = searchParams.get('السورة');
     if (qareeFromUrl) {
       setNameShaikh(decodeURIComponent(qareeFromUrl));
       const shaikhFound = QareeAndSrs.find((item) => item.qaree.trim() == decodeURIComponent(qareeFromUrl));
       if(shaikhFound) {
         setShaikhSound(shaikhFound.title);
       }
-      setTimeout(() => {
         setPlay(true);
-      }, 5000);
+
     }
     if (soraFromUrl) {
       const soraIndex = NameSoras.indexOf(decodeURIComponent(soraFromUrl));
