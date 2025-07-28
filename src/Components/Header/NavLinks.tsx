@@ -13,7 +13,7 @@ export default function NavLinks({user}:{user:UserPayload | null}) {
   //Close DrobDown Menu on click outside
   document.addEventListener('click', (e) => {
     const target = e.target as HTMLElement;
-    if (!target.closest('.toggleDown')) {
+    if (!target.closest('.toggleDown')&& !target.closest('.open-drob-down')) {
       setToggle(false);
     }
   });
@@ -24,7 +24,7 @@ export default function NavLinks({user}:{user:UserPayload | null}) {
           toggle?
             
            <IoMdClose onClick={()=>{setToggle(!toggle);sessionStorage.setItem('guidelines','true')}} className="text-3xl lg:hidden block cursor-pointer"/>:
-                     <IoIosMenu  onClick={() => {setToggle(!toggle)}} className="text-3xl lg:hidden block cursor-pointer" />
+                     <IoIosMenu  onClick={() => {setToggle(true)}} className="open-drob-down text-3xl lg:hidden block cursor-pointer" />
                   }
                   <div className={`${style.guide_lines} absolute top-9 left-0  z-50 flex justify-center items-center`}>
                              {!guidelines ? (
