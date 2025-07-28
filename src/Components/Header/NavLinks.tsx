@@ -15,10 +15,10 @@ export default function NavLinks({user}:{user:UserPayload | null}) {
     <div className='text-white'>
         {
            toggle?
-           <IoMdClose onClick={()=>setToggle(!toggle)} className="text-3xl lg:hidden block cursor-pointer"/>:
+           <IoMdClose onClick={()=>{setToggle(!toggle);sessionStorage.setItem('guidelines','true')}} className="text-3xl lg:hidden block cursor-pointer"/>:
             (
                      <div className='relative flex justify-center items-center flex-col'>
-                     <IoIosMenu  onClick={() => {setToggle(!toggle);sessionStorage.setItem('guidelines','true')}} className="text-3xl lg:hidden block cursor-pointer" />
+                     <IoIosMenu  onClick={() => {setToggle(!toggle)}} className="text-3xl lg:hidden block cursor-pointer" />
                         <div className={`${style.guide_lines} absolute top-9 left-0  z-50 flex justify-center items-center`}>
                              {!guidelines ? (
                                <div className="w-full flex justify-center text-white items-center flex-col">
