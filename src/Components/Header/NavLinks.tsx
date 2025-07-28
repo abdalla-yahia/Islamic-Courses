@@ -10,7 +10,13 @@ import Image from 'next/image'
 export default function NavLinks({user}:{user:UserPayload | null}) {
    const [toggle,setToggle]= useState(false)
     const guidelines = sessionStorage.getItem("guidelines");
-
+  //Close DrobDown Menu on click outside
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (!target.closest('.toggleDown')) {
+      setToggle(false);
+    }
+  });
   return (
     <div className='text-white'>
         {
@@ -30,7 +36,7 @@ export default function NavLinks({user}:{user:UserPayload | null}) {
                      </div>
                     )
             }
-          <div className='h-fit'>
+          <div className='h-fit toggleDown'>
           <div className={`${style.toggleDown} `}
           style={{
             clipPath:toggle && 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' || ''
