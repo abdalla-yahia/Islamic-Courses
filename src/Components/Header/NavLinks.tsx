@@ -19,13 +19,14 @@ export default function NavLinks({user}:{user:UserPayload | null}) {
   });
   return (
     <div className='text-white'>
+      <div className='relative flex justify-center items-center flex-col'>
         {
-           toggle?
+          toggle?
+            
            <IoMdClose onClick={()=>{setToggle(!toggle);sessionStorage.setItem('guidelines','true')}} className="text-3xl lg:hidden block cursor-pointer"/>:
-            (
-                     <div className='relative flex justify-center items-center flex-col'>
                      <IoIosMenu  onClick={() => {setToggle(!toggle)}} className="text-3xl lg:hidden block cursor-pointer" />
-                        <div className={`${style.guide_lines} absolute top-9 left-0  z-50 flex justify-center items-center`}>
+                  }
+                  <div className={`${style.guide_lines} absolute top-9 left-0  z-50 flex justify-center items-center`}>
                              {!guidelines ? (
                                <div className="w-full flex justify-center text-white items-center flex-col">
                                  <Image className=" animate-bounce" src={'/guide.png'} alt="guide-image" width={80} height={80}/>
@@ -33,9 +34,7 @@ export default function NavLinks({user}:{user:UserPayload | null}) {
                                </div>
                                ):""}
                            </div>
-                     </div>
-                    )
-            }
+                  </div>
           <div className='h-fit toggleDown'>
           <div className={`${style.toggleDown} `}
           style={{
